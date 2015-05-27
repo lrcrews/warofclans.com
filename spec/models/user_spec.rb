@@ -10,6 +10,30 @@ RSpec.describe User do
     @user.destroy
   end
 
+  it_should_behave_like(
+    "single attribute validateable", 
+    User, 
+    "email", 
+    "rr@supergreen.com", 
+    []
+  )
+  
+  it_should_behave_like(
+    "single attribute validateable", 
+    User, 
+    :email, 
+    "rr@supergreen.com", 
+    []
+  )
+
+  it_should_behave_like(
+    "single attribute validateable", 
+    User, 
+    :email, 
+    "1337", 
+    ["is invalid"]
+  )
+
   describe "email" do
     it "should not be allowed if another user has the same email (not unique)" do
       user2 = FactoryGirl.build(:user)

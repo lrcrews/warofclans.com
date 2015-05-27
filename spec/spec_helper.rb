@@ -45,6 +45,13 @@ RSpec.configure do |config|
   # Factory Girl
   config.include FactoryGirl::Syntax::Methods
 
+  # Load shared examples files (tests for modules/concerns/etc)
+  # I found this pattern thanks to this stackoverflow post:
+  #   http://stackoverflow.com/a/16464399/686871
+  # Which references this documentation:
+  #   https://www.relishapp.com/rspec/rspec-core/v/2-13/docs/example-groups/shared-examples!
+  Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
+
   # The settings below are suggested to provide a good initial experience
   # with RSpec, but feel free to customize to your heart's content.
 
