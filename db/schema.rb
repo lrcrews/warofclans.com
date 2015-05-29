@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524072223) do
+ActiveRecord::Schema.define(version: 20150529072101) do
+
+  create_table "clans", force: :cascade do |t|
+    t.string   "clan_tag"
+    t.string   "clan_type",         default: "Anyone can join"
+    t.integer  "level",             default: 1
+    t.string   "name"
+    t.integer  "required_trophies", default: 0
+    t.string   "war_frequency"
+    t.integer  "wars_won",          default: 0
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer  "level"
+    t.string   "name"
+    t.string   "player_tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

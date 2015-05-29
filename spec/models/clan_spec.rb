@@ -72,7 +72,7 @@ RSpec.describe Clan do
     # this!  in version 1.x.  That's a long fucking list and
     # my hands just aren't that idle.
     it "fuck that, too far" do
-      pending("something else getting finished")
+      pending("don't forget to bring a towel.")
       this_should_not_get_executed
     end
   end
@@ -89,7 +89,6 @@ RSpec.describe Clan do
     end
 
     it "should be in the list of Clan::CLAN_TYPES" do
-      #["Anyone can join", "Closed", "Invite only"].each do |clan_type|
       Clan::CLAN_TYPES.each do |clan_type|
         @clan.clan_type = clan_type
         expect(@clan).to be_valid
@@ -106,9 +105,9 @@ RSpec.describe Clan do
       expect(@clan).to be_invalid
     end
 
-    it "should be defaulted to 0" do
+    it "should be defaulted to 1" do
       clan2 = Clan.new
-      expect(clan2.level).to equal(0)
+      expect(clan2.level).to equal(1)
     end
 
     it "should be a number between one and 10" do
@@ -147,6 +146,9 @@ RSpec.describe Clan do
       @clan.required_trophies = -1
       expect(@clan).to be_invalid
 
+      @clan.required_trophies = 867.5309
+      expect(@clan).to be_invalid
+
       @clan.required_trophies = 1337
       expect(@clan).to be_valid
     end
@@ -160,7 +162,6 @@ RSpec.describe Clan do
 
     it "should be in the list of Clan::WAR_FREQUENCIES" do
       Clan::WAR_FREQUENCIES.each do |war_frequency|
-        # Always Never Twice a week Once a week Rarely
         @clan.war_frequency = war_frequency
         expect(@clan).to be_valid
       end
@@ -182,6 +183,9 @@ RSpec.describe Clan do
 
       @clan.wars_won = 42
       expect(@clan).to be_valid # Don't Panic! ... this site will keep track of wars lost too.
+
+      @clan.wars_won = 92.7 # The Beat
+      expect(@clan).to be_invalid
     end
   end
 

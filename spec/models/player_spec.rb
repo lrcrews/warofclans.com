@@ -24,7 +24,7 @@ RSpec.describe Player do
       expect(@player).to be_invalid
     end
 
-    it "should be a number between zero and 999" do
+    it "should be a number between one and 999" do
       @player.level = "foo"
       expect(@player).to be_invalid
 
@@ -39,6 +39,9 @@ RSpec.describe Player do
 
       @player.level = 1
       expect(@player).to be_valid
+
+      @player.level = 4.20
+      expect(@player).to be_invalid
 
       @player.level = 999
       expect(@player).to be_valid
