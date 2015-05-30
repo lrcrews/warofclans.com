@@ -1,4 +1,5 @@
 class Player < ActiveRecord::Base
+  include SingleAttributeValidateable
 
   validates :level, 
             presence: true, 
@@ -9,5 +10,7 @@ class Player < ActiveRecord::Base
             }
 
   validates :name, presence: true
+
+  validates :player_tag, presence: true, uniqueness: true, format: { with: /\A#\w{7,8}\z/ }
 
 end

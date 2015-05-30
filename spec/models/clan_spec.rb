@@ -13,7 +13,7 @@ RSpec.describe Clan do
     Clan, 
     :clan_tag, 
     nil, 
-    ["is required."]
+    ["can't be blank", "is invalid"]
   )
 
   describe "clan_tag" do
@@ -53,11 +53,11 @@ RSpec.describe Clan do
       expect(@clan).to be_invalid
 
       # eight characters of proper formatting
-      @clan.clan_tag = "#8LYRQ8Y" # shout out to alexander
-      expect(@clan).to be_invalid
+      @clan.clan_tag = "#8JR8G8L"
+      expect(@clan).to be_valid
 
       # nine characters of proper formatting
-      @clan.clan_tag "#8JR8G8L9"
+      @clan.clan_tag = "#8JR8G8L9"
       expect(@clan).to be_valid
     end
   end
@@ -76,11 +76,6 @@ RSpec.describe Clan do
     it "should be present" do
       @clan.clan_type = nil
       expect(@clan).to be_invalid
-    end
-
-    it "should be defaulted to 'Anyone can join'" do
-      clan2 = Clan.new
-      expect(clan2.clan_type).to equal("Anyone can join")
     end
 
     it "should be in the list of Clan::CLAN_TYPES" do

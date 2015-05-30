@@ -13,7 +13,7 @@ RSpec.describe Player do
     Player, 
     :player_tag, 
     nil, 
-    ["is required."]
+    ["can't be blank", "is invalid"]
   )
 
   describe "level" do
@@ -98,7 +98,7 @@ RSpec.describe Player do
 
       # eight characters of proper formatting
       @player.player_tag = "#8LYRQ8Y" # shout out to alexander
-      expect(@player).to be_invalid
+      expect(@player).to be_valid
 
       # nine characters of proper formatting
       @player.player_tag = "#RCQOJOJR"
