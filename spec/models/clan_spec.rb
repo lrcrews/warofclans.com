@@ -2,19 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Clan do
   
-  # TOMAYBE:
-  # might want to refactor this to be a .build before each,
-  # a specify { expect(@clan).to be_valid }, then only save
-  # (and then destroy) when you need to check uniqueness as
-  # doing so would be (perhaps only marginally) faster.
-
   before(:each) do
-    @clan = FactoryGirl.create(:clan)
+    @clan = FactoryGirl.build(:clan)
   end
 
-  after(:each) do
-    @clan.destroy
-  end
+  specify { expect(@clan).to be_valid }
 
   it_should_behave_like(
     "single attribute validateable", 
@@ -30,14 +22,17 @@ RSpec.describe Clan do
       expect(@clan).to be_invalid
     end
 
-    it "should not be allowed if another user has the same clan tag (not unique)" do
-      clan2 = FactoryGirl.build(:clan)
-      expect(clan2).to be_invalid
-    end
+    it "should be unique" do
+      persisted_clan = @clan.dup
+      persisted_clan.save
 
-    it "should be allowed if no other user has the same clan tag (unique)" do
-      clan3 = FactoryGirl.build(:clan, clan_tag: "#FOOBAR42") # bah! I hate it when get rid of the war results history.  I suppose that's kind of obvious given this site...
-      expect(clan3).to be_valid
+      clan2 = FactoryGirl.build(:clan, clan_tag: persisted_clan.clan_tag)
+      expect(clan2).to be_invalid
+
+      clan2.clan_tag = "#FOOBAR42" # bah! I hate it when get rid of the war results history.  I suppose that's kind of obvious given this site...
+      expect(clan2).to be_valid
+
+      persisted_clan.delete
     end
 
     it "should be eight or nine characters long, begin with a '#', and continue with alpha/numeric" do

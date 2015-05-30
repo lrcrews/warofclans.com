@@ -3,12 +3,10 @@ require 'rails_helper'
 RSpec.describe Player do
   
   before(:each) do
-    @player = FactoryGirl.create(:player)
+    @player = FactoryGirl.build(:player)
   end
 
-  after(:each) do
-    @player.destroy
-  end
+  specify { expect(@player).to be_valid }
 
   it_should_behave_like(
     "single attribute validateable", 
@@ -64,14 +62,17 @@ RSpec.describe Player do
       expect(@player).to be_invalid
     end
 
-    it "should not be allowed if another user has the same player tag (not unique)" do
-      player2 = FactoryGirl.build(:player)
-      expect(player2).to be_invalid
-    end
+    it "should be unique" do
+      persisted_player = @player.dup
+      persisted_player.save
 
-    it "should be allowed if no other user has the same player tag (unique)" do
-      player3 = FactoryGirl.build(:player, player_tag: "#PQVUJ2PR") # shout out to Count Dubula
-      expect(player3).to be_valid
+      player2 = FactoryGirl.build(:player, player_tag: persisted_player.player_tag)
+      expect(player2).to be_invalid
+
+      player2.player_tag = "#PQVUJ2PR" # shout out to Count Dubula
+      expect(player2).to be_valid
+
+      persisted_player.delete
     end
 
     # this was the moment I appreciated something about TDD, it let's

@@ -3,12 +3,10 @@ require 'rails_helper'
 RSpec.describe User do
   
   before(:each) do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.build(:user)
   end
 
-  after(:each) do
-    @user.destroy
-  end
+  specify { expect(@user).to be_valid }
 
   it_should_behave_like(
     "single attribute validateable", 
@@ -35,14 +33,17 @@ RSpec.describe User do
   )
 
   describe "email" do
-    it "should not be allowed if another user has the same email (not unique)" do
-      user2 = FactoryGirl.build(:user)
-      expect(user2).to be_invalid
-    end
+    it "should be unique" do
+      persisted_user = @user.dup
+      persisted_user.save
 
-    it "should be allowed if no other user has the same email (unique)" do
-      user3 = FactoryGirl.build(:user, email: "korbind@zorg.com")
-      expect(user3).to be_valid
+      user2 = FactoryGirl.build(:user, email: persisted_user.email)
+      expect(user2).to be_invalid
+
+      user2.email = "korbind@zorg.com"
+      expect(user2).to be_valid
+
+      persisted_user.delete
     end
   end
 
