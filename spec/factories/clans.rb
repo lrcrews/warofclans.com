@@ -7,6 +7,7 @@ FactoryGirl.define do
     name "New World 9"
     required_trophies 1700
     war_frequency "Once a week"
+    wars { [ FactoryGirl.build(:war) ] }
     wars_won 35
   end
 

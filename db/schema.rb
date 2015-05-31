@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530232917) do
+ActiveRecord::Schema.define(version: 20150531085200) do
+
+  create_table "battles", force: :cascade do |t|
+    t.integer  "attacker_id"
+    t.integer  "attacker_rank"
+    t.integer  "defender_id"
+    t.integer  "defender_rank"
+    t.integer  "destruction_percent"
+    t.integer  "minutes_left_in_war"
+    t.integer  "stars_awarded"
+    t.integer  "stars_earned"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "war_id"
+  end
+
+  add_index "battles", ["attacker_id"], name: "index_battles_on_attacker_id"
+  add_index "battles", ["defender_id"], name: "index_battles_on_defender_id"
+  add_index "battles", ["war_id"], name: "index_battles_on_war_id"
 
   create_table "clans", force: :cascade do |t|
     t.string   "coc_id"

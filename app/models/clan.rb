@@ -10,6 +10,14 @@ class Clan < ActiveRecord::Base
     "Always", "Never", "Twice a week", "Once a week", "Rarely"
   ]
 
+  # since wars have two clans associated (a red team and a blue team)
+  # we're overriding the method fired by the has_many :wars relationsip
+  # to a scope method the properly checks both foreign key columns.
+  has_many :wars
+  def wars
+    War.for_clan(self)
+  end
+
   validates :clan_type, presence: true, inclusion: { in: CLAN_TYPES }
 
   validates :level, 
