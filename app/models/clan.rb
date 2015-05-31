@@ -1,4 +1,5 @@
 class Clan < ActiveRecord::Base
+  include CocIdentifiable
   include SingleAttributeValidateable
 
   CLAN_TYPES = [
@@ -8,8 +9,6 @@ class Clan < ActiveRecord::Base
   WAR_FREQUENCIES = [
     "Always", "Never", "Twice a week", "Once a week", "Rarely"
   ]
-
-  validates :clan_tag, presence: true, uniqueness: true, format: { with: /\A#\w{7,8}\z/ } # thanks, http://rubular.com
 
   validates :clan_type, presence: true, inclusion: { in: CLAN_TYPES }
 

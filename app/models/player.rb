@@ -1,4 +1,5 @@
 class Player < ActiveRecord::Base
+  include CocIdentifiable
   include SingleAttributeValidateable
 
   validates :level, 
@@ -10,7 +11,5 @@ class Player < ActiveRecord::Base
             }
 
   validates :name, presence: true
-
-  validates :player_tag, presence: true, uniqueness: true, format: { with: /\A#\w{7,8}\z/ }
 
 end

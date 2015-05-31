@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529072101) do
+ActiveRecord::Schema.define(version: 20150530232917) do
 
   create_table "clans", force: :cascade do |t|
-    t.string   "clan_tag"
+    t.string   "coc_id"
     t.string   "clan_type",         default: "Anyone can join"
     t.integer  "level",             default: 1
     t.string   "name"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150529072101) do
   create_table "players", force: :cascade do |t|
     t.integer  "level"
     t.string   "name"
-    t.string   "player_tag"
+    t.string   "coc_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,5 +50,16 @@ ActiveRecord::Schema.define(version: 20150529072101) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "wars", force: :cascade do |t|
+    t.integer  "blue_team_id"
+    t.integer  "red_team_id"
+    t.date     "war_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "wars", ["blue_team_id"], name: "index_wars_on_blue_team_id"
+  add_index "wars", ["red_team_id"], name: "index_wars_on_red_team_id"
 
 end

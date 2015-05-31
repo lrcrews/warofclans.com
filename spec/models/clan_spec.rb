@@ -8,59 +8,15 @@ RSpec.describe Clan do
 
   specify { expect(@clan).to be_valid }
 
+  it_should_behave_like("coc identifiable", FactoryGirl.build(:clan))
+
   it_should_behave_like(
     "single attribute validateable", 
     Clan, 
-    :clan_tag, 
+    :name, 
     nil, 
-    ["can't be blank", "is invalid"]
+    ["can't be blank"]
   )
-
-  describe "clan_tag" do
-    it "should be present" do
-      @clan.clan_tag = nil
-      expect(@clan).to be_invalid
-    end
-
-    it "should be unique" do
-      persisted_clan = @clan.dup
-      persisted_clan.save
-
-      clan2 = FactoryGirl.build(:clan, clan_tag: persisted_clan.clan_tag)
-      expect(clan2).to be_invalid
-
-      clan2.clan_tag = "#FOOBAR42" # bah! I hate it when get rid of the war results history.  I suppose that's kind of obvious given this site...
-      expect(clan2).to be_valid
-
-      persisted_clan.delete
-    end
-
-    it "should be eight or nine characters long, begin with a '#', and continue with alpha/numeric" do
-      # in character range but doesn't start with '#'
-      @clan.clan_tag = "ABCDEFGHI"
-      expect(@clan).to be_invalid
-
-      # starts with '#' but total is over the max characters
-      @clan.clan_tag =  "#ABCDEFGHI"
-      expect(@clan).to be_invalid
-
-      # starts with '#' but total is under the min characters
-      @clan.clan_tag = "#ABCDEF"
-      expect(@clan).to be_invalid
-
-      # in character range but has special characters
-      @clan.clan_tag = "#A}CDEFG"
-      expect(@clan).to be_invalid
-
-      # eight characters of proper formatting
-      @clan.clan_tag = "#8JR8G8L"
-      expect(@clan).to be_valid
-
-      # nine characters of proper formatting
-      @clan.clan_tag = "#8JR8G8L9"
-      expect(@clan).to be_valid
-    end
-  end
 
   describe "clan_location" do
     # TODO:
