@@ -8,20 +8,6 @@ RSpec.describe War, type: :model do
 
   specify { expect(@war).to be_valid }
 
-  describe "blue_team" do
-    it "should be present" do
-      @war.red_team = nil
-      expect(@war).to be_invalid
-    end
-  end
-
-  describe "red_team" do
-    it "should be present" do
-      @war.red_team = nil
-      expect(@war).to be_invalid
-    end
-  end
-
   describe "war_date" do
     it "should be present" do
       @war.war_date = nil

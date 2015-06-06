@@ -1,9 +1,15 @@
 class War < ActiveRecord::Base
 
-  belongs_to :blue_team, class_name: "Clan", foreign_key: "blue_team_id"
-  belongs_to :red_team, class_name: "Clan", foreign_key: "red_team_id"
   has_many :battles
 
-  scope :for_clan, -> (clan) { where("blue_team_id = ? OR red_team_id = ?", clan.id, clan.id) unless clan.nil? }
+  validates :war_date, presence: true
+
+  validate :validate_war_date_in_the_past
+
+  def validate_war_date_in_the_past
+    if self.war_date.present? && self.war_date > Date.today
+      self.errors.add(:war_date, "war date cannot be in the future")
+    end
+  end
 
 end
