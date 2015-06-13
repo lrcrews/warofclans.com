@@ -4,6 +4,7 @@ RSpec.describe Clan do
   
   before(:each) do
     @clan = FactoryGirl.build(:clan)
+    @clan.clan_wars << FactoryGirl.build(:clan_war, clan: @clan)
   end
 
   specify { expect(@clan).to be_valid }
@@ -129,9 +130,33 @@ RSpec.describe Clan do
 
       @clan.wars_won = 42
       expect(@clan).to be_valid # Don't Panic! ... this site will keep track of wars lost too.
+    end
 
+    it "should be an integer" do
       @clan.wars_won = 92.7 # The Beat
-      expect(@clan).to be_invalid
+      expect(@clan).to be_invalid # Jams
+    end
+
+    it "should update itself when lower than associated wars marked won" do
+      clan2 = Clan.new
+      clan2.coc_id = "#HIF00842"
+      clan2.name = @clan.name
+      clan2.war_frequency = @clan.war_frequency
+      clan2.save
+      expect(clan2.wars_won).to equal(0)
+
+      3.times do 
+        clan2.clan_wars << FactoryGirl.build(:clan_war, clan: clan2, war: FactoryGirl.build(:war), winner: true)
+      end
+      clan2.save
+      expect(clan2.wars_won).to equal(3)
+
+      clan2.wars_won = 42
+      9.times do 
+        clan2.clan_wars << FactoryGirl.build(:clan_war, clan: clan2, war: FactoryGirl.build(:war), winner: true)
+      end
+      clan2.save
+      expect(clan2.wars_won).to equal(42)
     end
   end
 

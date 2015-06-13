@@ -10,7 +10,10 @@ class Clan < ActiveRecord::Base
     "Always", "Never", "Twice a week", "Once a week", "Rarely"
   ]
 
-  has_many :wars
+  before_save :update_wars_won
+
+  has_many :clan_wars
+  has_many :wars, through: :clan_wars
 
   validates :clan_type, presence: true, inclusion: { in: CLAN_TYPES }
 
@@ -39,5 +42,15 @@ class Clan < ActiveRecord::Base
               greater_than_or_equal_to: 0,
               only_integer: true
             }
+
+
+  private
+
+    def update_wars_won
+      winner_count = self.clan_wars.where(winner: true).count
+      if self.wars_won < winner_count
+        self.wars_won = winner_count
+      end
+    end
 
 end
