@@ -61,4 +61,30 @@ RSpec.describe War, type: :model do
     end
   end
 
+  describe "winning_clan?" do
+    it "should return false for both clans if there's a tie" do
+      @war.clan_wars.each do |clan_war|
+        clan_war.winner = false
+        expect(clan_war.winner).to be_falsey
+        expect(@war.winning_clan?(clan_war.clan)).to be_falsey
+      end
+    end
+
+    it "should return true for the winning clan" do
+      clan_war = @war.clan_wars.first
+      clan_war.winner = true
+      clan_war.save
+      expect(@war.winning_clan?(clan_war.clan)).to be_truthy
+    end
+
+    it "should return false for a winning clan not in the war" do
+      clan_war_of_a_different_war = FactoryGirl.build(
+        :clan_war, 
+        clan: FactoryGirl.build(:clan), 
+        war: FactoryGirl.build(:war),
+        winner: true)
+      expect(@war.winning_clan?(clan_war_of_a_different_war.clan)).to be_falsey
+    end
+  end
+
 end
