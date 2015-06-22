@@ -81,6 +81,9 @@ RSpec.describe Battle do
 
   describe "destruction_percent" do
     it "should be an integer between 0 and 100" do
+      @battle.stars_awarded = 2
+      @battle.stars_earned = 0
+
       @battle.destruction_percent = nil
       expect(@battle).to be_invalid
 
@@ -93,10 +96,14 @@ RSpec.describe Battle do
       @battle.destruction_percent = -1
       expect(@battle).to be_invalid
 
-      (0..100).each do |i|
+      (0..99).each do |i|
         @battle.destruction_percent = i
         expect(@battle).to be_valid
       end
+
+      @battle.stars_awarded = 3
+      @battle.destruction_percent = 100
+      expect(@battle).to be_valid
 
       @battle.destruction_percent = 101
       expect(@battle).to be_invalid
@@ -167,6 +174,8 @@ RSpec.describe Battle do
     end
 
     it "should not be 3 if destruction_percent is less than 100" do
+      @battle.stars_earned = 0
+
       @battle.destruction_percent = 99
       @battle.stars_awarded = 3
       expect(@battle).to be_invalid
@@ -190,11 +199,17 @@ RSpec.describe Battle do
       @battle.stars_earned = -1
       expect(@battle).to be_invalid
 
-      (0..3).each do |i|
+      @battle.destruction_percent = 99
+      (0..2).each do |i|
         @battle.stars_awarded = i
         @battle.stars_earned = i
         expect(@battle).to be_valid
       end
+
+      @battle.destruction_percent = 100
+      @battle.stars_awarded = 3
+      @battle.stars_earned = 3
+      expect(@battle).to be_valid
 
       @battle.stars_earned = 4
       expect(@battle).to be_invalid

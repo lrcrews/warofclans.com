@@ -1,5 +1,12 @@
 class Battle < ActiveRecord::Base
 
+  # TODO:
+  # ok, I'm finding these names confusing, so I should change them later
+  # but for now....
+  #
+  # stars_awarded are the stars you get in your attack
+  # stars_earned are the stars from that attack that actually count towards the war total
+
   belongs_to :war
 
   belongs_to :attacker, class_name: "Player", foreign_key: "attacker_id"
@@ -53,13 +60,25 @@ class Battle < ActiveRecord::Base
 
   validates :war, presence: true
 
+  validate :validate_awarded_stars_vs_destruction_percent
   validate :validate_awarded_vs_earned_stars
 
+
+  def validate_awarded_stars_vs_destruction_percent
+    if self.destruction_percent.present? && self.stars_awarded.present?
+      if self.destruction_percent == 100 && self.stars_awarded != 3
+        errors.add(:stars_awarded, "should be 3 if base completely destroyed")
+      end
+      if self.destruction_percent < 100 && self.stars_awarded == 3
+        errors.add(:stars_awarded, "should not be 3 if base wasn't completely destroyed")
+      end
+    end
+  end
 
   def validate_awarded_vs_earned_stars
     if self.stars_awarded.present? && self.stars_earned.present?
       if self.stars_earned > self.stars_awarded
-        errors.add(:stars_earned, "may not be greater than the number awarded.")
+        errors.add(:stars_earned, "may not be greater than the number awarded")
       end
     end
   end
