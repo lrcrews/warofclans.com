@@ -36,7 +36,32 @@ class Battle < ActiveRecord::Base
               less_than_or_equal_to: 1440,
               only_integer: true 
             }
+  
+  validates :stars_awarded, 
+            numericality: { 
+              greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 3,
+              only_integer: true 
+            }
+  
+  validates :stars_earned, 
+            numericality: { 
+              greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 3,
+              only_integer: true 
+            }
 
   validates :war, presence: true
+
+  validate :validate_awarded_vs_earned_stars
+
+
+  def validate_awarded_vs_earned_stars
+    if self.stars_awarded.present? && self.stars_earned.present?
+      if self.stars_earned > self.stars_awarded
+        errors.add(:stars_earned, "may not earn more stars than the number awarded.")
+      end
+    end
+  end
 
 end
