@@ -1,7 +1,7 @@
 FactoryGirl.define do
   
   factory :player do
-    sequence(:coc_id, "a") { |n| "#RCQOJOJ#{n}" }
+    sequence(:coc_id, "a") { |n| "#RCQOJO#{n}" }
     level 84
     name "ponikz"
   end
