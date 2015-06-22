@@ -27,7 +27,7 @@ RSpec.describe Battle do
       expect(@battle).to be_invalid
 
       @battle.attacker_rank = 4.2
-      expect(@battler).to be_invalid
+      expect(@battle).to be_invalid
 
       @battle.attacker_rank = "Punisher-esque"
       expect(@battle).to be_invalid
@@ -61,7 +61,7 @@ RSpec.describe Battle do
       expect(@battle).to be_invalid
 
       @battle.defender_rank = 10.5
-      expect(@battler).to be_invalid
+      expect(@battle).to be_invalid
 
       @battle.defender_rank = "Aegis-like"
       expect(@battle).to be_invalid
