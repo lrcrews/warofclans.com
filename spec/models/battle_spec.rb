@@ -130,6 +130,7 @@ RSpec.describe Battle do
   describe "stars_awarded" do
     it "should be 0, 1, 2, or 3" do
       @battle.destruction_percent = 99
+      @battle.stars_earned = 0
 
       @battle.stars_awarded = nil
       expect(@battle).to be_invalid
@@ -177,8 +178,6 @@ RSpec.describe Battle do
 
   describe "stars_earned" do
     it "should be 0, 1, 2, or 3" do
-      @battle.stars_awarded = 3
-
       @battle.stars_earned = nil
       expect(@battle).to be_invalid
 
@@ -192,6 +191,7 @@ RSpec.describe Battle do
       expect(@battle).to be_invalid
 
       (0..3).each do |i|
+        @battle.stars_awarded = i
         @battle.stars_earned = i
         expect(@battle).to be_valid
       end

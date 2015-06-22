@@ -59,7 +59,7 @@ class Battle < ActiveRecord::Base
   def validate_awarded_vs_earned_stars
     if self.stars_awarded.present? && self.stars_earned.present?
       if self.stars_earned > self.stars_awarded
-        errors.add(:stars_earned, "may not earn more stars than the number awarded.")
+        errors.add(:stars_earned, "may not be greater than the number awarded.")
       end
     end
   end
