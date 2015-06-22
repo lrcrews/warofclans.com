@@ -2,6 +2,11 @@ class Player < ActiveRecord::Base
   include CocIdentifiable
   include SingleAttributeValidateable
 
+
+  has_many :attacks, class_name: "Battle", foreign_key: "attacker_id"
+  has_many :defences, class_name: "Battle", foreign_key: "defender_id"
+
+
   validates :level, 
             presence: true, 
             numericality: {

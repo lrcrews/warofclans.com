@@ -18,6 +18,74 @@ RSpec.describe Player do
     ["can't be blank"]
   )
 
+  describe "attacks" do
+    it "should pull all attacks (if any) regardless of war" do
+      player1 = FactoryGirl.build(:player)
+      player1.attacks = []
+      player1.save
+      expect(player1).to be_valid
+
+      player2 = FactoryGirl.create(:player)
+      clan_war1a = FactoryGirl.create(:clan_war)
+      war1 = clan_war1a.war
+      clan_war1b = FactoryGirl.create(:clan_war, war: war1)
+      battle1 = FactoryGirl.build(:battle, war: war1)
+      battle1.attacker = player1
+      battle1.defender = player2
+      battle1.save
+      expect(player1.attacks.count).to equal(1)
+
+      battle2 = FactoryGirl.build(:battle, war: war1)
+      battle2.attacker = player2
+      battle2.defender = player1
+      battle2.save
+      expect(player1.attacks.count).to equal(1)
+
+      clan_war2a = FactoryGirl.create(:clan_war)
+      war2 = clan_war2a.war
+      clan_war2b = FactoryGirl.create(:clan_war, war: war2)
+      battle3 = FactoryGirl.build(:battle, war: war2)
+      battle3.attacker = player1
+      battle3.defender = player2
+      battle3.save
+      expect(player1.attacks.count).to equal(2)
+    end
+  end
+
+  describe "defences" do
+    it "should pull all defences (if any) regardless of war" do
+      player1 = FactoryGirl.build(:player)
+      player1.defences = []
+      player1.save
+      expect(player1).to be_valid
+
+      player2 = FactoryGirl.create(:player)
+      clan_war1a = FactoryGirl.create(:clan_war)
+      war1 = clan_war1a.war
+      clan_war1b = FactoryGirl.create(:clan_war, war: war1)
+      battle1 = FactoryGirl.build(:battle, war: war1)
+      battle1.attacker = player2
+      battle1.defender = player1
+      battle1.save
+      expect(player1.defences.count).to equal(1)
+
+      battle2 = FactoryGirl.build(:battle, war: war1)
+      battle2.attacker = player1
+      battle2.defender = player2
+      battle2.save
+      expect(player1.defences.count).to equal(1)
+
+      clan_war2a = FactoryGirl.create(:clan_war)
+      war2 = clan_war2a.war
+      clan_war2b = FactoryGirl.create(:clan_war, war: war2)
+      battle3 = FactoryGirl.build(:battle, war: war2)
+      battle3.attacker = player2
+      battle3.defender = player1
+      battle3.save
+      expect(player1.defences.count).to equal(2)
+    end
+  end
+
   describe "level" do
     it "should be present" do
       @player.level = nil
