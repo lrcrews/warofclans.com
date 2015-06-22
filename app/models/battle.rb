@@ -23,4 +23,6 @@ class Battle < ActiveRecord::Base
               only_integer: true 
             }
 
+  validates :war, presence: true
+
 end
