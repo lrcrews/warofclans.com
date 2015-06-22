@@ -86,6 +86,36 @@ RSpec.describe Player do
     end
   end
 
+  describe "for_clan" do
+    it "should load all players for a given clan" do
+      expect(Player.all.count).to equal(0)
+
+      clan1 = FactoryGirl.create(:clan)
+      expect(clan1).to be_persisted
+      expect(Player.for_clan(clan1).count).to equal(0)
+
+      clan2 = FactoryGirl.create(:clan)
+      expect(clan2).to be_persisted
+      expect(Player.for_clan(clan2).count).to equal(0)
+
+      player1 = FactoryGirl.create(:player)
+      expect(player1).to be_persisted
+
+      clan1_player1 = FactoryGirl.create(:clan_player, clan: clan1, player: player1, active: true)
+      expect(Player.for_clan(clan1).count).to equal(1)
+
+      player2 = FactoryGirl.create(:player)
+      expect(player2).to be_persisted
+
+      clan1_player2 = FactoryGirl.create(:clan_player, clan: clan1, player: player2, active: false)
+      expect(Player.for_clan(clan1).count).to equal(2)
+
+      clan2_player2 = FactoryGirl.create(:clan_player, clan: clan2, player: player2, active: false)
+      expect(Player.for_clan(clan1).count).to equal(2)
+      expect(Player.for_clan(clan2).count).to equal(1)
+    end
+  end
+
   describe "level" do
     it "should be present" do
       @player.level = nil

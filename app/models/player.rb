@@ -6,6 +6,9 @@ class Player < ActiveRecord::Base
   has_many :attacks, class_name: "Battle", foreign_key: "attacker_id"
   has_many :defences, class_name: "Battle", foreign_key: "defender_id"
 
+  has_many :clan_players
+  has_many :clans, through: :clan_players
+
 
   validates :level, 
             presence: true, 
@@ -16,5 +19,9 @@ class Player < ActiveRecord::Base
             }
 
   validates :name, presence: true
+
+
+  scope :active, -> { joins(:clan_players).where("clan_players.active = ?", true) }
+  scope :for_clan, -> (clan) { joins(:clan_players).where("clan_players.clan_id = ?", clan.id) unless clan.nil? }
 
 end

@@ -15,6 +15,9 @@ class Clan < ActiveRecord::Base
   has_many :clan_wars
   has_many :wars, through: :clan_wars
 
+  has_many :clan_players
+  has_many :players, through: :clan_players
+
   validates :clan_type, presence: true, inclusion: { in: CLAN_TYPES }
 
   validates :level, 
@@ -42,6 +45,11 @@ class Clan < ActiveRecord::Base
               greater_than_or_equal_to: 0,
               only_integer: true
             }
+
+
+  def active_players
+    Player.for_clan(self).where("").active
+  end
 
 
   private

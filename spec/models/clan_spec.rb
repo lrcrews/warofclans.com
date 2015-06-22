@@ -19,6 +19,28 @@ RSpec.describe Clan do
     ["can't be blank"]
   )
 
+  describe "active_players" do
+    it "should only return players that are marked as active" do
+      clan = @clan.dup
+      clan.save
+      expect(clan).to be_persisted
+
+      player1 = FactoryGirl.create(:player)
+      expect(player1).to be_persisted
+
+      clan_player1 = FactoryGirl.create(:clan_player, clan: clan, player: player1, active: true)
+      expect(clan.players.count).to equal(1)
+      expect(clan.active_players.count).to equal(1)
+
+      player2 = FactoryGirl.create(:player)
+      expect(player2).to be_persisted
+
+      clan_player2 = FactoryGirl.create(:clan_player, clan: clan, player: player2, active: false)
+      expect(clan.players.count).to equal(2)
+      expect(clan.active_players.count).to equal(1)
+    end
+  end
+
   describe "clan_location" do
     # TODO:
     # this!  in version 1.x.  That's a long fucking list and
