@@ -23,6 +23,13 @@ class Battle < ActiveRecord::Base
               only_integer: true 
             }
   
+  validates :destruction_percent, 
+            numericality: { 
+              greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 100,
+              only_integer: true 
+            }
+  
   validates :minutes_left_in_war, 
             numericality: { 
               greater_than_or_equal_to: 0,
