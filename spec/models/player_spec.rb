@@ -18,6 +18,13 @@ RSpec.describe Player do
     ["can't be blank"]
   )
 
+  describe "active_clan" do
+    it "should be the clan of the most recent battle" do
+      pending("got sidetracked by something dumb I did.")
+      this_should_not_get_executed
+    end
+  end
+
   describe "attacks" do
     it "should pull all attacks (if any) regardless of war" do
       player1 = FactoryGirl.build(:player)
@@ -25,10 +32,16 @@ RSpec.describe Player do
       player1.save
       expect(player1).to be_valid
 
+      expect(player1.attacks.count).to equal(0)
+
       player2 = FactoryGirl.create(:player)
-      clan_war1a = FactoryGirl.create(:clan_war)
-      war1 = clan_war1a.war
-      clan_war1b = FactoryGirl.create(:clan_war, war: war1)
+      expect(player2).to be_persisted
+
+      clan_war1 = FactoryGirl.create(:clan_war)
+      expect(clan_war1).to be_persisted
+
+      war1 = clan_war1.war
+      
       battle1 = FactoryGirl.build(:battle, war: war1)
       battle1.attacker = player1
       battle1.defender = player2
@@ -41,9 +54,11 @@ RSpec.describe Player do
       battle2.save
       expect(player1.attacks.count).to equal(1)
 
-      clan_war2a = FactoryGirl.create(:clan_war)
-      war2 = clan_war2a.war
-      clan_war2b = FactoryGirl.create(:clan_war, war: war2)
+      clan_war2 = FactoryGirl.create(:clan_war)
+      expect(clan_war2).to be_persisted
+
+      war2 = clan_war2.war
+      
       battle3 = FactoryGirl.build(:battle, war: war2)
       battle3.attacker = player1
       battle3.defender = player2
@@ -59,10 +74,16 @@ RSpec.describe Player do
       player1.save
       expect(player1).to be_valid
 
+      expect(player1.defences.count).to equal(0)
+
       player2 = FactoryGirl.create(:player)
-      clan_war1a = FactoryGirl.create(:clan_war)
-      war1 = clan_war1a.war
-      clan_war1b = FactoryGirl.create(:clan_war, war: war1)
+      expect(player2).to be_persisted
+
+      clan_war1 = FactoryGirl.create(:clan_war)
+      expect(clan_war1).to be_persisted
+
+      war1 = clan_war1.war
+
       battle1 = FactoryGirl.build(:battle, war: war1)
       battle1.attacker = player2
       battle1.defender = player1
@@ -75,9 +96,11 @@ RSpec.describe Player do
       battle2.save
       expect(player1.defences.count).to equal(1)
 
-      clan_war2a = FactoryGirl.create(:clan_war)
-      war2 = clan_war2a.war
-      clan_war2b = FactoryGirl.create(:clan_war, war: war2)
+      clan_war2 = FactoryGirl.create(:clan_war)
+      expect(clan_war2).to be_persisted
+
+      war2 = clan_war2.war
+
       battle3 = FactoryGirl.build(:battle, war: war2)
       battle3.attacker = player2
       battle3.defender = player1
