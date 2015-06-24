@@ -48,7 +48,7 @@ class Clan < ActiveRecord::Base
 
 
   def active_players
-    Player.for_clan(self).where("").active
+    Player.for_clan(self).active
   end
 
 
