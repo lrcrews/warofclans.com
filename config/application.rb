@@ -22,5 +22,12 @@ module WarofclansCom
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Custom directories with classes and modules you want to be autoloadable.
+    config.autoload_paths += %W(#{config.root}/lib/modules #{config.root}/lib/modules/**/)
+    # Incase you haven't see that %W syntax before; it's just giving us an
+    # array of "double qutoed" (and so interpolated) strings.  If we would
+    # have used %w instead (lowercase 'W') we would receive an array of
+    # 'single quoted' string.
   end
 end
