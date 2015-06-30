@@ -74,6 +74,7 @@ module Seed
             ['#8LG98QC9',   100,  'Phavat*Daisa619',  @clans['#QLVJ092']],
             ['#Q2RJGCJR',   142,  'rains7ar',         @clans['#QLVJ092']],
             ['#2090VCURY',  86,   'Savut',            @clans['#QLVJ092']],
+            ['#R9Y8PQ9L',   78,   'seth',             @clans['#QLVJ092']],
             ['#JJLY8RCJ',   78,   'Sheisuke',         @clans['#QLVJ092']],
             ['#YGPYQ209',   82,   'vichka',           @clans['#QLVJ092']],
             ['#2280C2UQV',  92,   'VitLoveLin',       @clans['#QLVJ092']],
