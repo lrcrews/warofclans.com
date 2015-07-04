@@ -1,0 +1,32 @@
+@import "mixins";
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  font-weight: normal;
+  @include font-acme;
+  line-height: 150%;
+}
+
+ol,
+ul {
+  clear: both;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.war-of-clans {
+
+  > section.page-container {
+    margin: 0 auto;
+    min-height: 420px;
+    @media (max-width: 64em) { width: 100%; }
+    @media (min-width: 64.001em) and (max-width: 78.124em) { width: 64em; }
+    @media (min-width: 78.125em) { width: 78.125em; }
+  }
+}

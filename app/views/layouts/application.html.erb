@@ -1,16 +1,85 @@
 <!DOCTYPE html>
-<html>
+
+<!--  
+war stats for clash of clans, if you're really curious about the source 
+code I suggest looking here: https://github.com/lrcrews/warofclans.com
+-->
+
+<%# 
+Welcome. With th exception of the above, all comments
+in these files will be rails comments, not HTML comments.  Why?
+Well, though I don't have any strong reasons for this site, in 
+general I think it's a good idea to use rails comments so any
+notes to other developers, to yourself, TODOs, and so on aren't
+shared with any random user that decides to view source on your
+page.
+%>
+<html ng-app="warOfClansApp">
+
+
   <head>
-    <title>WarofclansCom</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <title>war of clans</title>
+
+    <%# stylesheets %>
+    <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Acme|Uncial+Antiqua' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+    <%# scripts %>
+    <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js' %>
+    <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js' %>
+    <%= javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
     <%= csrf_meta_tags %>
+
+    <%# fav icons %>
+    <%# thankyou very much: http://realfavicongenerator.net %>
+    <%# via: http://stackoverflow.com/questions/2268204/favicon-dimensions/23734416#23734416 %>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#fefefe">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+    <%# let's give ourselves a chance to look good on a phone %>
+    <meta name="viewport" content="width=device-width">
   </head>
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-    <%= yield %>
 
+  <body class="war-of-clans" ng-controller="SiteController" ng-init="initialize()" ng-cloak>
+    <%= include_gon %>
+    
+    <%= render partial: "shared/site_header" %>
+    
+    <%# Curious about the yield(:class)? You can read about what I'm doing
+        (and other html/css stuff) here:
+        http://www.ryancrews.com/posts/21-the-marriage-of-cascading-style-sheets-and-hypertext
+     %>
+    <section class="page-container <%= yield(:class) if content_for?(:class) %>">
+      <%= yield %>
+    </section>
+
+    <%= render partial: "shared/site_footer" %>
   </body>
+
+
+  <%# Google Analytics %>
+  <% if Rails.env.production? %>
+    <%# TODO %>
+  <% end %>
+
+
 </html>

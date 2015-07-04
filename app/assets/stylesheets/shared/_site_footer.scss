@@ -1,0 +1,66 @@
+@import "mixins";
+
+body {
+  
+  &.war-of-clans {
+
+    > div.site-footer {
+      background-color: $background-dark;
+      border-top: 1px solid $border-primary;
+      color: $font-light;
+      line-height: 115%;
+      min-height: 200px;
+      width: 100%;
+      z-index: $z-highest;
+
+      > section {
+        margin: 0 auto;
+        
+        // This should be the same as the one in reset.scss, it's also
+        // here because we want the footer itself to be 100% width.
+        @media (max-width: 64em) { width: 100%; }
+        @media (min-width: 64.001em) and (max-width: 78.124em) { width: 64em; }
+        @media (min-width: 78.125em) { width: 78.125em; }
+
+        > header {
+
+          > ul {
+
+            > li {
+              display: inline-block;
+              padding-left: 16px;
+              vertical-align: top;
+
+              &:first-child {
+                padding-left: 8px;
+              }
+
+              > ul {
+
+                > li {
+                  cursor: pointer;
+                  font-size: $smallest;
+
+                  &:first-child {
+                    font-weight: bold;
+                    font-size: $small;
+                  }
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        > footer {
+          font-size: $smallest;
+          padding-right: 16px;
+          text-align: right;
+        }
+      }
+    }
+  }
+}

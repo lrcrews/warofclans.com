@@ -1,0 +1,19 @@
+<div class="site-header">
+
+  <section>
+    
+    <header>
+      <%= link_to "WarOfClans", root_url %>
+    </header>
+
+    <footer>
+      <% if user_signed_in? %>
+        <%= link_to "sign out", destroy_user_session_url, method: :delete %>
+      <% else %>
+        <%= link_to "sign in", new_user_session_url %> | <%= link_to "sign up", new_user_registration_url %>
+      <% end %>
+    </footer>
+
+  </section>
+
+</div>
