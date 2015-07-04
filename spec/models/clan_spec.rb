@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Clan do
   
-  before(:each) do
+  before :each do
     @clan = FactoryGirl.build(:clan)
     @clan.clan_wars << FactoryGirl.build(:clan_war, clan: @clan)
   end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User do
   
-  before(:each) do
+  before :each do
     @user = FactoryGirl.build(:user)
   end
 

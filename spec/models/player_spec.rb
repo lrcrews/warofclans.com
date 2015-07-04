@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Player do
   
-  before(:each) do
+  before :each do
     @player = FactoryGirl.build(:player)
   end
 

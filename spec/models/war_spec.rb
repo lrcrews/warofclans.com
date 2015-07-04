@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe War, type: :model do
 
-  before(:each) do
+  before :each do
     @war = FactoryGirl.build(:war)
     clan_war1 = FactoryGirl.build(:clan_war, war: @war)
     clan_war2 = FactoryGirl.build(:clan_war, war: @war)
@@ -10,7 +10,7 @@ RSpec.describe War, type: :model do
     @war.save
   end
 
-  after(:each) do
+  after :each do
     @war.delete
   end
 

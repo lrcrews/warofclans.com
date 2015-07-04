@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Battle do
   
-  before(:each) do
+  before :each do
     @battle = FactoryGirl.build(:battle)
     @battle.attacker = FactoryGirl.build(:player)
     @battle.defender = FactoryGirl.build(:player)
