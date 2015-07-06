@@ -19,9 +19,10 @@ RSpec.describe DashboardController do
       War.destroy_all
     end
 
-    it "assigns @wars" do
-      get :index
-      expect(assigns(:wars)).to eq(War.all)
+    it "response body contains wars, the list of all wars" do
+      get :index, format: :json
+      parsed_body = JSON.parse(response.body)
+      expect(parsed_body["wars"]).to eq(War.all.as_json)
     end
 
     it "renders the index template" do

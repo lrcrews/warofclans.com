@@ -37,4 +37,9 @@ class War < ActiveRecord::Base
     winner.present? ? winner.clan == clan : false
   end
 
+  def as_json
+    json = super
+    json['war_date'] = self.war_date.to_s
+  end
+
 end

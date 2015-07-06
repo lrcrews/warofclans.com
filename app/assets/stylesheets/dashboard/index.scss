@@ -1,0 +1,18 @@
+@import "mixins";
+
+body {
+  
+  &.war-of-clans {
+
+    > section.page-container {
+      
+      &.dashboard.index {
+        background-color: black;
+
+        > section {
+          
+        }
+      }
+    }
+  }
+}
