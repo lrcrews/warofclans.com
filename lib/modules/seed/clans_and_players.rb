@@ -18,7 +18,8 @@ module Seed
           puts "____________________"
           puts "adding clans to the existing #{current_clan_count} clan(s)..."
           # This list is arranged alphabetically by the "name" column (data[3])
-          [ ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',  1800, Clan::WAR_FREQUENCY_WEEKLY, 26],
+          [ ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',       1800, Clan::WAR_FREQUENCY_ALWAYS, 92],
+            ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',  1800, Clan::WAR_FREQUENCY_WEEKLY, 26],
             ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 3,  'New World 9',    1700, Clan::WAR_FREQUENCY_WEEKLY, 40],
             ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',       1600, Clan::WAR_FREQUENCY_ALWAYS, 99]
           ].each do |data|
@@ -67,7 +68,24 @@ module Seed
           # This list is arranged alphabetically by the clan name (in comment), then 
           # by "name" column (data[2])
           #
-          [ # LOS PAY@S XXL
+          [ # Doguimie<heart>
+            ['#C0JJ2RJP',   103,  '57heaven',         @clans['#8YGC2RRV']],
+            ['#9LG8YYCQ',   103,  '62-mefi-te',       @clans['#8YGC2RRV']],
+            ['#PYCPC2LL',   88,   'Abd\'l',           @clans['#8YGC2RRV']],
+            ['#LQ8RGUPU',   47,   'ancarla',          @clans['#8YGC2RRV']],
+            ['#220QYUYCY',  94,   'BOUBAKAN',         @clans['#8YGC2RRV']],
+            ['#29898Q2V',   100,  'dimofix',          @clans['#8YGC2RRV']],
+            ['#2GCJJRYC',   100,  'Emilie',           @clans['#8YGC2RRV']],
+            ['#Q80YJRU0',   102,  'guillaume',        @clans['#8YGC2RRV']],
+            ['#G2QCY90U',   93,   'Jibbs66',          @clans['#8YGC2RRV']],
+            ['#RGUJVYYC',   110,  'judas',            @clans['#8YGC2RRV']],
+            ['#R9CVUCQY',   111,  'KozeN',            @clans['#8YGC2RRV']],
+            ['#CULQULUU',   90,   'The AnCarLo',      @clans['#8YGC2RRV']],
+            ['#GUR2PPYG',   96,   'Titom',            @clans['#8YGC2RRV']],
+            ['#VRPJPRJU',   52,   'TonJeJe',          @clans['#8YGC2RRV']],
+            ['#Y080JGCG',   84,   'wiskard legrand',  @clans['#8YGC2RRV']],
+
+            # LOS PAY@S XXL
             ['#JG8RRP9Q',   87,   'A.J',            @clans['#CYQ0C8G']],
             ['#JUUYQJJ2',   88,   'alfoon !!!',     @clans['#CYQ0C8G']],
             ['#8CCUCP0',    64,   'Andrea_21',      @clans['#CYQ0C8G']],

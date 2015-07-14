@@ -8,6 +8,7 @@ module Seed
         @players = {}
         create_new_world_9_vs_pinkglove
         create_new_world_9_vs_los_payas_xxl
+        create_new_world_9_vs_doguimie
       end
 
 
@@ -78,7 +79,7 @@ module Seed
             return
           end
           # the war
-          war = create_war("1/7/2015".to_date, new_world_9, los_payas_xxl, new_world_9)
+          war = create_war("4/7/2015".to_date, new_world_9, los_payas_xxl, new_world_9)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs los_payas_xxl"
             return
@@ -138,6 +139,36 @@ module Seed
             [war, @players["#JG8RRP9Q"],  11,   @players["#YV2J2028"],  9,  47,   15,   1, 0],
             [war, @players["#PV0LJJU0"],  7,    @players["#PVPQPLLJ"],  1,  54,   6,    1, 1],
             [war, @players["#P02QQ89J"],  3,    @players["#PV0LJJU0"],  7,  75,   3,    2, 2]
+          ].each do |data|
+            create_battle(data)
+          end
+        end
+
+
+        def create_new_world_9_vs_doguimie
+          # the clans
+          new_world_9 = Clan.find_by_coc_id("#8JR8G8L9")
+          doguimie = Clan.find_by_coc_id("#8YGC2RRV")
+          if new_world_9.nil? || doguimie.nil?
+            puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and Doguimie ('#8YGC2RRV')"
+            return
+          end
+          # the war
+          war = create_war("11/7/2015".to_date, new_world_9, doguimie, new_world_9)
+          if war.nil?
+            puts "WARNING:  not creating new world 9 vs doguimie"
+            return
+          end
+          # the players
+          add_players_for_clan(new_world_9)
+          add_players_for_clan(doguimie)
+          # the battles, ordered by time, first to last.
+          [ [war, @players["#29898Q2V"],  10, @players["#L9QJ2JYQ"],  12, 67,   1437, 2, 2],
+            [war, @players["#Y080JGCG"],  13, @players["#9PQ2LV8L"],  13, 55,   1436, 1, 1],
+            [war, @players["#CPG2L0YV"],  15, @players["#VRPJPRJU"],  15, 100,  1435, 3, 3],
+            [war, @players["#PV0LJJU0"],  7,  @players["#Q80YJRU0"],  8,  77,   1430, 2, 2],
+            [war, @players["#R9CVUCQY"],  1,  @players["#PQVUJ2PR"],  3,  4,    1415, 0, 0]
+            # (1) Kozen vs (3) C-Dub is the last entry there. 
           ].each do |data|
             create_battle(data)
           end
