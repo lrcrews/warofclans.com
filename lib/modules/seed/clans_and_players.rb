@@ -18,10 +18,11 @@ module Seed
           puts "____________________"
           puts "adding clans to the existing #{current_clan_count} clan(s)..."
           # This list is arranged alphabetically by the "name" column (data[3])
-          [ ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',       1800, Clan::WAR_FREQUENCY_ALWAYS, 92],
-            ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',  1800, Clan::WAR_FREQUENCY_WEEKLY, 26],
-            ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 3,  'New World 9',    1700, Clan::WAR_FREQUENCY_WEEKLY, 40],
-            ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',       1600, Clan::WAR_FREQUENCY_ALWAYS, 99]
+          [ ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS, 92],
+            ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS, 10],
+            ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY, 26],
+            ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 3,  'New World 9',      1700, Clan::WAR_FREQUENCY_WEEKLY, 40],
+            ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS, 99]
           ].each do |data|
             create_clan(data)
           end
@@ -84,6 +85,18 @@ module Seed
             ['#GUR2PPYG',   96,   'Titom',            @clans['#8YGC2RRV']],
             ['#VRPJPRJU',   52,   'TonJeJe',          @clans['#8YGC2RRV']],
             ['#Y080JGCG',   84,   'wiskard legrand',  @clans['#8YGC2RRV']],
+
+            # Galaxyguardians
+            ['#R2GL8VCQ',   92,   'Ello<3',           @clans['#Y0QVU2YC']],
+            ['#L80J8UPG',   104,  'Energizer#',       @clans['#Y0QVU2YC']],
+            ['#YGL0G2VQ',   108,  'felixcristiano7',  @clans['#Y0QVU2YC']],
+            ['#J80R8GGU',   97,   'INVICTUS',         @clans['#Y0QVU2YC']],
+            ['#PPVJ008Y',   80,   'Rafa',             @clans['#Y0QVU2YC']],
+            ['#LYPQPLR8',   90,   'RagnarViking',     @clans['#Y0QVU2YC']],
+            ['#9VGLVGGY',   76,   'sandrino5',        @clans['#Y0QVU2YC']],
+            ['#9QRVY2V8',   114,  'SkylineGP',        @clans['#Y0QVU2YC']],
+            ['#YPPQCQYQ',   86,   'Vince IIIy',       @clans['#Y0QVU2YC']],
+            ['#R2RL0LJ0',   77,   'woozzaa',          @clans['#Y0QVU2YC']],
 
             # LOS PAY@S XXL
             ['#JG8RRP9Q',   87,   'A.J',            @clans['#CYQ0C8G']],

@@ -6,9 +6,11 @@ module Seed
 
       def add_wars_and_their_battles
         @players = {}
+        # This is ordered by occurence (in case you were curious)
         create_new_world_9_vs_pinkglove
         create_new_world_9_vs_los_payas_xxl
         create_new_world_9_vs_doguimie
+        create_new_world_9_vs_galaxyguardians
       end
 
 
@@ -220,6 +222,39 @@ module Seed
             [war, @players["#R9CVUCQY"],  1,  @players["#R20YLVUP"],  1,  62,   15,   1, 1],
             [war, @players["#L9QJ2JYQ"],  12, @players["#PYCPC2LL"],  12, 57,   13,   2, 0],
             [war, @players["#Q80YJRU0"],  8,  @players["#P9VVGU9J"],  14, 89,   8,    2, 0]
+          ].each do |data|
+            create_battle(data)
+          end
+        end
+
+
+        def create_new_world_9_vs_galaxyguardians
+          # the clans
+          new_world_9 = Clan.find_by_coc_id("#8JR8G8L9")
+          galaxyguardians = Clan.find_by_coc_id("#Y0QVU2YC")
+          if new_world_9.nil? || galaxyguardians.nil?
+            puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and galaxyguardians ('#Y0QVU2YC')"
+            return
+          end
+          # the war
+          war = create_war("18/7/2015".to_date, new_world_9, galaxyguardians, new_world_9)
+          if war.nil?
+            puts "WARNING:  not creating new world 9 vs galaxyguardians"
+            return
+          end
+          # the players
+          add_players_for_clan(new_world_9)
+          add_players_for_clan(galaxyguardians)
+          # the battles, ordered by time, first to last.
+          [ [war, @players["#8LYRQ8Y"],   4,    @players["#LYPQPLR8"],    6,  87,   1376, 2, 2],
+            [war, @players["#9VGLVGGY"],  8,    @players["#9PQ2LV8L"],    9,  72,   1375, 2, 2],
+            [war, @players["#YGL0G2VQ"],  1,    @players["#PQVUJ2PR"],    3,  46,   1373, 0, 0],
+            [war, @players["#CPG2L0YV"],  10,   @players["#R2RL0LJ0"],    10, 55,   1373, 1, 1],
+            [war, @players["#RCQ0J0JR"],  8,    @players["#9VGLVGGY"],    8,  100,  1306, 3, 3],
+            [war, @players["#8LYRQ8Y"],   4,    @players["#R2GL8VCQ"],    5,  99,   1272, 2, 2],
+            [war, @players["#J80R8GGU"],  4,    @players["#Y2U2Q20G"],    5,  36,   1264, 0, 0],
+            [war, @players["#R20YLVUP"],  1,    @players["#L80J8UPG"],    2,  77,   1188, 2, 2]
+            # this is levi vs engergizer# at 19h 48m left
           ].each do |data|
             create_battle(data)
           end

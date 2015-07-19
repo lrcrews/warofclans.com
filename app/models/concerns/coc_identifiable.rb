@@ -23,7 +23,10 @@ module CocIdentifiable
     end
 
     def normalize_coc_id
-      self.coc_id = self.coc_id.upcase unless self.coc_id.nil?
+      if self.coc_id.present?
+        self.coc_id = self.coc_id.upcase
+        self.coc_id.gsub!("O", "0")
+      end
     end
 
 end

@@ -6,7 +6,7 @@ shared_examples "coc identifiable" do |instance|
       expect(instance).to be_invalid
     end
 
-    it "should be unique" do
+    it "should be unique per Class type" do
       persisted_instance = instance.dup
       persisted_instance.save
 
@@ -51,11 +51,22 @@ shared_examples "coc identifiable" do |instance|
 
     it "should be persisted in upper case" do
       persisted_instance = instance.dup
-      persisted_instance.coc_id = "#rcqojojr"
+      persisted_instance.coc_id = "#rcq0j0jr"
 
       expect(persisted_instance).to be_valid
       persisted_instance.save
-      expect(persisted_instance.coc_id).to eq("#RCQOJOJR") # it's me snitches
+      expect(persisted_instance.coc_id).to eq("#RCQ0J0JR") # it's me snitches
+
+      persisted_instance.delete
+    end
+
+    it "should be persisted with \"0\" (zero) not \"O\" (o)" do
+      persisted_instance = instance.dup
+      persisted_instance.coc_id = "#rcqojOjr"
+
+      expect(persisted_instance).to be_valid
+      persisted_instance.save
+      expect(persisted_instance.coc_id).to eq("#RCQ0J0JR")
 
       persisted_instance.delete
     end
