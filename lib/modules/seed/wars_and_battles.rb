@@ -253,8 +253,23 @@ module Seed
             [war, @players["#RCQ0J0JR"],  8,    @players["#9VGLVGGY"],    8,  100,  1306, 3, 3],
             [war, @players["#8LYRQ8Y"],   4,    @players["#R2GL8VCQ"],    5,  99,   1272, 2, 2],
             [war, @players["#J80R8GGU"],  4,    @players["#Y2U2Q20G"],    5,  36,   1264, 0, 0],
-            [war, @players["#R20YLVUP"],  1,    @players["#L80J8UPG"],    2,  77,   1188, 2, 2]
-            # this is levi vs engergizer# at 19h 48m left
+            [war, @players["#R20YLVUP"],  1,    @players["#L80J8UPG"],    2,  77,   1188, 2, 2],
+            [war, @players["#Y2U2Q20G"],  5,    @players["#YGL0G2VQ"],    1,  43,   989,  0, 0],
+            [war, @players["#RCQ0J0JR"],  8,    @players["#PPVJ008Y"],    9,  100,  861,  3, 3],
+            [war, @players["#LLVCLU2G"],  6,    @players["#YPPQCQYQ"],    7,  100,  734,  3, 3],
+            [war, @players["#R2GL8VCQ"],  5,    @players["#LLVCLU2G"],    6,  52,   450,  1, 1],
+            [war, @players["#9VGLVGGY"],  8,    @players["#CPG2L0YV"],    10, 100,  422,  3, 3],
+            [war, @players["#PPVJ008Y"],  9,    @players["#RCQ0J0JR"],    8,  34,   404,  0, 0],
+            [war, @players["#G28VPUR"],   7,    @players["#J80R8GGU"],    4,  87,   364,  2, 2],
+            [war, @players["#RVJ08JR2"],  2,    @players["#J80R8GGU"],    4,  100,  318,  3, 1],
+            [war, @players["#R20YLVUP"],  1,    @players["#9QRVY2V8"],    3,  95,   257,  2, 2],
+            [war, @players["#CPG2L0YV"],  10,   @players["#PPVJ008Y"],    9,  40,   232,  0, 0],
+            [war, @players["#PQVUJ2PR"],  3,    @players["#R2GL8VCQ"],    5,  79,   207,  2, 0],
+            [war, @players["#RVJ08JR2"],  2,    @players["#YGL0G2VQ"],    1,  54,   170,  1, 1],
+            [war, @players["#9PQ2LV8L"],  9,    @players["#R2RL0LJ0"],    10, 100,  144,  3, 2],
+            [war, @players["#Y2U2Q20G"],  5,    @players["#R2GL8VCQ"],    5,  100,  124,  3, 1],
+            [war, @players["#LLVCLU2G"],  6,    @players["#LYPQPLR8"],    6,  63,   48,   2, 0],
+            [war, @players["#PQVUJ2PR"],  3,    @players["#YGL0G2VQ"],    1,  46,   36,   0, 0]
           ].each do |data|
             create_battle(data)
           end
