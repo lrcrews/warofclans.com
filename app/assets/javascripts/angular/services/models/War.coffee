@@ -15,5 +15,10 @@ warOfClansAppServicesModule.factory("War",  ->
 
       @battles      = json.battles ? []
       @clans        = json.clans ? []
+
+
+    @wars_from_json_wars: (json_wars_array) ->
+      # Create class versions from json data
+      new War(war) for war in json_wars_array
       
 )

@@ -3,14 +3,13 @@
 warOfClansAppControllersModule = angular.module("warOfClansApp.controllers")
 
 warOfClansAppControllersModule.controller("DashboardController",
-  [ "$scope", 
-  ( $scope ) ->
+  [ "$scope", "War", 
+  ( $scope, War ) ->
 
-    $scope.wars = gon.wars
+    $scope.wars = War.wars_from_json_wars(gon.wars)
     
     $scope.initialize = ->
       console.log("hello dashboard.")
-      console.log("wars: #{$scope.wars}")
 
 
   ])

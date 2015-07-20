@@ -10,6 +10,10 @@ class Player < ActiveRecord::Base
   has_many :clans, through: :clan_players
 
 
+  scope :active, -> { joins(:clan_players).where("clan_players.active = ?", true) }
+  scope :for_clan, -> (clan) { joins(:clan_players).where("clan_players.clan_id = ?", clan.id) unless clan.nil? }
+  
+
   validates :level, 
             presence: true, 
             numericality: {
@@ -19,9 +23,5 @@ class Player < ActiveRecord::Base
             }
 
   validates :name, presence: true
-
-
-  scope :active, -> { joins(:clan_players).where("clan_players.active = ?", true) }
-  scope :for_clan, -> (clan) { joins(:clan_players).where("clan_players.clan_id = ?", clan.id) unless clan.nil? }
 
 end

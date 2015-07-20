@@ -4,6 +4,10 @@ class War < ActiveRecord::Base
   has_many :clan_wars
   has_many :clans, through: :clan_wars
 
+
+  scope :recent, -> { order(created_at: 'DESC') }
+
+
   validates :war_date, presence: true
 
   validate :validate_one_or_less_winner
@@ -31,6 +35,7 @@ class War < ActiveRecord::Base
       self.errors.add(:war_date, "war date cannot be in the future")
     end
   end
+
 
   def winning_clan?(clan)
     winner = self.clan_wars.where(winner: true).first

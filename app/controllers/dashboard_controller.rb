@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 
   def index
-    gon.wars = War.all.includes(:clan_wars).as_json(include_clans: "yes")
+    gon.wars = War.recent.includes(:clans, :clan_wars).as_json(include_clans: "yes")
     respond_to do |format|
       format.html # dashboard/index.html.erb
       format.json do
