@@ -1,0 +1,11 @@
+@mixin button-box-shadow {
+  box-shadow: 2px 3px 3px rgba(204, 204, 204, .25);
+}
+
+@mixin content-box-shadow {
+  box-shadow: 2px 3px 3px rgba(204, 204, 204, .25);
+}
+
+@mixin input-box-shadow {
+  box-shadow: 2px 3px 3px rgba(204, 204, 204, .25);
+}

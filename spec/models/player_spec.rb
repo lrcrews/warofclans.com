@@ -32,7 +32,7 @@ RSpec.describe Player do
       player1.save
       expect(player1).to be_valid
 
-      expect(player1.attacks.count).to equal(0)
+      expect(player1.attacks.count).to eq(0)
 
       player2 = FactoryGirl.create(:player)
       expect(player2).to be_persisted
@@ -46,13 +46,13 @@ RSpec.describe Player do
       battle1.attacker = player1
       battle1.defender = player2
       battle1.save
-      expect(player1.attacks.count).to equal(1)
+      expect(player1.attacks.count).to eq(1)
 
       battle2 = FactoryGirl.build(:battle, war: war1)
       battle2.attacker = player2
       battle2.defender = player1
       battle2.save
-      expect(player1.attacks.count).to equal(1)
+      expect(player1.attacks.count).to eq(1)
 
       clan_war2 = FactoryGirl.create(:clan_war)
       expect(clan_war2).to be_persisted
@@ -63,7 +63,7 @@ RSpec.describe Player do
       battle3.attacker = player1
       battle3.defender = player2
       battle3.save
-      expect(player1.attacks.count).to equal(2)
+      expect(player1.attacks.count).to eq(2)
     end
   end
 
@@ -74,7 +74,7 @@ RSpec.describe Player do
       player1.save
       expect(player1).to be_valid
 
-      expect(player1.defences.count).to equal(0)
+      expect(player1.defences.count).to eq(0)
 
       player2 = FactoryGirl.create(:player)
       expect(player2).to be_persisted
@@ -88,13 +88,13 @@ RSpec.describe Player do
       battle1.attacker = player2
       battle1.defender = player1
       battle1.save
-      expect(player1.defences.count).to equal(1)
+      expect(player1.defences.count).to eq(1)
 
       battle2 = FactoryGirl.build(:battle, war: war1)
       battle2.attacker = player1
       battle2.defender = player2
       battle2.save
-      expect(player1.defences.count).to equal(1)
+      expect(player1.defences.count).to eq(1)
 
       clan_war2 = FactoryGirl.create(:clan_war)
       expect(clan_war2).to be_persisted
@@ -105,37 +105,37 @@ RSpec.describe Player do
       battle3.attacker = player2
       battle3.defender = player1
       battle3.save
-      expect(player1.defences.count).to equal(2)
+      expect(player1.defences.count).to eq(2)
     end
   end
 
   describe "for_clan" do
     it "should load all players for a given clan" do
-      expect(Player.all.count).to equal(0)
+      expect(Player.all.count).to eq(0)
 
       clan1 = FactoryGirl.create(:clan)
       expect(clan1).to be_persisted
-      expect(Player.for_clan(clan1).count).to equal(0)
+      expect(Player.for_clan(clan1).count).to eq(0)
 
       clan2 = FactoryGirl.create(:clan)
       expect(clan2).to be_persisted
-      expect(Player.for_clan(clan2).count).to equal(0)
+      expect(Player.for_clan(clan2).count).to eq(0)
 
       player1 = FactoryGirl.create(:player)
       expect(player1).to be_persisted
 
       clan1_player1 = FactoryGirl.create(:clan_player, clan: clan1, player: player1, active: true)
-      expect(Player.for_clan(clan1).count).to equal(1)
+      expect(Player.for_clan(clan1).count).to eq(1)
 
       player2 = FactoryGirl.create(:player)
       expect(player2).to be_persisted
 
       clan1_player2 = FactoryGirl.create(:clan_player, clan: clan1, player: player2, active: false)
-      expect(Player.for_clan(clan1).count).to equal(2)
+      expect(Player.for_clan(clan1).count).to eq(2)
 
       clan2_player2 = FactoryGirl.create(:clan_player, clan: clan2, player: player2, active: false)
-      expect(Player.for_clan(clan1).count).to equal(2)
-      expect(Player.for_clan(clan2).count).to equal(1)
+      expect(Player.for_clan(clan1).count).to eq(2)
+      expect(Player.for_clan(clan2).count).to eq(1)
     end
   end
 

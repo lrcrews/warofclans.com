@@ -67,6 +67,31 @@ class Clan < ActiveRecord::Base
     Player.for_clan(self).active
   end
 
+  def as_json(options={})
+    options = {} if options.nil?
+    # include all the normal stuff
+    json = super
+    # overwrite and add other stuff
+    json['created_at'] = self.created_at.to_date.to_s
+    json['updated_at'] = self.updated_at.to_date.to_s
+    
+    # include all, or just some, related objects
+    # as_json as well
+
+    include_all = options[:include_all] == 'yes'
+
+    if include_all || options[:include_players] == 'yes'
+      json.merge!('players' => self.players.as_json)
+    end
+
+    if include_all || options[:include_wars] == "yes"
+      json.merge!('wars' => self.wars.as_json)
+    end
+
+    # give the people what they want
+    json
+  end
+
 
   private
 

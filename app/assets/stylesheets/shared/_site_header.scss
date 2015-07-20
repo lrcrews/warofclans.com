@@ -6,12 +6,13 @@ body {
 
     > div.site-header {
       background-color: rgba(255, 255, 255, 0.9);
-      border-bottom: 1px solid $border-primary;
       height: $height-of-site-header;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: $z-highest;
+
+      @include font-uncial-antiqua;
 
       > section {
         height: 100%;
@@ -25,20 +26,27 @@ body {
 
         > * {
           display: inline-block;
-          vertical-align: top;
+          height: 100%;
+          padding-top: 16px;
+          vertical-align: middle;
         }
 
         > header {
           font-size: $big-ass-title;
-          padding: 0.660em 0 0 0.250em;
+          padding-left: 16px;
           width: 50%;
 
-          @media (max-width: 64em) { font-size: $largest; }
+          @media (max-width: 64em) { font-size: $large; }
         }
 
         > footer {
           height: 100%;
+          text-align: right;
           width: 48%;
+
+          > a {
+            margin-left: 12px;
+          }
         }
       }
     }

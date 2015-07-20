@@ -1,4 +1,19 @@
 <% content_for(:class) { "dashboard index" } %>
 <section ng-controller="DashboardController" ng-init="initialize()">
 
+  <header>
+    A place to track your war stats for Clash of Clans
+  </header>
+
+  <section>
+    <header>
+      recent wars
+    </header>
+    <ul>
+      <li ng-repeat="war in wars">
+        {{ war }}
+      </li>
+    </ul>
+  </section>
+
 </section>

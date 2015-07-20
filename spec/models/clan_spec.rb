@@ -29,15 +29,81 @@ RSpec.describe Clan do
       expect(player1).to be_persisted
 
       clan_player1 = FactoryGirl.create(:clan_player, clan: clan, player: player1, active: true)
-      expect(clan.players.count).to equal(1)
-      expect(clan.active_players.count).to equal(1)
+      expect(clan.players.count).to eq(1)
+      expect(clan.active_players.count).to eq(1)
 
       player2 = FactoryGirl.create(:player)
       expect(player2).to be_persisted
 
       clan_player2 = FactoryGirl.create(:clan_player, clan: clan, player: player2, active: false)
-      expect(clan.players.count).to equal(2)
-      expect(clan.active_players.count).to equal(1)
+      expect(clan.players.count).to eq(2)
+      expect(clan.active_players.count).to eq(1)
+    end
+  end
+
+  describe "as_json" do
+    before :each do
+      @persisted_clan = @clan.dup
+      @persisted_clan.save!
+    end
+
+    after :each do
+      @persisted_clan.destroy
+    end
+
+    it "should not return players if they're not requested" do
+      expect(@persisted_clan.as_json['players']).to eq(nil)
+    end
+
+    it "should not return wars if they're not requested" do
+      expect(@persisted_clan.as_json['wars']).to eq(nil)
+    end
+
+    it "should return a hash" do
+      expect(@persisted_clan.as_json.is_a?(Hash)).to be_truthy
+    end
+
+    it "should return created_at as YYYY-mm-dd" do
+      @persisted_clan.created_at = DateTime.now.utc
+      expect(@persisted_clan.as_json['created_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
+    end
+
+    it "should return players if players are requested" do
+      player1 = FactoryGirl.create(:player)
+      expect(player1).to be_persisted
+
+      clan_player1 = FactoryGirl.create(:clan_player, clan: @persisted_clan, player: player1, active: true)
+      expect(@persisted_clan.players.count).to eq(1)
+
+      expect(@persisted_clan.as_json(include_players: 'yes')['players']).to be_present
+      expect(@persisted_clan.as_json(include_players: 'yes')['players'].count).to eq(1)
+
+      expect(@persisted_clan.as_json(include_all: 'yes')['players']).to be_present
+      expect(@persisted_clan.as_json(include_all: 'yes')['players'].count).to eq(1)
+
+      player1.destroy
+    end
+
+    it "should return updated_at as YYYY-mm-dd" do
+      @persisted_clan.updated_at = DateTime.now.utc
+      expect(@persisted_clan.as_json['updated_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
+    end
+
+    it "should return wars if wars are requested" do
+      3.times do 
+        war = FactoryGirl.build(:war)
+        clan_war1 = FactoryGirl.build(:clan_war, war: war, clan: @persisted_clan)
+        clan_war2 = FactoryGirl.build(:clan_war, war: war)
+        war.clan_wars = [ clan_war1, clan_war2 ]
+        war.save!
+      end
+      expect(@persisted_clan.wars.count).to eq(3)
+
+      expect(@persisted_clan.as_json(include_wars: 'yes')['wars']).to be_present
+      expect(@persisted_clan.as_json(include_wars: 'yes')['wars'].count).to eq(3)
+
+      expect(@persisted_clan.as_json(include_all: 'yes')['wars']).to be_present
+      expect(@persisted_clan.as_json(include_all: 'yes')['wars'].count).to eq(3)
     end
   end
 
@@ -76,7 +142,7 @@ RSpec.describe Clan do
 
     it "should be defaulted to 1" do
       clan2 = Clan.new
-      expect(clan2.level).to equal(1)
+      expect(clan2.level).to eq(1)
     end
 
     it "should be a number between one and 10" do
@@ -108,7 +174,7 @@ RSpec.describe Clan do
 
     it "should be defaulted to 0" do
       clan2 = Clan.new
-      expect(clan2.required_trophies).to equal(0)
+      expect(clan2.required_trophies).to eq(0)
     end
 
     it "shouldn't be negative" do
@@ -143,7 +209,7 @@ RSpec.describe Clan do
   describe "wars_won" do
     it "should be defaulted to 0" do
       clan2 = Clan.new
-      expect(clan2.wars_won).to equal(0)
+      expect(clan2.wars_won).to eq(0)
     end
 
     it "shouldn't be less than 0" do
@@ -165,20 +231,20 @@ RSpec.describe Clan do
       clan2.name = @clan.name
       clan2.war_frequency = @clan.war_frequency
       clan2.save
-      expect(clan2.wars_won).to equal(0)
+      expect(clan2.wars_won).to eq(0)
 
       3.times do 
         clan2.clan_wars << FactoryGirl.build(:clan_war, clan: clan2, war: FactoryGirl.build(:war), winner: true)
       end
       clan2.save
-      expect(clan2.wars_won).to equal(3)
+      expect(clan2.wars_won).to eq(3)
 
       clan2.wars_won = 42
       9.times do 
         clan2.clan_wars << FactoryGirl.build(:clan_war, clan: clan2, war: FactoryGirl.build(:war), winner: true)
       end
       clan2.save
-      expect(clan2.wars_won).to equal(42)
+      expect(clan2.wars_won).to eq(42)
     end
   end
 

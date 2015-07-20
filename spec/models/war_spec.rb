@@ -14,9 +14,64 @@ RSpec.describe War, type: :model do
     @war.delete
   end
 
+  describe "as_json" do
+    it "should not return battles if no options are given" do
+      expect(@war.as_json['battles']).to eq(nil)
+    end
+
+    it "should not return clans if no options are given" do
+      expect(@war.as_json['clans']).to eq(nil)
+    end
+
+    it "should return a hash" do
+      expect(@war.as_json.is_a?(Hash)).to be_truthy
+    end
+
+    it "should return battle_count (a derived value)" do
+      expect(@war.as_json['battle_count']).to be_present
+    end
+
+    it "should return battles if battles are requested" do
+      battle = FactoryGirl.build(:battle)
+      battle.attacker = FactoryGirl.build(:player)
+      battle.defender = FactoryGirl.build(:player)
+      battle.war = @war
+      battle.save!
+      
+      expect(@war.as_json(include_battles: 'yes')['battles']).to be_present
+      expect(@war.as_json(include_battles: 'yes')['battles'].count).to eq(1)
+
+      expect(@war.as_json(include_all: 'yes')['battles']).to be_present
+      expect(@war.as_json(include_all: 'yes')['battles'].count).to eq(1)
+    end
+
+    it "should return clans if clans are requested" do
+      expect(@war.as_json(include_clans: 'yes')['clans']).to be_present
+      expect(@war.as_json(include_clans: 'yes')['clans'].count).to eq(2)
+
+      expect(@war.as_json(include_all: 'yes')['clans']).to be_present
+      expect(@war.as_json(include_all: 'yes')['clans'].count).to eq(2)
+    end
+
+    it "should return created_at as YYYY-mm-dd" do
+      @war.created_at = DateTime.now.utc
+      expect(@war.as_json['created_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
+    end
+
+    it "should return updated_at as YYYY-mm-dd" do
+      @war.updated_at = DateTime.now.utc
+      expect(@war.as_json['updated_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
+    end
+
+    it "should return war_date as YYYY-mm-dd" do
+      @war.war_date = Time.now.utc.to_date
+      expect(@war.as_json['war_date']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
+    end
+  end
+
   describe "clans" do
     it "should be exactly two clans per war" do
-      expect(@war.clans.count).to equal(2)
+      expect(@war.clans.count).to eq(2)
 
       @war.clan_wars = [ FactoryGirl.build(:clan_war, war: @war) ]
       expect(@war).to be_invalid

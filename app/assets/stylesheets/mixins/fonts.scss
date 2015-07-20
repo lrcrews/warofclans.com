@@ -8,10 +8,6 @@ $small: 0.875em;
 $smaller: 0.750em;
 $smallest: 0.690em;
 
-@mixin font-acme {
-  font-family: 'Acme', sans-serif;
-}
-
 @mixin font-uncial-antiqua {
   font-family: 'Uncial Antiqua';
 }

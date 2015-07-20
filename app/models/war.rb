@@ -1,6 +1,6 @@
 class War < ActiveRecord::Base
 
-  has_many :battles
+  has_many :battles, dependent: :destroy
   has_many :clan_wars
   has_many :clans, through: :clan_wars
 
@@ -37,9 +37,35 @@ class War < ActiveRecord::Base
     winner.present? ? winner.clan == clan : false
   end
 
-  def as_json
+  def as_json(options={})
+    options = {} if options.nil?
+    # include all the normal stuff
     json = super
+    # overwrite and add other stuff
+    json['battle_count'] = self.battles.count
+    json['created_at'] = self.created_at.to_date.to_s
+    json['updated_at'] = self.updated_at.to_date.to_s
     json['war_date'] = self.war_date.to_s
+
+    # include all, or just some, related objects
+    # as_json as well
+
+    include_all = options[:include_all] == 'yes'
+
+    if include_all || options[:include_battles] == 'yes'
+      json.merge!('battles' => self.battles.as_json)
+    end
+
+    if include_all || options[:include_clans] == "yes"
+      clans = []
+      self.clan_wars.each do |clan_war|
+        clans << clan_war.clan.as_json.merge!('winner' => clan_war.winner?)
+      end
+      json['clans'] = clans
+    end
+
+    # give the people what they want
+    json
   end
 
 end

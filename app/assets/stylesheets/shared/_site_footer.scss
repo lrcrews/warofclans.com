@@ -6,6 +6,7 @@ body {
 
     > div.site-footer {
       background-color: $background-dark;
+      background-image: linear-gradient($background-dark, $black);
       border-top: 1px solid $border-primary;
       color: $font-light;
       line-height: 115%;

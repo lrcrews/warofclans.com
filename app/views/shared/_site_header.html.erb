@@ -8,9 +8,10 @@
 
     <footer>
       <% if user_signed_in? %>
-        <%= link_to "sign out", destroy_user_session_url, method: :delete %>
+        <%= link_to "sign out", destroy_user_session_url, method: :delete, "class" => "button" %>
       <% else %>
-        <%= link_to "sign in", new_user_session_url %> | <%= link_to "sign up", new_user_registration_url %>
+        <%= link_to "sign in", new_user_session_url, "class" => "button" %>
+        <%= link_to "sign up", new_user_registration_url, "class" => "button" %>
       <% end %>
     </footer>
 

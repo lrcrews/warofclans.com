@@ -1,0 +1,16 @@
+@import "mixins";
+
+button,
+a.button {
+  background-color: $white;
+  border: 1px solid $border-primary;
+  border-radius: 4px;
+  color: $font-dark;
+  padding: 8px 16px;
+
+  &:hover {
+    text-decoration: none;
+
+    @include button-box-shadow;
+  }
+}

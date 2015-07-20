@@ -7,10 +7,25 @@ body {
     > section.page-container {
       
       &.dashboard.index {
-        background-color: black;
 
         > section {
-          
+          margin: $height-of-site-header auto 16px;
+          padding-top: 16px;
+
+          > header {
+            font-size: $big-ass-title;
+          }
+
+          > section {
+            padding-top: 40px;
+
+            > header {
+              color: $font-other;
+              font-size: $large;
+
+              @include font-uncial-antiqua;
+            }
+          }
         }
       }
     }
