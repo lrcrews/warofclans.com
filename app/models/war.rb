@@ -64,7 +64,12 @@ class War < ActiveRecord::Base
     if include_all || options[:include_clans] == "yes"
       clans = []
       self.clan_wars.each do |clan_war|
-        clans << clan_war.clan.as_json.merge!('winner' => clan_war.winner?)
+        details_hash = {
+          'player_count' => clan_war.player_count,
+          'stars_earned' => clan_war.stars_earned,
+          'winner' => clan_war.winner?
+        }
+        clans << clan_war.clan.as_json.merge!(details_hash)
       end
       json['clans'] = clans
     end

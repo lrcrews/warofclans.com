@@ -1,0 +1,47 @@
+<%# assumes to be in an angularjs scope where
+  # war exists as a War.coffee object.
+ %>
+<section class="unsortable-war-row">
+  <header>
+    {{ war.created_at }}
+  </header>
+  <ul>
+    <li class="winner">
+      <ul>
+        <li>
+          <ul>
+            <li>
+              {{ war.winner().coc_id }}
+            </li>
+            <li class="name">
+              {{ war.winner().name }}
+            </li>
+          </ul>
+        </li>
+        <li>
+          {{ war.winner().stars_earned }}42
+        </li>
+      </ul>
+    </li>
+    <li>
+      VS
+    </li>
+    <li class="not-winner">
+      <ul>
+        <li>
+          <ul>
+            <li class="name">
+              {{ war.not_winner().name }}
+            </li>
+            <li>
+              {{ war.not_winner().coc_id }}
+            </li>
+          </ul>
+        </li>
+        <li>
+          {{ war.not_winner().stars_earned }}42
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>

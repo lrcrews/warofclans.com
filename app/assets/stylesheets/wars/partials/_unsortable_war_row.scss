@@ -1,0 +1,56 @@
+@import "mixins";
+
+body {
+  
+  &.war-of-clans {
+
+    section.unsortable-war-row {
+      border: 1px solid $border-primary;
+      border-radius: 8px;
+      height: 60px;
+      margin: 10px auto;
+      position: relative;
+      width: 100%;
+
+      @include content-box-shadow;
+
+      > header {
+        bottom: 0px;
+        font-size: $smaller;
+        left: 20px;
+        position: absolute;
+      }
+
+      > ul {
+
+        > li {
+          display: inline-block;
+          vertical-align: top;
+
+          &.winner,
+          &.not-winner {
+            width: 45%;
+
+            > ul {
+
+              > li {
+
+                > ul {
+
+                  > li {
+                    display: inline-block;
+                    vertical-align: bottom;
+
+                    &.name {
+                      font-size: $larger;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
