@@ -5,20 +5,47 @@ body {
   &.war-of-clans {
 
     section.unsortable-war-row {
+      background-color: $white;
       border: 1px solid $border-primary;
       border-radius: 8px;
-      height: 60px;
+      min-height: 60px;
       margin: 10px auto;
       position: relative;
       width: 100%;
 
       @include content-box-shadow;
 
-      > header {
+      > header,
+      > footer {
         bottom: 0px;
         font-size: $smaller;
-        left: 20px;
         position: absolute;
+      }
+
+      > header {
+        left: 20px;
+
+        @media (max-width: 767px) { display: none; }
+      }
+
+      > footer {
+        background-color: $white;
+        border-bottom-right-radius: 8px;
+        border-left: 1px solid $border-primary;
+        border-top-right-radius: 8px;
+        height: 100%;
+        padding: 18px 20px 0;
+        right: 0;
+
+        &:hover {
+          cursor: pointer;
+
+          @include button-box-shadow;
+        }
+
+        > a {
+          text-decoration: none;
+        }
       }
 
       > ul {
@@ -27,11 +54,29 @@ body {
           display: inline-block;
           vertical-align: top;
 
-          &.winner,
-          &.not-winner {
-            width: 45%;
+          &.versus {
+            width: 9%;
 
             > ul {
+              padding-top: 10px;
+              width: 100%;
+
+              > li {
+                margin-bottom: -8px;
+                text-align: center;
+              }
+            }
+          }
+
+          &.winner,
+          &.not-winner {
+
+            @media (max-width: 767px) { width: 35%; }
+            @media (min-width: 768px) and (max-width: 929px) { width: 40%; }
+            @media (min-width: 930px) { width: 45%; }
+
+            > ul {
+              padding-top: 8px;
 
               > li {
 
@@ -39,13 +84,28 @@ body {
 
                   > li {
                     display: inline-block;
+                    font-size: $small;
                     vertical-align: bottom;
 
+                    @media (max-width: 767px) { font-size: $smaller; }
+
                     &.name {
-                      font-size: $larger;
+                      font-size: $largest;
+
+                      @media (max-width: 767px) { font-size: $large; }
                     }
                   }
                 }
+              }
+            }
+          }
+
+          &.winner {
+
+            > ul {
+
+              > li {
+                text-align: right;
               }
             }
           }
