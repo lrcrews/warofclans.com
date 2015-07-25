@@ -1,15 +1,66 @@
 require 'rails_helper'
 
 RSpec.describe Battle do
+
+  before :all do
+    @war = FactoryGirl.build(:war)
+    clan_war1 = FactoryGirl.build(:clan_war, war: @war)
+    clan_war2 = FactoryGirl.build(:clan_war, war: @war)
+    @war.clan_wars = [ clan_war1, clan_war2 ]
+    @war.save
+  end
+
+  after :all do 
+    @war.destroy
+  end
   
   before :each do
     @battle = FactoryGirl.build(:battle)
     @battle.attacker = FactoryGirl.build(:player)
     @battle.defender = FactoryGirl.build(:player)
-    @battle.war = FactoryGirl.build(:war)
+    @battle.war = @war
+    @battle.save
   end
 
-  specify { expect(@battle).to be_valid }
+  after :each do
+    @battle.destroy
+  end
+
+  describe "as_json" do
+    it "should not return war if no options are given" do
+      expect(@battle.as_json['war']).to eq(nil)
+    end
+
+    it "should return an attacker hash" do
+      attacker = @battle.as_json['attacker']
+      expect(attacker).to be_present
+      expect(attacker.is_a?(Hash)).to be_truthy
+    end
+
+    it "should return a defender hash" do
+      defender = @battle.as_json['defender']
+      expect(defender).to be_present
+      expect(defender.is_a?(Hash)).to be_truthy
+    end
+
+    it "should return a hash" do
+      expect(@battle.as_json.is_a?(Hash)).to be_truthy
+    end
+
+    it "should return war as a hash if war is requested" do
+      war = @battle.as_json(include_war: 'yes')['war']
+      expect(war).to be_present
+      expect(war.is_a?(Hash)).to be_truthy
+    end
+    
+    it "should return created_at as YYYY-mm-dd" do
+      expect(@battle.as_json['created_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
+    end
+
+    it "should return updated_at as YYYY-mm-dd" do
+      expect(@battle.as_json['updated_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
+    end
+  end
 
   describe "attacker" do
     it "should be present" do

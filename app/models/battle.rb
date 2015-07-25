@@ -84,4 +84,30 @@ class Battle < ActiveRecord::Base
     end
   end
 
+
+  def as_json(options={})
+    options = {} if options.nil?
+    # include all the normal stuff
+    json = super
+    # overwrite and add other stuff
+    json['created_at'] = self.created_at.to_date.to_s
+    json['updated_at'] = self.updated_at.to_date.to_s
+
+    # we always want to load up the attacker and defender
+    json['attacker'] = self.attacker.as_json
+    json['defender'] = self.defender.as_json
+    
+    # include all, or just some, related objects
+    # as_json as well
+
+    include_all = options[:include_all] == 'yes'
+
+    if include_all || options[:include_war] == 'yes'
+      json.merge!('war' => self.war.as_json)
+    end
+
+    # give the people what they want
+    json
+  end
+
 end

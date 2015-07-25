@@ -11,7 +11,7 @@ RSpec.describe War, type: :model do
   end
 
   after :each do
-    @war.delete
+    @war.destroy
   end
 
   describe "as_json" do
@@ -31,35 +31,41 @@ RSpec.describe War, type: :model do
       expect(@war.as_json['battle_count']).to be_present
     end
 
-    it "should return battles if battles are requested" do
+    it "should return battles as an array if battles are requested" do
       battle = FactoryGirl.build(:battle)
       battle.attacker = FactoryGirl.build(:player)
       battle.defender = FactoryGirl.build(:player)
       battle.war = @war
       battle.save!
       
-      expect(@war.as_json(include_battles: 'yes')['battles']).to be_present
-      expect(@war.as_json(include_battles: 'yes')['battles'].count).to eq(1)
+      battles = @war.as_json(include_battles: 'yes')['battles']
+      expect(battles).to be_present
+      expect(battles.is_a?(Array)).to be_truthy
+      expect(battles.count).to eq(1)
 
-      expect(@war.as_json(include_all: 'yes')['battles']).to be_present
-      expect(@war.as_json(include_all: 'yes')['battles'].count).to eq(1)
+      battles = @war.as_json(include_all: 'yes')['battles']
+      expect(battles).to be_present
+      expect(battles.is_a?(Array)).to be_truthy
+      expect(battles.count).to eq(1)
     end
 
-    it "should return clans if clans are requested" do
-      expect(@war.as_json(include_clans: 'yes')['clans']).to be_present
-      expect(@war.as_json(include_clans: 'yes')['clans'].count).to eq(2)
+    it "should return clans as an array if clans are requested" do
+      clans = @war.as_json(include_clans: 'yes')['clans']
+      expect(clans).to be_present
+      expect(clans.is_a?(Array)).to be_truthy
+      expect(clans.count).to eq(2)
 
-      expect(@war.as_json(include_all: 'yes')['clans']).to be_present
-      expect(@war.as_json(include_all: 'yes')['clans'].count).to eq(2)
+      clans = @war.as_json(include_all: 'yes')['clans']
+      expect(clans).to be_present
+      expect(clans.is_a?(Array)).to be_truthy
+      expect(clans.count).to eq(2)
     end
 
     it "should return created_at as YYYY-mm-dd" do
-      @war.created_at = DateTime.now.utc
       expect(@war.as_json['created_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
     end
 
     it "should return updated_at as YYYY-mm-dd" do
-      @war.updated_at = DateTime.now.utc
       expect(@war.as_json['updated_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
     end
 
