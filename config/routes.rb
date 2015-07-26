@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   
   root 'dashboard#index'
 
-
+  resources :wars do
+    member do
+      get 'battles'
+    end
+  end
 
 
 
