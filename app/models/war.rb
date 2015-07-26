@@ -1,7 +1,7 @@
 class War < ActiveRecord::Base
 
   has_many :battles, dependent: :destroy
-  has_many :clan_wars
+  has_many :clan_wars, dependent: :destroy
   has_many :clans, through: :clan_wars
 
 

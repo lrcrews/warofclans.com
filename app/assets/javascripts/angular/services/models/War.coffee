@@ -13,8 +13,8 @@ warOfClansAppServicesModule.factory("War",  ->
       @updated_at   = json.updated_at ? ""
       @war_date     = json.war_date ? ""
 
-      @battles      = json.battles ? []
-      @clans        = json.clans ? []
+      @battles      = json.battles ? [] # will become array of Battle.coffee objects
+      @clans        = json.clans ? []   # will become array of Clan.coffee objects
 
 
     winner: ->

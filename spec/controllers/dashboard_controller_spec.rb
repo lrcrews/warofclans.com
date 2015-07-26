@@ -6,9 +6,11 @@ RSpec.describe DashboardController do
 
     before :each do
       10.times do
+        clan_1 = FactoryGirl.create(:clan)
+        clan_2 = FactoryGirl.create(:clan)
         war = FactoryGirl.build(:war)
-        clan_war1 = FactoryGirl.build(:clan_war, war: war)
-        clan_war2 = FactoryGirl.build(:clan_war, war: war)
+        clan_war1 = FactoryGirl.build(:clan_war, war: war, clan: clan_1)
+        clan_war2 = FactoryGirl.build(:clan_war, war: war, clan: clan_2)
         war.clan_wars = [ clan_war1, clan_war2 ]
         war.save
       end
@@ -17,6 +19,7 @@ RSpec.describe DashboardController do
 
     after :each do
       War.destroy_all
+      expect(War.count).to eq(0)
     end
 
     it "response body contains wars, the list of all wars ordered by descending created_at values, along with the clans in each war" do

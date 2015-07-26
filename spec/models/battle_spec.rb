@@ -2,19 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Battle do
 
-  before :all do
+  before :each do
+    # make war
     @war = FactoryGirl.build(:war)
     clan_war1 = FactoryGirl.build(:clan_war, war: @war)
     clan_war2 = FactoryGirl.build(:clan_war, war: @war)
     @war.clan_wars = [ clan_war1, clan_war2 ]
     @war.save
-  end
-
-  after :all do 
-    @war.destroy
-  end
-  
-  before :each do
+    # not peace
     @battle = FactoryGirl.build(:battle)
     @battle.attacker = FactoryGirl.build(:player)
     @battle.defender = FactoryGirl.build(:player)
@@ -23,7 +18,7 @@ RSpec.describe Battle do
   end
 
   after :each do
-    @battle.destroy
+    @war.destroy
   end
 
   describe "as_json" do

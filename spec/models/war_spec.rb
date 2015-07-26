@@ -61,6 +61,21 @@ RSpec.describe War, type: :model do
       expect(clans.count).to eq(2)
     end
 
+    it "should return clans (if requested) with 'player_count' key" do
+      clan = @war.as_json(include_clans: 'yes')['clans'][0]
+      expect(clan['player_count']).to be_present
+    end
+
+    it "should return clans (if requested) with 'stars_earned' key" do
+      clan = @war.as_json(include_clans: 'yes')['clans'][0]
+      expect(clan['stars_earned']).to be_present
+    end
+
+    it "should return clans (if requested) with 'winner' key" do
+      clan = @war.as_json(include_clans: 'yes')['clans'][0]
+      expect(clan.has_key?('winner')).to be_truthy
+    end
+
     it "should return created_at as YYYY-mm-dd" do
       expect(@war.as_json['created_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
     end
@@ -83,24 +98,64 @@ RSpec.describe War, type: :model do
       expect(@war).to be_invalid
     end
 
-    it "should have zero or one winning clan" do
-      winning_clan = FactoryGirl.build(:clan)
-      winning_clan_war = FactoryGirl.build(:clan_war, clan: winning_clan, war: @war, winner: true)
-      losing_clan = FactoryGirl.build(:clan)
-      losing_clan_war = FactoryGirl.build(:clan_war, clan: losing_clan, war: @war, winner: false)
+    describe "should have zero or one winning clan" do
 
-      @war.clan_wars = [ winning_clan_war, losing_clan_war ]
-      expect(@war).to be_valid
+      it "should allow for one winning clan" do
+        winning_clan = FactoryGirl.build(:clan)
+        winning_clan_war = FactoryGirl.build(:clan_war, clan: winning_clan, war: @war, winner: true)
+        losing_clan = FactoryGirl.build(:clan)
+        losing_clan_war = FactoryGirl.build(:clan_war, clan: losing_clan, war: @war, winner: false)
 
-      losing_clan2 = FactoryGirl.build(:clan)
-      losing_clan_war2 = FactoryGirl.build(:clan_war, clan: losing_clan2, war: @war, winner: false)
-      @war.clan_wars = [ losing_clan_war, losing_clan_war2]
-      expect(@war).to be_valid
+        @war.clan_wars = [ winning_clan_war, losing_clan_war ]
+        expect(@war).to be_valid
+      end
 
-      winning_clan2 = FactoryGirl.build(:clan)
-      winning_clan_war2 = FactoryGirl.build(:clan_war, clan: winning_clan2, war: @war, winner: true)
-      @war.clan_wars = [ winning_clan_war, winning_clan_war2 ]
-      expect(@war).to be_invalid
+      it "should allow for two losing clans" do
+        losing_clan = FactoryGirl.build(:clan)
+        losing_clan_war = FactoryGirl.build(:clan_war, clan: losing_clan, war: @war, winner: false)
+        losing_clan2 = FactoryGirl.build(:clan)
+        losing_clan_war2 = FactoryGirl.build(:clan_war, clan: losing_clan2, war: @war, winner: false)
+        
+        @war.clan_wars = [ losing_clan_war, losing_clan_war2]
+        expect(@war).to be_valid
+      end
+
+      it "should not allow for two winning clans" do
+        winning_clan = FactoryGirl.build(:clan)
+        winning_clan_war = FactoryGirl.build(:clan_war, clan: winning_clan, war: @war, winner: true)
+        winning_clan2 = FactoryGirl.build(:clan)
+        winning_clan_war2 = FactoryGirl.build(:clan_war, clan: winning_clan2, war: @war, winner: true)
+        
+        @war.clan_wars = [ winning_clan_war, winning_clan_war2 ]
+        expect(@war).to be_invalid
+      end
+    end
+  end
+
+  describe "destroy" do
+    it "should remove the battles and clan_wars from the DB" do
+      # make war
+      war = FactoryGirl.build(:war)
+      clan_war1 = FactoryGirl.build(:clan_war, war: war)
+      clan_war2 = FactoryGirl.build(:clan_war, war: war)
+      war.clan_wars = [ clan_war1, clan_war2 ]
+      war.save
+      # with battles
+      3.times do
+        battle = FactoryGirl.build(:battle)
+        battle.attacker = FactoryGirl.build(:player)
+        battle.defender = FactoryGirl.build(:player)
+        battle.war = war
+        battle.save
+      end
+      # expect it to have things referencing its id
+      war_id = war.id
+      expect(Battle.where(war_id: war_id).count).to eq(3)
+      expect(ClanWar.where(war_id: war_id).count).to eq(2)
+      # no mister Bond, I expect you to die
+      war.destroy
+      expect(Battle.where(war_id: war_id).count).to eq(0)
+      expect(ClanWar.where(war_id: war_id).count).to eq(0)
     end
   end
 
