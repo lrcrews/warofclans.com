@@ -13,5 +13,4 @@ warOfClansAppControllersModule.controller("DashboardController",
       for war in $scope.wars
         war.clans = Clan.clans_from_json_clans(war.clans)
 
-
   ])

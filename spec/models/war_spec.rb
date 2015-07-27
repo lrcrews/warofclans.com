@@ -61,14 +61,14 @@ RSpec.describe War, type: :model do
       expect(clans.count).to eq(2)
     end
 
-    it "should return clans (if requested) with 'player_count' key" do
-      clan = @war.as_json(include_clans: 'yes')['clans'][0]
-      expect(clan['player_count']).to be_present
-    end
-
     it "should return clans (if requested) with 'stars_earned' key" do
       clan = @war.as_json(include_clans: 'yes')['clans'][0]
       expect(clan['stars_earned']).to be_present
+    end
+
+    it "should return clans (if requested) with 'team_size' key" do
+      clan = @war.as_json(include_clans: 'yes')['clans'][0]
+      expect(clan['team_size']).to be_present
     end
 
     it "should return clans (if requested) with 'winner' key" do

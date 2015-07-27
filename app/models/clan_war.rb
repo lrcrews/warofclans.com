@@ -5,7 +5,7 @@ class ClanWar < ActiveRecord::Base
 
 
   validates :player_count, presence: true, numericality: { only_integer: true }
-  validates :stars_earned, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :stars_earned, numericality: { greater_than_or_equal_to: 0, only_integer: true }, unless: "self.stars_earned.nil?"
 
   validate :validate_player_count_5_to_50
   validate :validate_stars_earned_not_infeasible

@@ -10,16 +10,16 @@
       <ul>
         <li>
           <ul>
-            <li>
+            <li class="coc-id">
               {{ war.winner().coc_id }}
             </li>
-            <li class="name">
-              <a href="#">{{ war.winner().name }}</a>
+            <li>
+              <a href="/clans/{{ war.winner().id }}">{{ war.winner().name }}</a>
             </li>
           </ul>
         </li>
         <li>
-          {{ war.winner().stars_earned }}42
+          {{ war.winner().stars_earned }}
         </li>
       </ul>
     </li>
@@ -29,7 +29,9 @@
           VS
         </li>
         <li>
+          {{ war.winner().team_size }}
           <i class="fa fa-shield"></i>
+          {{ war.not_winner().team_size }}
         </li>
       </ul>
     </li>
@@ -37,16 +39,16 @@
       <ul>
         <li>
           <ul>
-            <li class="name">
-              <a href="#">{{ war.not_winner().name }}</a>
-            </li>
             <li>
+              <a href="/clans/{{ war.not_winner().id }}">{{ war.not_winner().name }}</a>
+            </li>
+            <li class="coc-id">
               {{ war.not_winner().coc_id }}
             </li>
           </ul>
         </li>
         <li>
-          {{ war.not_winner().stars_earned }}42
+          {{ war.not_winner().stars_earned }}
         </li>
       </ul>
     </li>

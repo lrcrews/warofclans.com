@@ -25,7 +25,7 @@ module Seed
             return
           end
           # the war
-          war = create_war("27/6/2015".to_date, new_world_9, pinkglove, new_world_9)
+          war = create_war("27/6/2015".to_date, 15, new_world_9, pinkglove, new_world_9)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs pinkglove"
             return
@@ -69,6 +69,8 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
+          # Update stars_earned values
+          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -81,7 +83,7 @@ module Seed
             return
           end
           # the war
-          war = create_war("4/7/2015".to_date, new_world_9, los_payas_xxl, new_world_9)
+          war = create_war("4/7/2015".to_date, 15, new_world_9, los_payas_xxl, new_world_9)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs los_payas_xxl"
             return
@@ -144,6 +146,8 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
+          # Update stars_earned values
+          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -156,7 +160,7 @@ module Seed
             return
           end
           # the war
-          war = create_war("11/7/2015".to_date, new_world_9, doguimie, new_world_9)
+          war = create_war("11/7/2015".to_date, 15, new_world_9, doguimie, new_world_9)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs doguimie"
             return
@@ -225,6 +229,8 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
+          # Update stars_earned values
+          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -237,7 +243,7 @@ module Seed
             return
           end
           # the war
-          war = create_war("18/7/2015".to_date, new_world_9, galaxyguardians, new_world_9)
+          war = create_war("18/7/2015".to_date, 10, new_world_9, galaxyguardians, new_world_9)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs galaxyguardians"
             return
@@ -273,6 +279,8 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
+          # Update stars_earned values
+          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -314,7 +322,7 @@ module Seed
         end
 
 
-        def create_war(date, clan1, clan2, winning_clan=nil)
+        def create_war(date, team_size, clan1, clan2, winning_clan=nil)
           # we didn't already make this, did we?
           wars = War.joins(:clans)
                     .where("wars.war_date = ? AND clans.id IN (?)", date, [ clan1.id, clan2.id ])
@@ -329,15 +337,47 @@ module Seed
           end
           # alrighty then
           war = War.new(war_date: date)
-          clan_war_1 = ClanWar.create(war: war, clan: clan1, winner: clan1 == winning_clan)
+          clan_war_1 = ClanWar.create(
+            war: war, 
+            clan: clan1, 
+            player_count: team_size, 
+            winner: clan1 == winning_clan
+          )
           war.clan_wars << clan_war_1
-          clan_war_2 = ClanWar.create(war: war, clan: clan2, winner: clan2 == winning_clan)
+          clan_war_2 = ClanWar.create(
+            war: war, 
+            clan: clan2, 
+            player_count: team_size, 
+            winner: clan2 == winning_clan
+          )
           war.clan_wars << clan_war_2
           if !war.save
             puts "WARNING:  war did not properly save, errors: #{war.errors.full_messages}"
             return nil
           end
           war
+        end
+
+
+        def update_stars_earned_for_clans_of_war(war)
+          clan_0 = war.clan_wars[0].clan
+          clan_0_stars_earned = 0
+
+          clan_1 = war.clan_wars[1].clan
+          clan_1_stars_earned = 0
+
+          # assuming only one clan in clans list b/c this is for seed data,
+          # and that assumption is true (thus far)
+          war.battles.each do |battle|
+            if player_of_coc_id(battle.attacker.coc_id).clans[0] == clan_0
+              clan_0_stars_earned += battle.stars_earned
+            elsif player_of_coc_id(battle.attacker.coc_id).clans[0] == clan_1
+              clan_1_stars_earned += battle.stars_earned
+            end
+          end
+
+          war.clan_wars[0].update_attribute(:stars_earned, clan_0_stars_earned)
+          war.clan_wars[1].update_attribute(:stars_earned, clan_1_stars_earned)
         end
 
 
