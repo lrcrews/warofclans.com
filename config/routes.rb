@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   
   root 'dashboard#index'
 
+  resources :clans do
+    member do
+      get 'active_players'
+      get 'all_players'
+      get 'wars'
+    end
+  end
+
   resources :wars do
     member do
       get 'battles'

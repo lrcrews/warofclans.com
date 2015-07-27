@@ -68,6 +68,10 @@ RSpec.describe Clan do
       expect(@persisted_clan.as_json['created_at']).to eq(Time.now.utc.to_date.strftime("%Y-%m-%d"))
     end
 
+    it "should return player count" do
+      expect(@persisted_clan.as_json['player_count']).to eq(@persisted_clan.active_players.count)
+    end
+
     it "should return players if players are requested" do
       player1 = FactoryGirl.create(:player)
       expect(player1).to be_persisted
@@ -104,6 +108,10 @@ RSpec.describe Clan do
 
       expect(@persisted_clan.as_json(include_all: 'yes')['wars']).to be_present
       expect(@persisted_clan.as_json(include_all: 'yes')['wars'].count).to eq(3)
+    end
+
+    it "should return wars_in_system_count" do
+      expect(@persisted_clan.as_json['wars_in_system_count']).to eq(@persisted_clan.wars.count)
     end
   end
 

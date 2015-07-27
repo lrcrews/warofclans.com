@@ -52,7 +52,6 @@ RSpec.describe WarsController, type: :controller do
 
     it "redirects to the wars index url if the id given doesn't exist" do
       get :show, id: 0
-      #expect(response).to render_template("index")
       expect(response).to redirect_to(wars_url)
     end
 

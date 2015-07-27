@@ -73,7 +73,9 @@ class Clan < ActiveRecord::Base
     json = super
     # overwrite and add other stuff
     json['created_at'] = self.created_at.to_date.to_s
+    json['player_count'] = self.active_players.count
     json['updated_at'] = self.updated_at.to_date.to_s
+    json['wars_in_system_count'] = self.wars.count
     
     # include all, or just some, related objects
     # as_json as well
