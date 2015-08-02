@@ -1,0 +1,30 @@
+<%# This partial assumes it is included within an
+  # angularjs scope where "war" exists, and where
+  # "war" is an instance of a War.coffee class...
+%>
+<ul class="sortable-war-row">
+  <li>
+    <i class="fa fa-trophy" ng-if"warClan(war).winner"></i>
+  </li>
+  <li>
+    {{ warClan(war).team_size }}
+  </li>
+  <li>
+    {{ warClanAttacks(war) }} <span>/{{ warClanAttacksPossible(war) }}</span>
+  </li>
+  <li>
+    {{ warClanAttackRatio(war) }}
+  </li>
+  <li>
+    {{ warClan(war).stars_earned }} <span>/{{ warClanStarsPossible(war) }}</span>
+  </li>
+  <li>
+    {{ warClanStarsEarnedRatio(war) }}
+  </li>
+  <li>
+    {{ warClan(war).stars_earned / warClanAttacks(war) }}
+  </li>
+  <li>
+    {{ warClanOpponent(war).name }}
+  </li>
+</ul>

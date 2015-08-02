@@ -22,8 +22,8 @@ warOfClansAppServicesModule.factory("Battle",  ->
       @war                  = json.war ? {}     # will become War.coffee object
 
 
-    @battles_from_json_battles: (json_battles_array) ->
+    @battlesFromJsonBattles: (jsonBattlesArray) ->
       # Create class versions from json data
-      new Battle(battle) for battle in json_battles_array
+      new Battle(battle) for battle in jsonBattlesArray
       
 )

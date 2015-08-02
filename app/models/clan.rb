@@ -87,7 +87,7 @@ class Clan < ActiveRecord::Base
     end
 
     if include_all || options[:include_wars] == "yes"
-      json.merge!('wars' => self.wars.as_json)
+      json.merge!('wars' => self.wars.as_json(include_all: 'yes'))
     end
 
     # give the people what they want

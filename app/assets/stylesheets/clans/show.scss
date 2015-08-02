@@ -1,0 +1,33 @@
+@import "mixins";
+
+body {
+  
+  &.war-of-clans {
+
+    > section.page-container {
+      
+      &.clans.show {
+
+        > section {
+          margin: $height-of-site-header auto 16px;
+          padding-top: 16px;
+
+          > header {
+            font-size: $big-ass-title;
+          }
+
+          > section {
+            padding: 40px 0;
+
+            > header {
+              color: $font-other;
+              font-size: $large;
+
+              @include font-uncial-antiqua;
+            }
+          }
+        }
+      }
+    }
+  }
+}

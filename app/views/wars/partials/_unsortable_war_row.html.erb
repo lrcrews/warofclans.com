@@ -1,6 +1,7 @@
-<%# assumes to be in an angularjs scope where
-  # war exists as a War.coffee object.
- %>
+<%# This partial assumes it is included within an
+  # angularjs scope where "war" exists, and where
+  # "war" is an instance of a War.coffee class...
+%>
 <section class="unsortable-war-row">
   <header>
     {{ war.created_at }}
@@ -31,7 +32,7 @@
         <li>
           {{ war.winner().team_size }}
           <i class="fa fa-shield"></i>
-          {{ war.not_winner().team_size }}
+          {{ war.notWinner().team_size }}
         </li>
       </ul>
     </li>
@@ -40,15 +41,15 @@
         <li>
           <ul>
             <li>
-              <a href="/clans/{{ war.not_winner().id }}">{{ war.not_winner().name }}</a>
+              <a href="/clans/{{ war.notWinner().id }}">{{ war.notWinner().name }}</a>
             </li>
             <li class="coc-id">
-              {{ war.not_winner().coc_id }}
+              {{ war.notWinner().coc_id }}
             </li>
           </ul>
         </li>
         <li>
-          {{ war.not_winner().stars_earned }}
+          {{ war.notWinner().stars_earned }}
         </li>
       </ul>
     </li>

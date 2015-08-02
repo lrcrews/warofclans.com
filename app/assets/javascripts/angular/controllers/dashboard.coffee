@@ -6,11 +6,11 @@ warOfClansAppControllersModule.controller("DashboardController",
   [ "$scope", "Clan", "War", 
   ( $scope, Clan, War ) ->
 
-    $scope.wars = War.wars_from_json_wars(gon.wars)
+    $scope.wars = War.warsFromJsonWars(gon.wars)
     
     $scope.initialize = ->
       console.log("hello dashboard.")
       for war in $scope.wars
-        war.clans = Clan.clans_from_json_clans(war.clans)
+        war.clans = Clan.clansFromJsonClans(war.clans)
 
   ])

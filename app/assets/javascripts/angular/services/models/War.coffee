@@ -17,15 +17,28 @@ warOfClansAppServicesModule.factory("War",  ->
       @clans        = json.clans ? []   # will become array of Clan.coffee objects
 
 
+    attacksByPlayers: (playerCocIds) ->
+      (battle for battle in @battles when battle.attacker.coc_id in playerCocIds)
+
+
+    clanOfCocId: (cocId) ->
+      (clan for clan in @clans when clan.coc_id is cocId)[0]
+
+
+    clanNotOfCocId: (cocId) ->
+      (clan for clan in @clans when clan.coc_id isnt cocId)[0]
+
+
     winner: ->
       if @clans[0]?.winner == true then @clans[0] else @clans[1]
 
-    not_winner: ->
+
+    notWinner: ->
       if @clans[0]?.winner == true then @clans[1] else @clans[0]
 
 
-    @wars_from_json_wars: (json_wars_array) ->
+    @warsFromJsonWars: (jsonWarsArray) ->
       # Create class versions from json data
-      new War(war) for war in json_wars_array
+      new War(war) for war in jsonWarsArray
       
 )

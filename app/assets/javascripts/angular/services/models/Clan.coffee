@@ -29,8 +29,22 @@ warOfClansAppServicesModule.factory("Clan",  ->
       @winner               = json.winner ? null
 
 
-    @clans_from_json_clans: (json_clans_array) ->
+    totalNotWins: ->
+      @wars.length - @totalWins()
+
+
+    totalWins: ->
+      wins = 0
+      wins += 1 for war in @wars when Clan.winnerCheck(war, this)
+
+
+    @winnerCheck: (war, curiousClan) ->
+      winner = (clan for clan in war.clans when clan.winner is true)[0]
+      winner.coc_id is curiousClan.coc_id
+
+
+    @clansFromJsonClans: (jsonClansArray) ->
       # Create class versions from json data
-      new Clan(clan) for clan in json_clans_array
+      new Clan(clan) for clan in jsonClansArray
       
 )

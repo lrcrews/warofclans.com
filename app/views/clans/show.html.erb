@@ -1,6 +1,39 @@
 <% content_for(:class) { "clans show" } %>
 <section ng-controller="ClanController" ng-init="initialize()">
 
-  hello clan.
+  <header>
+    <%= render partial: "clans/partials/sortable_clan_row" %>
+  </header>
+
+  <section>
+    <%# tabs %>
+    <header>
+      <ul>
+        <li ng-click="setActiveTab('wars')">
+          wars
+        </li>
+        <li ng-click="setActiveTab('players')">
+          players
+        </li>
+      </ul>
+    </header>
+    <%# header and N rows based on tab selection %>
+    <ul ng-switch="activeTab">
+      <li ng-switch-default>
+        <%= render partial: "wars/partials/sortable_war_row_header" %>
+      </li>
+      <li ng-switch-when="players">
+        <%= render partial: "players/partials/sortable_player_row_header" %>
+      </li>
+    </ul>
+    <ul ng-switch="activeTab">
+      <li ng-switch-default ng-repeat="war in clan.wars">
+        <%= render partial: "wars/partials/sortable_war_row" %>
+      </li>
+      <li ng-switch-when="players" ng-repeat="player in clan.players">
+        <%= render partial: "players/partials/sortable_player_row" %>
+      </li>
+    </ul>
+  </section>
 
 </section>

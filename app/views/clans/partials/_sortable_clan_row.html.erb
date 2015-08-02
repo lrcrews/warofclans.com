@@ -1,0 +1,18 @@
+<%# This partial assumes it is included within an
+  # angular scope that has "clan" availble, where
+  # "clan" is assumed to be a Clan.coffee class..
+%>
+<ul class="sortable-clan-row">
+  <li>
+    {{ clan.name }}
+  </li>
+  <li>
+    {{ clan.coc_id }}
+  </li>
+  <li>
+    total wins {{ clan.totalWins() }}
+  </li>
+  <li>
+    W/L ratio of {{ clan.totalWins() / clan.totalNotWins() }}
+  </li>
+</ul>

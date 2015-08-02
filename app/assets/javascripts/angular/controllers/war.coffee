@@ -10,6 +10,6 @@ warOfClansAppControllersModule.controller("WarController",
     
     $scope.initialize = ->
       console.log("hello war.")
-      $scope.war.battles = Battle.battles_from_json_battles($scope.war.battles)
+      $scope.war.battles = Battle.battlesFromJsonBattles($scope.war.battles)
 
   ])
