@@ -18,11 +18,12 @@ module Seed
           puts "____________________"
           puts "adding clans to the existing #{current_clan_count} clan(s)..."
           # This list is arranged alphabetically by the "name" column (data[3])
-          [ ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS, 92],
-            ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS, 10],
-            ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY, 26],
-            ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 3,  'New World 9',      1700, Clan::WAR_FREQUENCY_WEEKLY, 40],
-            ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS, 99]
+          [ ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       92],
+            ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
+            ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY,       26],
+            ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 3,  'New World 9',      1700, Clan::WAR_FREQUENCY_WEEKLY,       44],
+            ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS,       99],
+            ['#8QG0G9P0', Clan::CLAN_TYPE_INVITE, 3,  '**HEIST**',        2100, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 19]
           ].each do |data|
             create_clan(data)
           end
@@ -116,23 +117,25 @@ module Seed
             ['#JJGGJQRV',   88,   'Wasi2662',       @clans['#CYQ0C8G']],
 
             # New World 9
-            ['#RCQ0J0JR', 85,   'agent_chu',        @clans['#8JR8G8L9']],
-            ['#8LYRQ8Y',  105,  'alexander',        @clans['#8JR8G8L9']],
-            ['#YV2J2028', 89,   'andrew rampant',   @clans['#8JR8G8L9']],
-            ['#LLVCLU2G', 91,   'charliedeuce',     @clans['#8JR8G8L9']],
-            ['#L9QJ2JYQ', 86,   'Chromatomic',      @clans['#8JR8G8L9']],
-            ['#PQVUJ2PR', 85,   'Count Dubula',     @clans['#8JR8G8L9']],
-            ['#PV0LJJU0', 91,   'Dan',              @clans['#8JR8G8L9']],
-            ['#QQ29RU8L', 86,   'HermanTheGerman',  @clans['#8JR8G8L9']],
-            ['#R20YLVUP', 120,  'LeviUnderwood5',   @clans['#8JR8G8L9']],
-            ['#RVJ08JR2', 103,  'Marian 2.0',       @clans['#8JR8G8L9']],
-            ['#CPG2L0YV', 47,   'Nunu',             @clans['#8JR8G8L9']],
-            ['#GY9YL809', 85,   'ponikz',           @clans['#8JR8G8L9']],
-            ['#9PQ2LV8L', 80,   'silence',          @clans['#8JR8G8L9']],
-            ['#Y2U2Q20G', 99,   'staphnie',         @clans['#8JR8G8L9']],
-            ['#QQUUCVVL', 67,   'TOOL55BOX',        @clans['#8JR8G8L9']],
-            ['#G28VPUR',  91,   'wicked defense',   @clans['#8JR8G8L9']],
-            ['#P9VVGU9J', 83,   '*a 83*',           @clans['#8JR8G8L9']],
+            ['#RCQ0J0JR',   85,   'agent_chu',        @clans['#8JR8G8L9']],
+            ['#8LYRQ8Y',    105,  'alexander',        @clans['#8JR8G8L9']],
+            ['#YV2J2028',   89,   'andrew rampant',   @clans['#8JR8G8L9']],
+            ['#LLVCLU2G',   91,   'charliedeuce',     @clans['#8JR8G8L9']],
+            ['#L9QJ2JYQ',   86,   'Chromatomic',      @clans['#8JR8G8L9']],
+            ['#PQVUJ2PR',   85,   'Count Dubula',     @clans['#8JR8G8L9']],
+            ['#PV0LJJU0',   91,   'Dan',              @clans['#8JR8G8L9']],
+            ['#QQ29RU8L',   86,   'HermanTheGerman',  @clans['#8JR8G8L9']],
+            ['#22Q2L92V2',  63,   'hershbar',         @clans['#8JR8G8L9']],
+            ['#R20YLVUP',   120,  'LeviUnderwood5',   @clans['#8JR8G8L9']],
+            ['#RVJ08JR2',   103,  'Marian 2.0',       @clans['#8JR8G8L9']],
+            ['#8Y2V2Q09',   112,  'munchbar',         @clans['#8JR8G8L9']],
+            ['#CPG2L0YV',   47,   'Nunu',             @clans['#8JR8G8L9']],
+            ['#GY9YL809',   85,   'ponikz',           @clans['#8JR8G8L9']],
+            ['#9PQ2LV8L',   80,   'silence',          @clans['#8JR8G8L9']],
+            ['#Y2U2Q20G',   99,   'staphnie',         @clans['#8JR8G8L9']],
+            ['#QQUUCVVL',   67,   'TOOL55BOX',        @clans['#8JR8G8L9']],
+            ['#G28VPUR',    91,   'wicked defense',   @clans['#8JR8G8L9']],
+            ['#P9VVGU9J',   83,   '*a 83*',           @clans['#8JR8G8L9']],
 
             # pinklove
             ['#999Y2LU9',   92,   'boyboy',           @clans['#QLVJ092']],
@@ -149,7 +152,24 @@ module Seed
             ['#JJLY8RCJ',   78,   'Sheisuke',         @clans['#QLVJ092']],
             ['#YGPYQ209',   82,   'vichka',           @clans['#QLVJ092']],
             ['#2280C2UQV',  92,   'VitLoveLin',       @clans['#QLVJ092']],
-            ['#2Y28LR9U',   88,   '_Daisa',           @clans['#QLVJ092']]
+            ['#2Y28LR9U',   88,   '_Daisa',           @clans['#QLVJ092']],
+
+            # **HEIST**
+            ['#8PV2J92G', 98,   'bigbadjon10',      @clans['#8QG0G9P0']],
+            ['#YC0JRGJU', 95,   'CmundaPhukinWizz', @clans['#8QG0G9P0']],
+            ['#2GR800RV', 99,   'dinggong',         @clans['#8QG0G9P0']],
+            ['#RUPY9RCU', 104,  'hero',             @clans['#8QG0G9P0']],
+            ['#JR8298PJ', 115,  'jimmyzanter',      @clans['#8QG0G9P0']],
+            ['#2899UVCJ', 117,  'Juzz',             @clans['#8QG0G9P0']],
+            ['#GCLQGQGC', 128,  'me',               @clans['#8QG0G9P0']],
+            ['#2CQPJG2C', 91,   'Michael',          @clans['#8QG0G9P0']],
+            ['#GQQ8VVVU', 83,   'rickybobby',       @clans['#8QG0G9P0']],
+            ['#C22C8LVL', 98,   'sakarami',         @clans['#8QG0G9P0']],
+            ['#CPY2P0Y2', 106,  'Studmuffin',       @clans['#8QG0G9P0']],
+            ['#98PU82UP', 75,   'Taydoo',           @clans['#8QG0G9P0']],
+            ['#2L82U9YQ', 134,  'The Brave',        @clans['#8QG0G9P0']],
+            ['#YL0R29G9', 114,  'workthecycle',     @clans['#8QG0G9P0']],
+            ['#PP0JQUYR', 57,   '_Alex43_',         @clans['#8QG0G9P0']]
             
           ].each do |data|
             create_player(data)

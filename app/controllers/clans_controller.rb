@@ -13,7 +13,8 @@ class ClansController < ApplicationController
 
 
   def show
-    clan = Clan.find_by_id(params[:id])
+    clan = Clan.includes([{wars: [{battles: [:attacker, :defender]}, :clan_wars, :clans]}])
+               .find_by_id(params[:id])
     redirect_to clans_url and return if clan.nil?
     gon.clan = clan.as_json(include_all: "yes")
     respond_to do |format|
