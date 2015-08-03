@@ -5,6 +5,8 @@ class War < ActiveRecord::Base
   has_many :clans, through: :clan_wars
 
 
+  default_scope { order(created_at: 'DESC') }
+
   scope :recent, -> { order(created_at: 'DESC') }
 
 
