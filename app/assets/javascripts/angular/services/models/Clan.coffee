@@ -30,12 +30,19 @@ warOfClansAppServicesModule.factory("Clan",  ->
 
 
     totalNotWins: ->
-      @wars.length - @totalWins()
+      notWins = @wars.length - @totalWins()
 
 
     totalWins: ->
       wins = 0
       wins += 1 for war in @wars when Clan.winnerCheck(war, this)
+      wins
+
+    winLossRatio: ->
+      denominator = @totalNotWins()
+      if denominator is 0
+        denominator = 1
+      @totalWins() / denominator
 
 
     @winnerCheck: (war, curiousClan) ->

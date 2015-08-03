@@ -1,0 +1,20 @@
+@import "mixins";
+
+body {
+  
+  &.war-of-clans {
+
+    ul.sortable-war-row-header {
+      
+      /* The shared styles are in the _sortable_war_row.scss file */
+
+      border-top: 1px solid $border-primary;
+
+      > li {
+        font-size: $small;
+        font-weight: bold;
+      }
+
+    }
+  }
+}

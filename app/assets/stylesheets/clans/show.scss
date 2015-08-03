@@ -12,18 +12,42 @@ body {
           margin: $height-of-site-header auto 16px;
           padding-top: 16px;
 
-          > header {
-            font-size: $big-ass-title;
-          }
-
           > section {
             padding: 40px 0;
 
             > header {
-              color: $font-other;
+              color: $font-dark;
+              cursor: pointer;
               font-size: $large;
 
               @include font-uncial-antiqua;
+
+              > ul {
+
+                > li {
+                  border: 1px solid $border-primary;
+                  border-bottom: none;
+                  display: inline-block;
+                  height: 100%;
+                  margin-left: 4px;
+                  padding: 10px;
+
+                  &.active {
+                    background-color: $white;
+                    color: $font-other;
+                    cursor: default;
+                  }
+
+                  &:not(.active) {
+                    background-color: $background-dark;
+                    color: $font-light;
+                  }
+                }
+              }
+            }
+
+            > ul {
+              margin-top: -1px;
             }
           }
         }

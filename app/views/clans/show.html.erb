@@ -2,6 +2,7 @@
 <section ng-controller="ClanController" ng-init="initialize()">
 
   <header>
+    <%= render partial: "clans/partials/sortable_clan_row_header" %>
     <%= render partial: "clans/partials/sortable_clan_row" %>
   </header>
 
@@ -9,10 +10,10 @@
     <%# tabs %>
     <header>
       <ul>
-        <li ng-click="setActiveTab('wars')">
+        <li ng-click="setActiveTab('wars')" ng-class="{ active: activeTab == 'wars' }">
           wars
         </li>
-        <li ng-click="setActiveTab('players')">
+        <li ng-click="setActiveTab('players')" ng-class="{ active: activeTab == 'players' }">
           players
         </li>
       </ul>

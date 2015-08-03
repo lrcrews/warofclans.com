@@ -10,9 +10,21 @@
     {{ clan.coc_id }}
   </li>
   <li>
-    total wins {{ clan.totalWins() }}
+    {{ clan.totalWins() }}
   </li>
   <li>
-    W/L ratio of {{ clan.totalWins() / clan.totalNotWins() }}
+    {{ clan.totalNotWins() }}
+  </li>
+  <li>
+    {{ clan.winLossRatio() }}
+  </li>
+  <li>
+    {{ clan.clan_type }}
+  </li>
+  <li>
+    {{ clan.war_frequency }}
+  </li>
+  <li>
+    {{ clan.player_count }}
   </li>
 </ul>
