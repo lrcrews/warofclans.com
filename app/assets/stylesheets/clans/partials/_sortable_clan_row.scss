@@ -4,6 +4,10 @@ body {
   
   &.war-of-clans {
 
+    ul.sortable-clan-row {
+      background-color: $white;
+    }
+
     ul.sortable-clan-row,
     ul.sortable-clan-row-header {
       border: 1px solid $border-primary;
@@ -18,13 +22,13 @@ body {
         overflow: hidden;
         padding: 10px;
         text-overflow: ellipsis;
-        vertical-align: middle;
+        vertical-align: top;
 
         /* |   1  |    2   |   3  |     4    |     5     |   6  |      7        |    8    |
         /* | name | coc_id | wins | not wins | w/l ratio | type | war frequency | members | */
 
         &:first-child {
-          width: calc(22% - 1px);
+          width: calc(23% - 1px);
         }
 
         &:nth-child(2) {
@@ -44,16 +48,16 @@ body {
         }
 
         &:nth-child(6) {
-          width: calc(16% - 1px);
+          width: calc(17% - 1px);
         }
 
         &:nth-child(7) {
-          width: calc(16% - 1px);
+          width: calc(17% - 1px);
         }
 
         &:last-child {
           border-right: none;
-          width: 5%;
+          width: 4%;
         }
       }
     }

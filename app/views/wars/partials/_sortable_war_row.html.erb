@@ -25,6 +25,6 @@
     {{ warClan(war).stars_earned / warClanAttacks(war) }}
   </li>
   <li>
-    {{ warClanOpponent(war).name }}
+    <a href="/clans/{{ warClanOpponent(war).id }}">{{ warClanOpponent(war).name }}</a>
   </li>
 </ul>

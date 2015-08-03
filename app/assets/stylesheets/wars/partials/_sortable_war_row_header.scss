@@ -8,13 +8,19 @@ body {
       
       /* The shared styles are in the _sortable_war_row.scss file */
 
+      background-color: $background-light;
       border-top: 1px solid $border-primary;
 
       > li {
         font-size: $small;
         font-weight: bold;
-      }
+        line-height: 110%;
+        min-height: 25px;
 
+        > span {
+          font-size: $smallest;
+        }
+      }
     }
   }
 }

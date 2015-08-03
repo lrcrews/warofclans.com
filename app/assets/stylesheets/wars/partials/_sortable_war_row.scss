@@ -4,6 +4,10 @@ body {
   
   &.war-of-clans {
 
+    ul.sortable-war-row {
+      background-color: $white;
+    }
+
     ul.sortable-war-row,
     ul.sortable-war-row-header {
       border: 1px solid $border-primary;

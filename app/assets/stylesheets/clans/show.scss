@@ -31,6 +31,8 @@ body {
                   height: 100%;
                   margin-left: 4px;
                   padding: 10px;
+                  text-align: center;
+                  width: 100px;
 
                   &.active {
                     background-color: $white;
@@ -44,10 +46,6 @@ body {
                   }
                 }
               }
-            }
-
-            > ul {
-              margin-top: -1px;
             }
           }
         }
