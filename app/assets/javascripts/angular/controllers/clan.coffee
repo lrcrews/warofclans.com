@@ -9,6 +9,9 @@ warOfClansAppControllersModule.controller("ClanController",
     $scope.clan = new Clan(gon.clan)
 
 
+    $scope.isWinnerOf = (war) ->
+      War.isWinner(war, $scope.clan.coc_id)
+
     $scope.warClan = (war) ->
       war.clanOfCocId($scope.clan.coc_id)
 

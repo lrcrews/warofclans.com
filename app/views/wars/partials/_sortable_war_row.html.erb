@@ -4,25 +4,25 @@
 %>
 <ul class="sortable-war-row">
   <li>
-    <i class="fa fa-trophy" ng-if"warClan(war).winner"></i>
+    <i class="fa fa-trophy" ng-if="isWinnerOf(war)"></i>
   </li>
   <li>
     {{ warClan(war).team_size }}
   </li>
   <li>
-    {{ warClanAttacks(war) }} <span>/{{ warClanAttacksPossible(war) }}</span>
+    {{ warClanAttacks(war) }}<span>/{{ warClanAttacksPossible(war) }}</span>
   </li>
   <li>
-    {{ warClanAttackRatio(war) }}
+    {{ warClanAttackRatio(war) | number: 1 }}%
   </li>
   <li>
-    {{ warClan(war).stars_earned }} <span>/{{ warClanStarsPossible(war) }}</span>
+    {{ warClan(war).stars_earned }}<span>/{{ warClanStarsPossible(war) }}</span>
   </li>
   <li>
-    {{ warClanStarsEarnedRatio(war) }}
+    {{ warClanStarsEarnedRatio(war) | number: 1 }}%
   </li>
   <li>
-    {{ warClan(war).stars_earned / warClanAttacks(war) }}
+    {{ warClan(war).stars_earned / warClanAttacks(war) | number: 2 }}
   </li>
   <li>
     <a href="/clans/{{ warClanOpponent(war).id }}">{{ warClanOpponent(war).name }}</a>

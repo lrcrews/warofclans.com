@@ -19,19 +19,28 @@ body {
         display: inline-block;
         font-size: $normal;
         margin-right: -4px;
+        min-height: 44px;
         overflow: hidden;
-        padding: 10px;
+        padding: 12px 10px 8px 10px;
         text-overflow: ellipsis;
         vertical-align: middle;
+
+        > span {
+          font-size: $smallest;
+          font-weight: bold;
+          line-height: 100%;
+        }
 
         /* |    1    |     2     |       3      |       4       |       5      |    6    |      7       |         8       |
         /* | winner? | team size | attacks used | participation | stars earned | stars % | stars/attack | opponent's name | */
 
         &:first-child {
+          text-align: center;
           width: calc(5% - 1px);
         }
 
         &:nth-child(2) {
+          text-align: center;
           width: calc(5% - 1px);
         }
 

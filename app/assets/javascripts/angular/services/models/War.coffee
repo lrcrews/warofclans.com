@@ -37,6 +37,9 @@ warOfClansAppServicesModule.factory("War",  ->
       if @clans[0]?.winner == true then @clans[1] else @clans[0]
 
 
+    @isWinner: (war, cocId) ->
+      war.winner()["coc_id"] is cocId
+
     @warsFromJsonWars: (jsonWarsArray) ->
       # Create class versions from json data
       new War(war) for war in jsonWarsArray
