@@ -85,11 +85,22 @@ class Battle < ActiveRecord::Base
   end
 
 
+  def attacker_earned_stars_for_clan?
+    self.stars_earned > 0
+  end
+
+  def attacker_victorious?
+    self.stars_awarded > 0
+  end
+
+
   def as_json(options={})
     options = {} if options.nil?
     # include all the normal stuff
     json = super
     # overwrite and add other stuff
+    json['attacker_earned_stars_for_clan'] = self.attacker_earned_stars_for_clan?
+    json['attacker_victorious'] = self.attacker_victorious?
     json['created_at'] = self.created_at.to_date.to_s
     json['updated_at'] = self.updated_at.to_date.to_s
 

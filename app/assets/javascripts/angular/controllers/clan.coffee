@@ -8,6 +8,13 @@ warOfClansAppControllersModule.controller("ClanController",
 
     $scope.clan = new Clan(gon.clan)
 
+    $scope.activeTab = "wars"
+    $scope.setActiveTab = (value) ->
+      $scope.activeTab = value
+
+    # War Tab Stuff
+    # TODO: maybe: break out some child controllers for the partials, having
+    #       this parent controller just handling things for the page as a whole
 
     $scope.isWinnerOf = (war) ->
       War.isWinner(war, $scope.clan.coc_id)
@@ -37,9 +44,11 @@ warOfClansAppControllersModule.controller("ClanController",
     $scope.warClanStarsPossible = (war) ->
       $scope.warClan(war).team_size * 3
 
-    $scope.activeTab = "wars"
-    $scope.setActiveTab = (value) ->
-      $scope.activeTab = value
+    # Player Tab Stuff
+
+    
+
+    # The mighty mighty boss method
     
     $scope.initialize = ->
       console.log("hello clan.")

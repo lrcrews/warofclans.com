@@ -32,6 +32,14 @@ RSpec.describe Battle do
       expect(attacker.is_a?(Hash)).to be_truthy
     end
 
+    it "should return an attacker_earned_stars_for_clan boolean" do
+      expect(@battle.as_json.keys.include?('attacker_earned_stars_for_clan')).to be_truthy
+    end
+
+    it "should return an attacker_victorious boolean" do
+      expect(@battle.as_json.keys.include?('attacker_victorious')).to be_truthy
+    end
+
     it "should return a defender hash" do
       defender = @battle.as_json['defender']
       expect(defender).to be_present
@@ -67,6 +75,26 @@ RSpec.describe Battle do
     end
   end
 
+  describe "attacker_earned_stars_for_clan?" do
+    it "should be false if no stars were earned for the clan" do
+      @battle.stars_awarded = 0
+      @battle.stars_earned = 0
+      expect(@battle.attacker_earned_stars_for_clan?).to be_falsey
+    end
+
+    it "should be true if any stars were earned for the clan" do
+      @battle.stars_awarded = 3
+      @battle.stars_earned = 1
+      expect(@battle.attacker_earned_stars_for_clan?).to be_truthy
+
+      @battle.stars_earned = 2
+      expect(@battle.attacker_earned_stars_for_clan?).to be_truthy
+
+      @battle.stars_earned = 3
+      expect(@battle.attacker_earned_stars_for_clan?).to be_truthy
+    end
+  end
+
   describe "attacker_rank" do
     it "should be an integer from 1 to 50" do
       @battle.attacker_rank = nil
@@ -88,6 +116,26 @@ RSpec.describe Battle do
 
       @battle.attacker_rank = 51
       expect(@battle).to be_invalid
+    end
+  end
+
+  describe "attacker_victorious?" do
+    it "should be false if no stars were earned" do
+      @battle.stars_awarded = 0
+      @battle.stars_earned = 0
+      expect(@battle.attacker_victorious?).to be_falsey
+    end
+
+    it "should be true if any stars were earned" do
+      @battle.stars_earned = 0
+      @battle.stars_awarded = 1
+      expect(@battle.attacker_victorious?).to be_truthy
+
+      @battle.stars_awarded = 2
+      expect(@battle.attacker_victorious?).to be_truthy
+
+      @battle.stars_awarded = 3
+      expect(@battle.attacker_victorious?).to be_truthy
     end
   end
 
