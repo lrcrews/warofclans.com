@@ -21,6 +21,86 @@ RSpec.describe Battle do
     @war.destroy
   end
 
+  describe "after_create" do
+    it "should update the attacks_won and attacks_won_with_war_stars counters on the attacking Player" do
+      attacker = FactoryGirl.build(:player)
+      expect(attacker.attacks_won).to eq(0)
+      expect(attacker.attacks_won_with_war_stars).to eq(0)
+
+      battle1 = FactoryGirl.build(:battle, 
+        destruction_percent: 100, 
+        stars_awarded: 3, 
+        war_stars_awarded: 2
+      )
+      battle1.attacker = attacker
+      battle1.defender = FactoryGirl.build(:player)
+      battle1.war = @war
+      battle1.save
+      expect(attacker.attacks_won).to eq(1)
+      expect(attacker.attacks_won_with_war_stars).to eq(1)
+
+      battle2 = FactoryGirl.build(:battle, 
+        destruction_percent: 88, 
+        stars_awarded: 2, 
+        war_stars_awarded: 0
+      )
+      battle2.attacker = attacker
+      battle2.defender = FactoryGirl.build(:player)
+      battle2.war = @war
+      battle2.save
+      expect(attacker.attacks_won).to eq(2)
+      expect(attacker.attacks_won_with_war_stars).to eq(1)
+    end
+
+    it "should update the defences_won and defences_effective counters for the defending Player" do
+      defender = FactoryGirl.build(:player)
+      expect(defender.defences_won).to eq(0)
+      expect(defender.defences_effective).to eq(0)
+
+      battle1 = FactoryGirl.build(:battle, 
+        destruction_percent: 49, 
+        stars_awarded: 0, 
+        war_stars_awarded: 0
+      )
+      battle1.attacker = FactoryGirl.build(:player)
+      battle1.defender = defender
+      battle1.war = @war
+      battle1.save
+      expect(defender.defences_won).to eq(1)
+      expect(defender.defences_effective).to eq(1)
+
+      battle2 = FactoryGirl.build(:battle, 
+        destruction_percent: 55, 
+        stars_awarded: 1, 
+        war_stars_awarded: 0
+      )
+      battle2.attacker = FactoryGirl.build(:player)
+      battle2.defender = defender
+      battle2.war = @war
+      battle2.save
+      expect(defender.defences_won).to eq(1)
+      expect(defender.defences_effective).to eq(2)
+    end
+
+    it "should update the war_stars_awarded counter on the attacker's clan's ClanWar instance" do
+      clan_war = @war.clan_wars.first
+      clan = clan_war.clan
+      attacker = FactoryGirl.create(:player, clan: clan)
+      initial_war_stars_awarded = clan_war.war_stars_awarded
+
+      battle1 = FactoryGirl.create(:battle, 
+        attacker: attacker,
+        defender: FactoryGirl.build(:player),
+        destruction_percent: 100, 
+        stars_awarded: 3, 
+        war_stars_awarded: 2,
+        war: @war
+      )
+
+      expect(clan_war.war_stars_awarded).to eq(initial_war_stars_awarded + 2)
+    end
+  end
+
   describe "as_json" do
     it "should not return war if no options are given" do
       expect(@battle.as_json['war']).to eq(nil)
@@ -78,19 +158,19 @@ RSpec.describe Battle do
   describe "attacker_earned_stars_for_clan?" do
     it "should be false if no stars were earned for the clan" do
       @battle.stars_awarded = 0
-      @battle.stars_earned = 0
+      @battle.war_stars_awarded = 0
       expect(@battle.attacker_earned_stars_for_clan?).to be_falsey
     end
 
     it "should be true if any stars were earned for the clan" do
       @battle.stars_awarded = 3
-      @battle.stars_earned = 1
+      @battle.war_stars_awarded = 1
       expect(@battle.attacker_earned_stars_for_clan?).to be_truthy
 
-      @battle.stars_earned = 2
+      @battle.war_stars_awarded = 2
       expect(@battle.attacker_earned_stars_for_clan?).to be_truthy
 
-      @battle.stars_earned = 3
+      @battle.war_stars_awarded = 3
       expect(@battle.attacker_earned_stars_for_clan?).to be_truthy
     end
   end
@@ -122,12 +202,12 @@ RSpec.describe Battle do
   describe "attacker_victorious?" do
     it "should be false if no stars were earned" do
       @battle.stars_awarded = 0
-      @battle.stars_earned = 0
+      @battle.war_stars_awarded = 0
       expect(@battle.attacker_victorious?).to be_falsey
     end
 
     it "should be true if any stars were earned" do
-      @battle.stars_earned = 0
+      @battle.war_stars_awarded = 0
       @battle.stars_awarded = 1
       expect(@battle.attacker_victorious?).to be_truthy
 
@@ -176,7 +256,7 @@ RSpec.describe Battle do
   describe "destruction_percent" do
     it "should be an integer between 0 and 100" do
       @battle.stars_awarded = 2
-      @battle.stars_earned = 0
+      @battle.war_stars_awarded = 0
 
       @battle.destruction_percent = nil
       expect(@battle).to be_invalid
@@ -231,7 +311,7 @@ RSpec.describe Battle do
   describe "stars_awarded" do
     it "should be 0, 1, 2, or 3" do
       @battle.destruction_percent = 99
-      @battle.stars_earned = 0
+      @battle.war_stars_awarded = 0
 
       @battle.stars_awarded = nil
       expect(@battle).to be_invalid
@@ -268,7 +348,7 @@ RSpec.describe Battle do
     end
 
     it "should not be 3 if destruction_percent is less than 100" do
-      @battle.stars_earned = 0
+      @battle.war_stars_awarded = 0
 
       @battle.destruction_percent = 99
       @battle.stars_awarded = 3
@@ -279,47 +359,47 @@ RSpec.describe Battle do
     end
   end
 
-  describe "stars_earned" do
+  describe "war_stars_awarded" do
     it "should be 0, 1, 2, or 3" do
-      @battle.stars_earned = nil
+      @battle.war_stars_awarded = nil
       expect(@battle).to be_invalid
 
-      @battle.stars_earned = 1.5
+      @battle.war_stars_awarded = 1.5
       expect(@battle).to be_invalid
 
-      @battle.stars_earned = "combat basketball"
+      @battle.war_stars_awarded = "combat basketball"
       expect(@battle).to be_invalid
 
-      @battle.stars_earned = -1
+      @battle.war_stars_awarded = -1
       expect(@battle).to be_invalid
 
       @battle.destruction_percent = 99
       (0..2).each do |i|
         @battle.stars_awarded = i
-        @battle.stars_earned = i
+        @battle.war_stars_awarded = i
         expect(@battle).to be_valid
       end
 
       @battle.destruction_percent = 100
       @battle.stars_awarded = 3
-      @battle.stars_earned = 3
+      @battle.war_stars_awarded = 3
       expect(@battle).to be_valid
 
-      @battle.stars_earned = 4
+      @battle.war_stars_awarded = 4
       expect(@battle).to be_invalid
     end
 
     it "should not be more than stars_awarded" do
       @battle.stars_awarded = 3
-      @battle.stars_earned = 3
+      @battle.war_stars_awarded = 3
       expect(@battle).to be_valid
 
       @battle.stars_awarded = 3
-      @battle.stars_earned = 2
+      @battle.war_stars_awarded = 2
       expect(@battle).to be_valid
 
       @battle.stars_awarded = 2
-      @battle.stars_earned = 3
+      @battle.war_stars_awarded = 3
       expect(@battle).to be_invalid
     end
   end

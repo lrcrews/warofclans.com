@@ -16,13 +16,13 @@
     {{ warClanAttackRatio(war) | number: 1 }}%
   </li>
   <li>
-    {{ warClan(war).stars_earned }}<span>/{{ warClanStarsPossible(war) }}</span>
+    {{ warClan(war).war_stars_awarded }}<span>/{{ warClanStarsPossible(war) }}</span>
   </li>
   <li>
     {{ warClanStarsEarnedRatio(war) | number: 1 }}%
   </li>
   <li>
-    {{ warClan(war).stars_earned / warClanAttacks(war) | number: 2 }}
+    {{ warClan(war).war_stars_awarded / warClanAttacks(war) | number: 2 }}
   </li>
   <li>
     <a href="/clans/{{ warClanOpponent(war).id }}">{{ warClanOpponent(war).name }}</a>

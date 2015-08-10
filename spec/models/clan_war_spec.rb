@@ -63,39 +63,39 @@ RSpec.describe ClanWar do
     end
   end
 
-  describe "stars_earned" do
+  describe "war_stars_awarded" do
     it "should not be negative" do
-      @clan_war.stars_earned = -1
+      @clan_war.war_stars_awarded = -1
       expect(@clan_war).to be_invalid
 
-      @clan_war.stars_earned = 0
+      @clan_war.war_stars_awarded = 0
       expect(@clan_war).to be_valid
 
-      @clan_war.stars_earned = 1
+      @clan_war.war_stars_awarded = 1
       expect(@clan_war).to be_valid
     end
 
     it "should not be more than 3 times the player_count" do
       @clan_war.player_count = 10
-      @clan_war.stars_earned = 33
+      @clan_war.war_stars_awarded = 33
       expect(@clan_war).to be_invalid
       
-      @clan_war.stars_earned = 30
+      @clan_war.war_stars_awarded = 30
       expect(@clan_war).to be_valid
 
       @clan_war.player_count = 5
       expect(@clan_war).to be_invalid
 
-      @clan_war.stars_earned = 14
+      @clan_war.war_stars_awarded = 14
       expect(@clan_war).to be_valid
 
       @clan_war.player_count = 50
       expect(@clan_war).to be_valid
 
-      @clan_war.stars_earned = 150
+      @clan_war.war_stars_awarded = 150
       expect(@clan_war).to be_valid
 
-      @clan_war.stars_earned = 151
+      @clan_war.war_stars_awarded = 151
       expect(@clan_war).to be_invalid
     end
   end

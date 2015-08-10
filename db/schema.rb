@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721071025) do
+ActiveRecord::Schema.define(version: 20150809195226) do
 
   create_table "battles", force: :cascade do |t|
     t.integer  "attacker_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150721071025) do
     t.integer  "destruction_percent"
     t.integer  "minutes_left_in_war"
     t.integer  "stars_awarded"
-    t.integer  "stars_earned"
+    t.integer  "war_stars_awarded"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "war_id"
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20150721071025) do
     t.integer  "clan_id"
     t.integer  "war_id"
     t.boolean  "winner"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "player_count"
-    t.integer  "stars_earned"
+    t.integer  "war_stars_awarded"
   end
 
   add_index "clan_wars", ["clan_id", "war_id"], name: "index_clan_wars_on_clan_id_and_war_id", unique: true
@@ -69,8 +69,16 @@ ActiveRecord::Schema.define(version: 20150721071025) do
     t.integer  "level"
     t.string   "name"
     t.string   "coc_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "attacks_won",                     default: 0
+    t.integer  "attacks_won_with_war_stars",      default: 0
+    t.integer  "defences_won_completely",         default: 0
+    t.integer  "defences_won_war_stars_defended", default: 0
+    t.integer  "stars",                           default: 0
+    t.integer  "stars_lost",                      default: 0
+    t.integer  "war_stars",                       default: 0
+    t.integer  "war_stars_lost",                  default: 0
   end
 
   create_table "users", force: :cascade do |t|

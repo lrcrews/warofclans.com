@@ -1,12 +1,5 @@
 class Battle < ActiveRecord::Base
 
-  # TODO:
-  # ok, I'm finding these names confusing, so I should change them later
-  # but for now....
-  #
-  # stars_awarded are the stars you get in your attack
-  # stars_earned are the stars from that attack that actually count towards the war total
-
   belongs_to :war
 
   belongs_to :attacker, class_name: "Player", foreign_key: "attacker_id"
@@ -52,7 +45,7 @@ class Battle < ActiveRecord::Base
               only_integer: true 
             }
   
-  validates :stars_earned, 
+  validates :war_stars_awarded, 
             numericality: { 
               greater_than_or_equal_to: 0,
               less_than_or_equal_to: 3,
@@ -77,16 +70,16 @@ class Battle < ActiveRecord::Base
   end
 
   def validate_awarded_vs_earned_stars
-    if self.stars_awarded.present? && self.stars_earned.present?
-      if self.stars_earned > self.stars_awarded
-        errors.add(:stars_earned, "may not be greater than the number awarded")
+    if self.stars_awarded.present? && self.war_stars_awarded.present?
+      if self.war_stars_awarded > self.stars_awarded
+        errors.add(:war_stars_awarded, "may not be greater than the number awarded")
       end
     end
   end
 
 
   def attacker_earned_stars_for_clan?
-    self.stars_earned > 0
+    self.war_stars_awarded > 0
   end
 
   def attacker_victorious?

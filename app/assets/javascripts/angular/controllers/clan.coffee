@@ -37,7 +37,7 @@ warOfClansAppControllersModule.controller("ClanController",
       $scope.warClan(war).team_size * 2
 
     $scope.warClanStarsEarnedRatio = (war) ->
-      starsEarned = $scope.warClan(war).stars_earned
+      starsEarned = $scope.warClan(war).war_stars_awarded
       possibleStars = $scope.warClanStarsPossible(war)
       (starsEarned / possibleStars) * 100
 

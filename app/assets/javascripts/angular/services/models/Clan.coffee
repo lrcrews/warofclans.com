@@ -24,8 +24,8 @@ warOfClansAppServicesModule.factory("Clan",  ->
       @wars                 = json.wars ? []    # will become War.coffee objects
 
       # sometimes this will exist too (from clan_war)
-      @stars_earned         = json.stars_earned ? null
       @team_size            = json.team_size ? null
+      @war_stars_awarded    = json.war_stars_awarded ? null
       @winner               = json.winner ? null
 
 

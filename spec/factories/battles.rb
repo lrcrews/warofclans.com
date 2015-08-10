@@ -6,7 +6,7 @@ FactoryGirl.define do
     destruction_percent 100
     minutes_left_in_war 42
     stars_awarded 3
-    stars_earned 3
+    war_stars_awarded 3
   end
 
 end

@@ -5,10 +5,10 @@ class ClanWar < ActiveRecord::Base
 
 
   validates :player_count, presence: true, numericality: { only_integer: true }
-  validates :stars_earned, numericality: { greater_than_or_equal_to: 0, only_integer: true }, unless: "self.stars_earned.nil?"
+  validates :war_stars_awarded, numericality: { greater_than_or_equal_to: 0, only_integer: true }, unless: "self.war_stars_awarded.nil?"
 
   validate :validate_player_count_5_to_50
-  validate :validate_stars_earned_not_infeasible
+  validate :validate_war_stars_awarded_not_infeasible
 
   def validate_player_count_5_to_50
     if self.player_count.present?
@@ -22,11 +22,11 @@ class ClanWar < ActiveRecord::Base
     end
   end
 
-  def validate_stars_earned_not_infeasible
-    if self.stars_earned.present? && self.player_count.present? 
+  def validate_war_stars_awarded_not_infeasible
+    if self.war_stars_awarded.present? && self.player_count.present? 
       max = self.player_count * 3
-      if self.stars_earned > max
-        self.errors.add(:stars_earned, "should be less than #{max}")
+      if self.war_stars_awarded > max
+        self.errors.add(:war_stars_awarded, "should be less than #{max}")
       end
     end
   end

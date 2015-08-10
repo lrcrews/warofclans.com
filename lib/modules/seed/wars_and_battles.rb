@@ -367,8 +367,8 @@ module Seed
         end
 
         # data is assumed to be in the following format:
-        # [ War, Attacker, "attacker_rank", Defender, "defender_rank", "destruction_percent", "minutes_left_in_war", "stars_awarded", "stars_earned" ]
-        # [  0 ,    1     ,       2       ,     3   ,        4       ,           5          ,           6          ,        7       ,        8       ]
+        # [ War, Attacker, "attacker_rank", Defender, "defender_rank", "destruction_percent", "minutes_left_in_war", "stars_awarded", "war_stars_awarded" ]
+        # [  0 ,    1     ,       2       ,     3   ,        4       ,           5          ,           6          ,        7       ,           8         ]
         def create_battle(data)
           puts "---------------------"
           puts "attempting battle creation for war_id '#{data[0].id}', attacker_id '#{data[1].id}', and defender_id '#{data[3].id}'"
@@ -383,7 +383,7 @@ module Seed
               destruction_percent: data[5],
               minutes_left_in_war: data[6],
               stars_awarded: data[7],
-              stars_earned: data[8]
+              war_stars_awarded: data[8]
             )
             if battle.save
               puts "SUCCESS:  created battle of id '#{battle.id}'."
@@ -452,8 +452,8 @@ module Seed
             end
           end
 
-          war.clan_wars[0].update_attribute(:stars_earned, clan_0_stars_earned)
-          war.clan_wars[1].update_attribute(:stars_earned, clan_1_stars_earned)
+          war.clan_wars[0].update_attribute(:war_stars_awarded, clan_0_stars_earned)
+          war.clan_wars[1].update_attribute(:war_stars_awarded, clan_1_stars_earned)
         end
 
 

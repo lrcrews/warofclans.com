@@ -14,9 +14,9 @@ warOfClansAppServicesModule.factory("Battle",  ->
       @id                   = json.id ? null
       @minutes_left_in_war  = json.minutes_left_in_war ? null
       @stars_awarded        = json.stars_awarded ? null
-      @stars_earned         = json.stars_earned ? null
       @updated_at           = json.updated_at ? ""
-
+      @war_stars_awarded    = json.war_stars_awarded ? null
+      
       @attacker             = json.battles ? [] # will become Player.coffee objects
       @defender             = json.clans ? []   # will become Player.coffee objects
       @war                  = json.war ? {}     # will become War.coffee object

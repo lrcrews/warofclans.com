@@ -24,4 +24,44 @@ class Player < ActiveRecord::Base
 
   validates :name, presence: true
 
+
+  def as_json(options={})
+    options = {} if options.nil?
+    # include all the normal stuff
+    json = super
+    # overwrite and add other stuff
+    json['created_at'] = self.created_at.to_date.to_s
+    json['total_attacks'] = self.attacks.count
+    json['total_defences'] = self.defences.count
+    json['updated_at'] = self.updated_at.to_date.to_s
+
+    # include all, or just some, related objects
+    # as_json as well
+
+    include_all = options[:include_all] == 'yes'
+
+    if include_all || 
+       options[:include_battles] == 'yes' || 
+       options[:include_attacks] == 'yes'
+      json.merge!('attacks' => self.attacks.as_json)
+    end
+
+    if include_all || 
+       options[:include_battles] == 'yes' || 
+       options[:include_defences] == 'yes'
+      json.merge!('defences' => self.defences.as_json)
+    end
+
+    if include_all || options[:include_clans] == "yes"
+      clans = []
+      self.clan_players.each do |clan_player|
+        clans << clan_player.clan.as_json.merge!({'active' => clan_player.active})
+      end
+      json['clans'] = clans
+    end
+
+    # give the people what they want
+    json
+  end
+
 end

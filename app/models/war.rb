@@ -68,7 +68,7 @@ class War < ActiveRecord::Base
       self.clan_wars.each do |clan_war|
         details_hash = {
           'team_size' => clan_war.player_count,
-          'stars_earned' => clan_war.stars_earned,
+          'war_stars_awarded' => clan_war.war_stars_awarded,
           'winner' => clan_war.winner?
         }
         clans << clan_war.clan.as_json.merge!(details_hash)
