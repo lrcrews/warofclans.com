@@ -18,10 +18,12 @@ module Seed
           puts "____________________"
           puts "adding clans to the existing #{current_clan_count} clan(s)..."
           # This list is arranged alphabetically by the "name" column (data[3])
-          [ ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       92],
+          [ ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
+            ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       92],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
             ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY,       26],
-            ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 3,  'New World 9',      1700, Clan::WAR_FREQUENCY_WEEKLY,       44],
+            ['#P9UVQ0Y',  Clan::CLAN_TYPE_INVITE, 5,  'LosCareCompleto',  1800, Clan::WAR_FREQUENCY_TWICE_WEEKLY,       26],
+            ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 4,  'New World 9',      1700, Clan::WAR_FREQUENCY_WEEKLY,       44],
             ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS,       99],
             ['#8QG0G9P0', Clan::CLAN_TYPE_INVITE, 3,  '**HEIST**',        2100, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 19]
           ].each do |data|
@@ -70,7 +72,19 @@ module Seed
           # This list is arranged alphabetically by the clan name (in comment), then 
           # by "name" column (data[2])
           #
-          [ # Doguimie<heart>
+          [ # CLANprive
+            ['#P9CCCRLY',   83,   'bok',            @clans['#PYCCJJUC']],
+            ['#22CUJCQ8',   100,  'FERRIS',         @clans['#PYCCJJUC']],
+            ['#J8Q9QU8P',   102,  'frank',          @clans['#PYCCJJUC']],
+            ['#U8JVLRVC',   97,   'Helios',         @clans['#PYCCJJUC']],
+            ['#LPCRCR0L',   115,  'lucacioffi1997', @clans['#PYCCJJUC']],
+            ['#JJ8YCGQC',   104,  'Marcoangela',    @clans['#PYCCJJUC']],
+            ['#QLCY2GL9',   117,  'place',          @clans['#PYCCJJUC']],
+            ['#G8J0JGRR',   110,  'pzz',            @clans['#PYCCJJUC']],
+            ['#80JJY2Q0',   102,  'Raiva',          @clans['#PYCCJJUC']],
+            ['#Y0VYVYCV',   100,  'wei',            @clans['#PYCCJJUC']],
+
+            # Doguimie<heart>
             ['#C0JJ2RJP',   103,  '57heaven',         @clans['#8YGC2RRV']],
             ['#9LG8YYCQ',   103,  '62-mefi-te',       @clans['#8YGC2RRV']],
             ['#PYCPC2LL',   88,   'Abd\'l',           @clans['#8YGC2RRV']],
@@ -116,10 +130,23 @@ module Seed
             ['#P02QQ89J',   103,  'toro',           @clans['#CYQ0C8G']],
             ['#JJGGJQRV',   88,   'Wasi2662',       @clans['#CYQ0C8G']],
 
+            # LosCareCompleto
+            ['#2PQCJVUL',   104,  'Actaral',    @clans['#P9UVQ0Y']],
+            ['#LJRCPCVV',   87,   'chino',      @clans['#P9UVQ0Y']],
+            ['#G2YCCJ9R',   102,  'choko',      @clans['#P9UVQ0Y']],
+            ['#UUC9PC8U',   53,   'chokolate',  @clans['#P9UVQ0Y']],
+            ['#LC2VJQ8U',   101,  'Don_Frio',   @clans['#P9UVQ0Y']],
+            ['#L8V8PJG',    100,  'Istubar',    @clans['#P9UVQ0Y']],
+            ['#8RY0YCRQ',   111,  'ivan',       @clans['#P9UVQ0Y']],
+            ['#9U82R928',   97,   'pankhy',     @clans['#P9UVQ0Y']],
+            ['#LQ990VRJ',   133,  'rey roma',   @clans['#P9UVQ0Y']],
+            ['#2LRUUU9V0',  67,   'ROMADITRO',  @clans['#P9UVQ0Y']],
+
             # New World 9
             ['#RCQ0J0JR',   85,   'agent_chu',        @clans['#8JR8G8L9']],
             ['#8LYRQ8Y',    105,  'alexander',        @clans['#8JR8G8L9']],
             ['#YV2J2028',   89,   'andrew rampant',   @clans['#8JR8G8L9']],
+            ['#9GRJQV82',   73,   'Bgeleyns',         @clans['#8JR8G8L9']],
             ['#LLVCLU2G',   91,   'charliedeuce',     @clans['#8JR8G8L9']],
             ['#L9QJ2JYQ',   86,   'Chromatomic',      @clans['#8JR8G8L9']],
             ['#PQVUJ2PR',   85,   'Count Dubula',     @clans['#8JR8G8L9']],

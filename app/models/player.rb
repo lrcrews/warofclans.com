@@ -64,4 +64,22 @@ class Player < ActiveRecord::Base
     json
   end
 
+
+  def update_defensive_counters(battle)
+    self.defences_won_completely += 1 if battle.defended_completely?
+    self.defences_won_war_stars_defended += 1 if battle.defended_war_stars?
+    self.stars_lost += battle.stars_awarded
+    self.war_stars_lost += battle.war_stars_awarded
+    self.save if self.changed?
+  end
+
+
+  def update_offensive_counters(battle)
+    self.attacks_won += 1 if battle.attacker_victorious?
+    self.attacks_won_with_war_stars += 1 if battle.attacker_earned_stars_for_clan?
+    self.stars += battle.stars_awarded
+    self.war_stars += battle.war_stars_awarded
+    self.save if self.changed?
+  end
+
 end

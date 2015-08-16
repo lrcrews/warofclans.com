@@ -13,6 +13,8 @@ module Seed
         create_new_world_9_vs_galaxyguardians
         # damn it, the three year anniversary patch removed us vs BLACKGHOST, 1 gem resource boost though, so I guess it's alright
         create_new_world_9_vs_heist
+        create_new_world_9_vs_loscarecompleto
+        create_new_world_9_vs_CLANprive
       end
 
 
@@ -352,6 +354,96 @@ module Seed
             [war, @players["#YC0JRGJU"],  4,    @players["#L9QJ2JYQ"],    11, 76,   117,  2, 0],
             [war, @players["#RUPY9RCU"],  3,    @players["#L9QJ2JYQ"],    11, 74,   62,   1, 0],
             [war, @players["#L9QJ2JYQ"],  11,   @players["#2CQPJG2C"],    12, 48,   6,    0, 0]
+          ].each do |data|
+            create_battle(data)
+          end
+          # Update stars_earned values
+          update_stars_earned_for_clans_of_war(war)
+        end
+
+
+        def create_new_world_9_vs_loscarecompleto
+          # the clans
+          new_world_9 = Clan.find_by_coc_id("#8JR8G8L9")
+          loscarecompleto = Clan.find_by_coc_id("#P9UVQ0Y")
+          if new_world_9.nil? || loscarecompleto.nil?
+            puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and loscarecompleto ('#P9UVQ0Y')"
+            return
+          end
+          # the war
+          war = create_war("8/8/2015".to_date, 10, new_world_9, loscarecompleto, new_world_9)
+          if war.nil?
+            puts "WARNING:  not creating new world 9 vs loscarecompleto"
+            return
+          end
+          # the players
+          add_players_for_clan(new_world_9)
+          add_players_for_clan(loscarecompleto)
+          # the battles, ordered by time, first to last.
+          [ [war, @players["#9PQ2LV8L"],  9,    @players["#2LRUUU9V0"],   9,  85,   1422, 2, 2],
+            [war, @players["#2LRUUU9V0"], 9,    @players["#9PQ2LV8L"],    9,  59,   1389, 1, 1],
+            [war, @players["#PV0LJJU0"],  7,    @players["#9U82R928"],    7,  99,   1376, 2, 2],
+            [war, @players["#R20YLVUP"],  1,    @players["#LQ990VRJ"],    1,  61,   1345, 2, 2],
+            [war, @players["#Y2U2Q20G"],  4,    @players["#LC2VJQ8U"],    6,  76,   1335, 1, 1],
+            [war, @players["#9PQ2LV8L"],  9,    @players["#UUC9PC8U"],    10, 100,  1328, 3, 3],
+            [war, @players["#2LRUUU9V0"], 9,    @players["#9GRJQV82"],    10, 100,  1310, 3, 3],
+            [war, @players["#LC2VJQ8U"],  6,    @players["#G28VPUR"],     6,  91,   1310, 2, 2],
+            [war, @players["#RCQ0J0JR"],  8,    @players["#LJRCPCVV"],    8,  100,  1310, 3, 3],
+            [war, @players["#G28VPUR"],   6,    @players["#G2YCCJ9R"],    5,  49,   1190, 0, 0],
+            [war, @players["#R20YLVUP"],  1,    @players["#8RY0YCRQ"],    2,  100,  1181, 3, 3],
+            [war, @players["#2PQCJVUL"],  4,    @players["#Y2U2Q20G"],    4,  40,   1115, 0, 0],
+            [war, @players["#LQ990VRJ"],  1,    @players["#RVJ08JR2"],    2,  75,   1038, 2, 2],
+            [war, @players["#9GRJQV82"],  10,   @players["#2LRUUU9V0"],   9,  71,   1031, 1, 0],
+            [war, @players["#Y2U2Q20G"],  4,    @players["#G2YCCJ9R"],    5,  53,   484,  2, 2],
+            [war, @players["#RVJ08JR2"],  2,    @players["#2PQCJVUL"],    4,  100,  457,  3, 3],
+            [war, @players["#L8V8PJG"],   3,    @players["#PQVUJ2PR"],    3,  65,   419,  2, 2],
+            [war, @players["#UUC9PC8U"],  10,   @players["#9PQ2LV8L"],    9,  72,   418,  2, 1],
+            [war, @players["#LJRCPCVV"],  8,    @players["#RCQ0J0JR"],    8,  72,   374,  2, 2],
+            [war, @players["#G2YCCJ9R"],  5,    @players["#LLVCLU2G"],    5,  68,   363,  2, 2],
+            [war, @players["#RVJ08JR2"],  2,    @players["#L8V8PJG"],     3,  54,   352,  2, 2],
+            [war, @players["#8RY0YCRQ"],  2,    @players["#PV0LJJU0"],    7,  73,   335,  2, 2],
+            [war, @players["#LC2VJQ8U"],  6,    @players["#9PQ2LV8L"],    9,  100,  304,  3, 1],
+            [war, @players["#9U82R928"],  7,    @players["#RCQ0J0JR"],    8,  68,   264,  2, 0],
+            [war, @players["#PQVUJ2PR"],  3,    @players["#2LRUUU9V0"],   9,  100,  255,  3, 1],
+            [war, @players["#LJRCPCVV"],  8,    @players["#Y2U2Q20G"],    4,  54,   234,  2, 2],
+            [war, @players["#PV0LJJU0"],  7,    @players["#LC2VJQ8U"],    6,  58,   225,  2, 1],
+            [war, @players["#8RY0YCRQ"],  2,    @players["#RCQ0J0JR"],    8,  68,   156,  1, 0],
+            [war, @players["#LLVCLU2G"],  5,    @players["#G2YCCJ9R"],    5,  75,   155,  2, 0],
+            [war, @players["#G28VPUR"],   6,    @players["#LC2VJQ8U"],    6,  38,   147,  0, 0],
+            [war, @players["#PQVUJ2PR"],  3,    @players["#9U82R928"],    7,  77,   145,  2, 0],
+            [war, @players["#9U82R928"],  7,    @players["#PV0LJJU0"],    7,  57,   125,  2, 0],
+            [war, @players["#LQ990VRJ"],  1,    @players["#R20YLVUP"],    1,  63,   68,   1, 1],
+            [war, @players["#RCQ0J0JR"],  8,    @players["#9U82R928"],    7,  100,  65,   3, 1],
+            [war, @players["#G2YCCJ9R"],  5,    @players["#RCQ0J0JR"],    8,  94,   50,   2, 0],
+            [war, @players["#UUC9PC8U"],  10,   @players["#9GRJQV82"],    10, 82,   44,   1, 0],
+            [war, @players["#LLVCLU2G"],  5,    @players["#LC2VJQ8U"],    6,  82,   29,   2, 0]
+          ].each do |data|
+            create_battle(data)
+          end
+          # Update stars_earned values
+          update_stars_earned_for_clans_of_war(war)
+        end
+
+
+        def create_new_world_9_vs_CLANprive
+          # the clans
+          new_world_9 = Clan.find_by_coc_id("#8JR8G8L9")
+          clanprive = Clan.find_by_coc_id("#PYCCJJUC")
+          if new_world_9.nil? || clanprive.nil?
+            puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and clanprive ('#PYCCJJUC')"
+            return
+          end
+          # the war
+          war = create_war("8/15/2015".to_date, 10, new_world_9, clanprive, '????????')
+          if war.nil?
+            puts "WARNING:  not creating new world 9 vs clanprive"
+            return
+          end
+          # the players
+          add_players_for_clan(new_world_9)
+          add_players_for_clan(clanprive)
+          # the battles, ordered by time, first to last.
+          [ [war, @players["#RCQ0J0JR"],  7,    @players["#Y0VYVYCV"],   7,  68,   1413, 2, 2]
           ].each do |data|
             create_battle(data)
           end

@@ -10,6 +10,7 @@ class ClanWar < ActiveRecord::Base
   validate :validate_player_count_5_to_50
   validate :validate_war_stars_awarded_not_infeasible
 
+
   def validate_player_count_5_to_50
     if self.player_count.present?
       if self.player_count < 5
@@ -29,6 +30,11 @@ class ClanWar < ActiveRecord::Base
         self.errors.add(:war_stars_awarded, "should be less than #{max}")
       end
     end
+  end
+
+  def update_war_stars_won_counter(battle)
+    self.war_stars_awarded += battle.war_stars_awarded
+    self.save if self.changed?
   end
 
 end

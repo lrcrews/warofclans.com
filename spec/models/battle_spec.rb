@@ -22,70 +22,130 @@ RSpec.describe Battle do
   end
 
   describe "after_create" do
-    it "should update the attacks_won and attacks_won_with_war_stars counters on the attacking Player" do
-      attacker = FactoryGirl.build(:player)
+    it "should update the attacks_won counter on the attacking Player" do
+      attacker = FactoryGirl.create(:player)
       expect(attacker.attacks_won).to eq(0)
-      expect(attacker.attacks_won_with_war_stars).to eq(0)
-
+      
       battle1 = FactoryGirl.build(:battle, 
-        destruction_percent: 100, 
-        stars_awarded: 3, 
-        war_stars_awarded: 2
+        destruction_percent: 44, 
+        stars_awarded: 0, 
+        war_stars_awarded: 0
       )
       battle1.attacker = attacker
       battle1.defender = FactoryGirl.build(:player)
       battle1.war = @war
       battle1.save
-      expect(attacker.attacks_won).to eq(1)
-      expect(attacker.attacks_won_with_war_stars).to eq(1)
-
+      expect(attacker.attacks_won).to eq(0)
+      
       battle2 = FactoryGirl.build(:battle, 
-        destruction_percent: 88, 
-        stars_awarded: 2, 
-        war_stars_awarded: 0
+        destruction_percent: 100, 
+        stars_awarded: 3, 
+        war_stars_awarded: 2
       )
       battle2.attacker = attacker
       battle2.defender = FactoryGirl.build(:player)
       battle2.war = @war
       battle2.save
-      expect(attacker.attacks_won).to eq(2)
+      expect(attacker.attacks_won).to eq(1)
+    end
+
+    it "should update the attacks_won_with_war_stars counter on the attacking Player" do
+      attacker = FactoryGirl.create(:player)
+      expect(attacker.attacks_won_with_war_stars).to eq(0)
+
+      battle1 = FactoryGirl.build(:battle, 
+        destruction_percent: 88, 
+        stars_awarded: 1, 
+        war_stars_awarded: 0
+      )
+      battle1.attacker = attacker
+      battle1.defender = FactoryGirl.build(:player)
+      battle1.war = @war
+      battle1.save
+      expect(attacker.attacks_won_with_war_stars).to eq(0)
+
+      battle2 = FactoryGirl.build(:battle, 
+        destruction_percent: 100, 
+        stars_awarded: 3, 
+        war_stars_awarded: 2
+      )
+      battle2.attacker = attacker
+      battle2.defender = FactoryGirl.build(:player)
+      battle2.war = @war
+      battle2.save
       expect(attacker.attacks_won_with_war_stars).to eq(1)
     end
 
-    it "should update the defences_won and defences_effective counters for the defending Player" do
-      defender = FactoryGirl.build(:player)
-      expect(defender.defences_won).to eq(0)
-      expect(defender.defences_effective).to eq(0)
+    it "should update the defences_won_completely counter for the defending Player" do
+      defender = FactoryGirl.create(:player)
+      expect(defender.defences_won_completely).to eq(0)
 
       battle1 = FactoryGirl.build(:battle, 
-        destruction_percent: 49, 
-        stars_awarded: 0, 
+        destruction_percent: 55, 
+        stars_awarded: 1, 
         war_stars_awarded: 0
       )
       battle1.attacker = FactoryGirl.build(:player)
       battle1.defender = defender
       battle1.war = @war
       battle1.save
-      expect(defender.defences_won).to eq(1)
-      expect(defender.defences_effective).to eq(1)
+      expect(defender.defences_won_completely).to eq(0)
 
       battle2 = FactoryGirl.build(:battle, 
-        destruction_percent: 55, 
-        stars_awarded: 1, 
+        destruction_percent: 49, 
+        stars_awarded: 0, 
         war_stars_awarded: 0
       )
       battle2.attacker = FactoryGirl.build(:player)
       battle2.defender = defender
       battle2.war = @war
       battle2.save
-      expect(defender.defences_won).to eq(1)
-      expect(defender.defences_effective).to eq(2)
+      expect(defender.defences_won_completely).to eq(1)
+    end
+
+    it "should update the defences_won_war_stars_defended counter for the defending Player" do
+      defender = FactoryGirl.create(:player)
+      expect(defender.defences_won_war_stars_defended).to eq(0)
+
+      battle1 = FactoryGirl.build(:battle, 
+        destruction_percent: 55, 
+        stars_awarded: 1, 
+        war_stars_awarded: 1
+      )
+      battle1.attacker = FactoryGirl.build(:player)
+      battle1.defender = defender
+      battle1.war = @war
+      battle1.save
+      expect(defender.defences_won_war_stars_defended).to eq(0)
+
+      battle2 = FactoryGirl.build(:battle, 
+        destruction_percent: 88, 
+        stars_awarded: 2, 
+        war_stars_awarded: 0
+      )
+      battle2.attacker = FactoryGirl.build(:player)
+      battle2.defender = defender
+      battle2.war = @war
+      battle2.save
+      expect(defender.defences_won_war_stars_defended).to eq(1)
+
+      battle3 = FactoryGirl.build(:battle, 
+        destruction_percent: 49, 
+        stars_awarded: 0, 
+        war_stars_awarded: 0
+      )
+      battle3.attacker = FactoryGirl.build(:player)
+      battle3.defender = defender
+      battle3.war = @war
+      battle3.save
+      expect(defender.defences_won_war_stars_defended).to eq(2)
     end
 
     it "should update the war_stars_awarded counter on the attacker's clan's ClanWar instance" do
       clan_war = @war.clan_wars.first
       clan = clan_war.clan
-      attacker = FactoryGirl.create(:player, clan: clan)
+      attacker = FactoryGirl.create(:player)
+      clan_player = FactoryGirl.create(:clan_player, clan: clan, player: attacker, active: true)
       initial_war_stars_awarded = clan_war.war_stars_awarded
 
       battle1 = FactoryGirl.create(:battle, 
@@ -216,6 +276,38 @@ RSpec.describe Battle do
 
       @battle.stars_awarded = 3
       expect(@battle.attacker_victorious?).to be_truthy
+    end
+  end
+
+  describe "defended_completely?" do
+    it "should return false if stars were awarded to the attacker" do
+      @battle.destruction_percent = 55
+      @battle.stars_awarded = 1
+      @battle.war_stars_awarded = 1
+      expect(@battle.defended_completely?).to be_falsey
+    end
+
+    it "should return true if no stars were awarded to the attacker" do
+      @battle.destruction_percent = 0
+      @battle.stars_awarded = 0
+      @battle.war_stars_awarded = 0
+      expect(@battle.defended_completely?).to be_truthy
+    end
+  end
+
+  describe "defended_war_stars?" do
+    it "should return false if war stars were awarded to the attacker" do
+      @battle.destruction_percent = 55
+      @battle.stars_awarded = 1
+      @battle.war_stars_awarded = 1
+      expect(@battle.defended_war_stars?).to be_falsey
+    end
+
+    it "should return true if no war stars were awarded to the attacker" do
+      @battle.destruction_percent = 55
+      @battle.stars_awarded = 1
+      @battle.war_stars_awarded = 0
+      expect(@battle.defended_war_stars?).to be_truthy
     end
   end
 

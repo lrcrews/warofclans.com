@@ -231,7 +231,7 @@ RSpec.describe Player do
     end
 
     it "should not increase when an attack is won, but no stars were earned for the player's clan" do
-      expect(@attacker.attacks.count).to eq(1)
+      expect(@attacker.attacks.count).to eq(0)
       expect(@attacker.attacks_won_with_war_stars).to eq(0)
 
       FactoryGirl.create(:battle, 
@@ -502,7 +502,7 @@ RSpec.describe Player do
     end
 
     it "should increase when an attack is won" do
-      expect(@attacker.stars.count).to eq(0)
+      expect(@attacker.stars).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -513,11 +513,11 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@attacker.stars.count).to eq(3)
+      expect(@attacker.stars).to eq(3)
     end
 
     it "should not increase when an attack is lost" do
-      expect(@attacker.stars.count).to eq(0)
+      expect(@attacker.stars).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -528,7 +528,7 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@attacker.stars.count).to eq(0)
+      expect(@attacker.stars).to eq(0)
     end
   end
 
@@ -551,7 +551,7 @@ RSpec.describe Player do
     end
 
     it "should increase when a defense is lost" do
-      expect(@defender.stars_lost.count).to eq(0)
+      expect(@defender.stars_lost).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -562,11 +562,11 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@defender.stars_lost.count).to eq(3)
+      expect(@defender.stars_lost).to eq(3)
     end
 
     it "should not increase when a defense is won" do
-      expect(@defender.stars_lost.count).to eq(0)
+      expect(@defender.stars_lost).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -577,7 +577,7 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@defender.stars_lost.count).to eq(0)
+      expect(@defender.stars_lost).to eq(0)
     end
   end
 
@@ -600,7 +600,7 @@ RSpec.describe Player do
     end
 
     it "should increase when an attack is won" do
-      expect(@attacker.war_stars.count).to eq(0)
+      expect(@attacker.war_stars).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -611,11 +611,11 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@attacker.war_stars.count).to eq(2)
+      expect(@attacker.war_stars).to eq(2)
     end
 
     it "should not increase when an attack is lost" do
-      expect(@attacker.war_stars.count).to eq(0)
+      expect(@attacker.war_stars).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -626,11 +626,11 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@attacker.war_stars.count).to eq(0)
+      expect(@attacker.war_stars).to eq(0)
     end
 
     it "should not increase when an attack is won, but it didn't gain any stars for the players's clan" do
-      expect(@attacker.war_stars.count).to eq(0)
+      expect(@attacker.war_stars).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -641,7 +641,7 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@attacker.war_stars.count).to eq(0)
+      expect(@attacker.war_stars).to eq(0)
     end
   end
 
@@ -664,7 +664,7 @@ RSpec.describe Player do
     end
 
     it "should increase when a defense is lost" do
-      expect(@defender.war_stars_lost.count).to eq(0)
+      expect(@defender.war_stars_lost).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -675,11 +675,11 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@defender.war_stars_lost.count).to eq(2)
+      expect(@defender.war_stars_lost).to eq(2)
     end
 
     it "should not increase when a defense is lost, but the attacker gained no war stars for their clan" do
-      expect(@defender.war_stars_lost.count).to eq(0)
+      expect(@defender.war_stars_lost).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -690,11 +690,11 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@defender.war_stars_lost.count).to eq(0)
+      expect(@defender.war_stars_lost).to eq(0)
     end
 
     it "should not increase when a defense is won" do
-      expect(@defender.war_stars_lost.count).to eq(0)
+      expect(@defender.war_stars_lost).to eq(0)
 
       FactoryGirl.create(:battle, 
         attacker: @attacker,
@@ -705,7 +705,7 @@ RSpec.describe Player do
         war: @war
       )
 
-      expect(@defender.war_stars_lost.count).to eq(0)
+      expect(@defender.war_stars_lost).to eq(0)
     end
   end
 

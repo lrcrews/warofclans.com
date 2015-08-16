@@ -38,10 +38,18 @@ class War < ActiveRecord::Base
     end
   end
 
-
   def winning_clan?(clan)
     winner = self.clan_wars.where(winner: true).first
     winner.present? ? winner.clan == clan : false
+  end
+
+  def clan_war_for_player(player)
+    return nil if self.clan_wars.empty?
+    if self.clan_wars.first.clan.has_player?(player)
+      self.clan_wars.first
+    else
+      self.clan_wars.last
+    end
   end
 
   def as_json(options={})
@@ -75,7 +83,6 @@ class War < ActiveRecord::Base
       end
       json['clans'] = clans
     end
-
     # give the people what they want
     json
   end

@@ -1,5 +1,8 @@
 class Battle < ActiveRecord::Base
 
+  after_create :fire_counter_update_jobs
+
+
   belongs_to :war
 
   belongs_to :attacker, class_name: "Player", foreign_key: "attacker_id"
@@ -77,7 +80,6 @@ class Battle < ActiveRecord::Base
     end
   end
 
-
   def attacker_earned_stars_for_clan?
     self.war_stars_awarded > 0
   end
@@ -86,6 +88,13 @@ class Battle < ActiveRecord::Base
     self.stars_awarded > 0
   end
 
+  def defended_completely?
+    self.stars_awarded == 0
+  end
+
+  def defended_war_stars?
+    self.war_stars_awarded == 0
+  end
 
   def as_json(options={})
     options = {} if options.nil?
@@ -109,9 +118,35 @@ class Battle < ActiveRecord::Base
     if include_all || options[:include_war] == 'yes'
       json.merge!('war' => self.war.as_json)
     end
-
     # give the people what they want
     json
   end
+
+  def fire_counter_update_jobs
+    update_attacker
+    update_attackers_clan_war
+    update_defender
+  end
+
+
+  private
+
+    # TODO: these should be async jobs
+
+    def update_attacker
+      self.attacker.update_offensive_counters(self)
+    end
+
+    def update_attackers_clan_war
+      attackers_clan_war = self.war.clan_war_for_player(attacker)
+      if attackers_clan_war.present?
+        attackers_clan_war.update_war_stars_won_counter(self)
+      end
+    end
+
+    def update_defender
+      self.defender.update_defensive_counters(self)
+    end
+
 
 end

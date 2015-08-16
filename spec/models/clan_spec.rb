@@ -142,6 +142,30 @@ RSpec.describe Clan do
     end
   end
 
+  describe "has_player?" do
+    before :each do
+      @persisted_clan = @clan.dup
+      @persisted_clan.save
+      @player_in_clan = FactoryGirl.create(:player)
+      @clan_player = FactoryGirl.create(:clan_player, clan: @persisted_clan, player: @player_in_clan, active: true)
+      @player_not_in_clan = FactoryGirl.create(:player)
+    end
+
+    after :each do 
+      @clan_player.destroy
+      @player_in_clan.destroy
+      @persisted_clan.destroy
+    end
+
+    it "should return false if the given player is not in the clan" do
+      expect(@persisted_clan.has_player?(@player_not_in_clan)).to be_falsey
+    end
+
+    it "should return true if the given player is in the clan" do
+      expect(@persisted_clan.has_player?(@player_in_clan)).to be_truthy
+    end
+  end
+
   describe "level" do
     it "should be present" do
       @clan.level = nil

@@ -67,6 +67,10 @@ class Clan < ActiveRecord::Base
     Player.for_clan(self).active
   end
 
+  def has_player?(player)
+    self.players.include?(player)
+  end
+
   def as_json(options={})
     options = {} if options.nil?
     # include all the normal stuff
