@@ -3,8 +3,8 @@
 warOfClansAppControllersModule = angular.module("warOfClansApp.controllers")
 
 warOfClansAppControllersModule.controller("ClanController",
-  [ "$scope", "Clan", "War", 
-  ( $scope, Clan, War ) ->
+  [ "$scope", "Clan", "Player", "War", 
+  ( $scope, Clan, Player, War ) ->
 
     $scope.clan = new Clan(gon.clan)
 
@@ -53,5 +53,6 @@ warOfClansAppControllersModule.controller("ClanController",
     $scope.initialize = ->
       console.log("hello clan.")
       $scope.clan.wars = War.warsFromJsonWars($scope.clan.wars)
+      $scope.clan.players = Player.playersFromJsonPlayers($scope.clan.players)
 
   ])

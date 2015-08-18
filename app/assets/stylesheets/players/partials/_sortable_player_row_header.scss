@@ -12,14 +12,9 @@ body {
       border-top: 1px solid $border-primary;
 
       > li {
-        font-size: $small;
+        font-size: $smaller;
         font-weight: bold;
-        line-height: 110%;
-        min-height: 55px;
-
-        > span {
-          font-size: $smallest;
-        }
+        min-height: 48px;
       }
 
     }

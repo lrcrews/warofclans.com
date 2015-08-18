@@ -16,7 +16,7 @@
     {{ clan.totalNotWins() }}
   </li>
   <li>
-    {{ clan.winLossRatio() }}
+    {{ clan.winLossRatio() | number: 2 }}
   </li>
   <li>
     {{ clan.clan_type }}

@@ -30,7 +30,7 @@ warOfClansAppServicesModule.factory("Clan",  ->
 
 
     totalNotWins: ->
-      notWins = @wars.length - @totalWins()
+      @wars.length - @totalWins()
 
 
     totalWins: ->

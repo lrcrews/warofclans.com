@@ -4,42 +4,42 @@
 %>
 <ul class="sortable-player-row">
   <li>
-    atks
+    {{ player.name }}
+  </li>
+  <li class="short">
+    {{ player.total_attacks }}
+  </li>
+  <li class="short">
+    {{ player.attacks_won }}
   </li>
   <li>
-    atks won
+    {{ player.winLossRatio() | number: 2 }}
+  </li>
+  <li class="short">
+    {{ player.stars }}
   </li>
   <li>
-    atk W/L ratio
+    {{ player.starsPerAttack() | number: 2 }}
   </li>
   <li>
-    <i class="fa fa-star"></i>'s won
+    {{ player.warStarsPerAttack() | number: 2 }}
+  </li>
+  <li class="medium">
+    {{ player.total_defences }}
+  </li>
+  <li class="long">
+    {{ player.defences_won_completely }}
+  </li>
+  <li class="long">
+    {{ player.defences_won_war_stars_defended }}
+  </li>
+  <li class="short">
+    {{ player.stars_lost }}
   </li>
   <li>
-    avg <i class="fa fa-star"></i>'s won <span>(awarded)</span>
+    {{ player.starsLostPerDefence() | number: 2 }}
   </li>
   <li>
-    avg <i class="fa fa-star"></i>'s won <span>(earned)</span>
-  </li>
-  <li>
-    times atk'ed
-  </li>
-  <li>
-    <i class="fa fa-shield"></i>'s won
-  </li>
-  <li>
-    <i class="fa fa-shield"></i>'s won <span>(defended)</span>
-  </li>
-  <li>
-    <i class="fa fa-shield"></i>'s won <span>(effective)</span>
-  </li>
-  <li>
-    <i class="fa fa-shield"></i>'s won ratio
-  </li>
-  <li>
-    <i class="fa fa-star"></i>'s lost
-  </li>
-  <li>
-    average <i class="fa fa-star"></i>'s lost
+    {{ player.warStarsLostPerDefence() | number: 2 }}
   </li>
 </lul>
