@@ -31,8 +31,6 @@ class Player < ActiveRecord::Base
     json = super
     # overwrite and add other stuff
     json['created_at'] = self.created_at.to_date.to_s
-    json['total_attacks'] = self.attacks.count
-    json['total_defences'] = self.defences.count
     json['updated_at'] = self.updated_at.to_date.to_s
 
     # include all, or just some, related objects
@@ -66,6 +64,7 @@ class Player < ActiveRecord::Base
 
 
   def update_defensive_counters(battle)
+    self.total_defences += 1
     self.defences_won_completely += 1 if battle.defended_completely?
     self.defences_won_war_stars_defended += 1 if battle.defended_war_stars?
     self.stars_lost += battle.stars_awarded
@@ -75,6 +74,7 @@ class Player < ActiveRecord::Base
 
 
   def update_offensive_counters(battle)
+    self.total_attacks += 1
     self.attacks_won += 1 if battle.attacker_victorious?
     self.attacks_won_with_war_stars += 1 if battle.attacker_earned_stars_for_clan?
     self.stars += battle.stars_awarded

@@ -64,6 +64,10 @@ RSpec.describe ClanWar do
   end
 
   describe "war_stars_awarded" do
+    it "should default to 0" do
+      expect(ClanWar.new.war_stars_awarded).to eq(0)
+    end
+
     it "should not be negative" do
       @clan_war.war_stars_awarded = -1
       expect(@clan_war).to be_invalid

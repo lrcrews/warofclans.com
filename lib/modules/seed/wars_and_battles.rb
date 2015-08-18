@@ -73,8 +73,6 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
-          # Update stars_earned values
-          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -150,8 +148,6 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
-          # Update stars_earned values
-          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -233,8 +229,6 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
-          # Update stars_earned values
-          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -283,8 +277,6 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
-          # Update stars_earned values
-          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -357,8 +349,6 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
-          # Update stars_earned values
-          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -420,8 +410,6 @@ module Seed
           ].each do |data|
             create_battle(data)
           end
-          # Update stars_earned values
-          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -433,8 +421,8 @@ module Seed
             puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and clanprive ('#PYCCJJUC')"
             return
           end
-          # the war
-          war = create_war("8/15/2015".to_date, 10, new_world_9, clanprive, '????????')
+          # the war, date: d/m/yyyy
+          war = create_war("15/8/2015".to_date, 10, new_world_9, clanprive, clanprive)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs clanprive"
             return
@@ -443,12 +431,44 @@ module Seed
           add_players_for_clan(new_world_9)
           add_players_for_clan(clanprive)
           # the battles, ordered by time, first to last.
-          [ [war, @players["#RCQ0J0JR"],  7,    @players["#Y0VYVYCV"],   7,  68,   1413, 2, 2]
+          [ [war, @players["#RCQ0J0JR"],  7,    @players["#Y0VYVYCV"],  7,  68,   1413, 2, 2],
+            [war, @players["#LLVCLU2G"],  4,    @players["#80JJY2Q0"],  4,  54,   1010, 1, 1],
+            [war, @players["#R20YLVUP"],  1,    @players["#QLCY2GL9"],  1,  52,   952,  2, 2],
+            [war, @players["#L9QJ2JYQ"],  8,    @players["#P9CCCRLY"],  10, 54,   948,  1, 1],
+            [war, @players["#GY9YL809"],  9,    @players["#U8JVLRVC"],  9,  56,   933,  1, 1],
+            [war, @players["#22CUJCQ8"],  6,    @players["#PV0LJJU0"],  6,  72,   648,  2, 2],
+            [war, @players["#P9CCCRLY"],  10,   @players["#9GRJQV82"],  10, 94,   647,  2, 2],
+            [war, @players["#J8Q9QU8P"],  8,    @players["#GY9YL809"],  9,  68,   616,  2, 2],
+            [war, @players["#JJ8YCGQC"],  5,    @players["#G28VPUR"],   5,  86,   614,  2, 2],
+            [war, @players["#LPCRCR0L"],  2,    @players["#LLVCLU2G"],  4,  42,   583,  1, 1],
+            [war, @players["#U8JVLRVC"],  9,    @players["#L9QJ2JYQ"],  8,  100,  473,  3, 3],
+            [war, @players["#QLCY2GL9"],  1,    @players["#R20YLVUP"],  1,  49,   463,  1, 1],
+            [war, @players["#LPCRCR0L"],  2,    @players["#RCQ0J0JR"],  7,  62,   437,  2, 2],
+            [war, @players["#G8J0JGRR"],  3,    @players["#Y2U2Q20G"],  3,  77,   409,  2, 2],
+            [war, @players["#Y0VYVYCV"],  7,    @players["#LLVCLU2G"],  4,  88,   407,  2, 1],
+            [war, @players["#Y2U2Q20G"],  3,    @players["#JJ8YCGQC"],  5,  64,   387,  2, 2],
+            [war, @players["#9GRJQV82"],  10,   @players["#P9CCCRLY"],  10, 56,   353,  1, 0],
+            [war, @players["#80JJY2Q0"],  4,    @players["#LLVCLU2G"],  4,  100,  332,  3, 1],
+            [war, @players["#R20YLVUP"],  1,    @players["#80JJY2Q0"],  4,  66,   308,  2, 1],
+            [war, @players["#22CUJCQ8"],  6,    @players["#RCQ0J0JR"],  7,  84,   266,  2, 0],
+            [war, @players["#RVJ08JR2"],  2,    @players["#LPCRCR0L"],  2,  100,  263,  3, 3],
+            [war, @players["#JJ8YCGQC"],  5,    @players["#PV0LJJU0"],  6,  90,   208,  2, 0],
+            [war, @players["#PV0LJJU0"],  6,    @players["#J8Q9QU8P"],  8,  77,   200,  2, 2],
+            [war, @players["#QLCY2GL9"],  1,    @players["#RVJ08JR2"],  2,  91,   184,  2, 2],
+            [war, @players["#RVJ08JR2"],  2,    @players["#G8J0JGRR"],  3,  57,   176,  2, 2],
+            [war, @players["#80JJY2Q0"],  4,    @players["#G28VPUR"],   5,  100,  161,  3, 1],
+            [war, @players["#U8JVLRVC"],  9,    @players["#GY9YL809"],  9,  98,   149,  2, 0],
+            [war, @players["#Y0VYVYCV"],  7,    @players["#9GRJQV82"],  10, 100,  135,  3, 1],
+            [war, @players["#P9CCCRLY"],  10,   @players["#GY9YL809"],  9,  52,   108,  2, 0],
+            [war, @players["#PV0LJJU0"],  6,    @players["#22CUJCQ8"],  6,  52,   91,   1, 1],
+            [war, @players["#G8J0JGRR"],  3,    @players["#PV0LJJU0"],  6,  100,  56,   3, 1],
+            [war, @players["#GY9YL809"],  9,    @players["#P9CCCRLY"],  10, 100,  52,   3, 2],
+            [war, @players["#J8Q9QU8P"],  8,    @players["#RCQ0J0JR"],  7,  74,   21,   1, 0],
+            [war, @players["#RCQ0J0JR"],  7,    @players["#U8JVLRVC"],  9,  74,   13,   2, 1],
+            [war, @players["#Y2U2Q20G"],  3,    @players["#22CUJCQ8"],  6,  70,   9,    2, 1]
           ].each do |data|
             create_battle(data)
           end
-          # Update stars_earned values
-          update_stars_earned_for_clans_of_war(war)
         end
 
 
@@ -524,28 +544,6 @@ module Seed
             return nil
           end
           war
-        end
-
-
-        def update_stars_earned_for_clans_of_war(war)
-          clan_0 = war.clan_wars[0].clan
-          clan_0_stars_earned = 0
-
-          clan_1 = war.clan_wars[1].clan
-          clan_1_stars_earned = 0
-
-          # assuming only one clan in clans list b/c this is for seed data,
-          # and that assumption is true (thus far)
-          war.battles.each do |battle|
-            if player_of_coc_id(battle.attacker.coc_id).clans[0] == clan_0
-              clan_0_stars_earned += battle.stars_earned
-            elsif player_of_coc_id(battle.attacker.coc_id).clans[0] == clan_1
-              clan_1_stars_earned += battle.stars_earned
-            end
-          end
-
-          war.clan_wars[0].update_attribute(:war_stars_awarded, clan_0_stars_earned)
-          war.clan_wars[1].update_attribute(:war_stars_awarded, clan_1_stars_earned)
         end
 
 

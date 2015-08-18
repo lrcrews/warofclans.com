@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809195226) do
+ActiveRecord::Schema.define(version: 20150818060130) do
 
   create_table "battles", force: :cascade do |t|
     t.integer  "attacker_id"
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20150809195226) do
     t.integer  "clan_id"
     t.integer  "war_id"
     t.boolean  "winner"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "player_count"
-    t.integer  "war_stars_awarded"
+    t.integer  "war_stars_awarded", default: 0
   end
 
   add_index "clan_wars", ["clan_id", "war_id"], name: "index_clan_wars_on_clan_id_and_war_id", unique: true
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20150809195226) do
     t.integer  "stars_lost",                      default: 0
     t.integer  "war_stars",                       default: 0
     t.integer  "war_stars_lost",                  default: 0
+    t.integer  "total_attacks",                   default: 0
+    t.integer  "total_defences",                  default: 0
   end
 
   create_table "users", force: :cascade do |t|

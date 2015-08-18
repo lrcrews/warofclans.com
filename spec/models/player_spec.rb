@@ -126,7 +126,6 @@ RSpec.describe Player do
   end
 
   describe "attacks_won" do
-    
     before :each do
       @attacker = FactoryGirl.create(:player)
       @defender = FactoryGirl.create(:player)
@@ -179,7 +178,6 @@ RSpec.describe Player do
   end
 
   describe "attacks_won_with_war_stars" do
-    
     before :each do
       @attacker = FactoryGirl.create(:player)
       @defender = FactoryGirl.create(:player)
@@ -349,7 +347,6 @@ RSpec.describe Player do
   end
 
   describe "defences_won_war_stars_defended" do
-
     before :each do
       @attacker = FactoryGirl.create(:player)
       @defender = FactoryGirl.create(:player)
@@ -484,7 +481,6 @@ RSpec.describe Player do
   end
 
   describe "stars" do
-
     before :each do
       @attacker = FactoryGirl.create(:player)
       @defender = FactoryGirl.create(:player)
@@ -533,7 +529,6 @@ RSpec.describe Player do
   end
 
   describe "stars_lost" do
-
     before :each do
       @attacker = FactoryGirl.create(:player)
       @defender = FactoryGirl.create(:player)
@@ -581,8 +576,103 @@ RSpec.describe Player do
     end
   end
 
-  describe "war_stars" do
+  describe "total_attacks" do
+    before :each do
+      @attacker = FactoryGirl.create(:player)
+      @defender = FactoryGirl.create(:player)
+      @war = FactoryGirl.create(:clan_war).war
+    end
 
+    after :each do
+      @war.destroy
+      @attacker.destroy
+      @defender.destroy
+    end
+
+    it "should default to 0" do
+      expect(Player.new.total_attacks).to eq(0)
+    end
+
+    it "should increase when an attack is made" do
+      expect(@attacker.total_attacks).to eq(0)
+
+      FactoryGirl.create(:battle, 
+        attacker: @attacker,
+        defender: @defender,
+        destruction_percent: 100, 
+        stars_awarded: 3, 
+        war_stars_awarded: 2,
+        war: @war
+      )
+
+      expect(@attacker.total_attacks).to eq(1)
+    end
+
+    it "should not increase when being attacked" do
+      expect(@defender.total_attacks).to eq(0)
+
+      FactoryGirl.create(:battle, 
+        attacker: @attacker,
+        defender: @defender,
+        destruction_percent: 100, 
+        stars_awarded: 3, 
+        war_stars_awarded: 2,
+        war: @war
+      )
+
+      expect(@defender.total_attacks).to eq(0)
+    end
+  end
+
+  describe "total_defences" do
+    before :each do
+      @attacker = FactoryGirl.create(:player)
+      @defender = FactoryGirl.create(:player)
+      @war = FactoryGirl.create(:clan_war).war
+    end
+
+    after :each do
+      @war.destroy
+      @attacker.destroy
+      @defender.destroy
+    end
+
+    it "should default to 0" do
+      expect(Player.new.total_defences).to eq(0)
+    end
+
+    it "should increase when you are attacked" do
+      expect(@defender.total_defences).to eq(0)
+
+      FactoryGirl.create(:battle, 
+        attacker: @attacker,
+        defender: @defender,
+        destruction_percent: 100, 
+        stars_awarded: 3, 
+        war_stars_awarded: 2,
+        war: @war
+      )
+
+      expect(@defender.total_defences).to eq(1)
+    end
+
+    it "should not increase when attacking" do
+      expect(@attacker.total_defences).to eq(0)
+
+      FactoryGirl.create(:battle, 
+        attacker: @attacker,
+        defender: @defender,
+        destruction_percent: 100, 
+        stars_awarded: 3, 
+        war_stars_awarded: 2,
+        war: @war
+      )
+
+      expect(@attacker.total_defences).to eq(0)
+    end
+  end
+
+  describe "war_stars" do
     before :each do
       @attacker = FactoryGirl.create(:player)
       @defender = FactoryGirl.create(:player)
@@ -646,7 +736,6 @@ RSpec.describe Player do
   end
 
   describe "war_stars_lost" do
-
     before :each do
       @attacker = FactoryGirl.create(:player)
       @defender = FactoryGirl.create(:player)
