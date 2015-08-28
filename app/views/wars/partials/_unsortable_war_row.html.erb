@@ -4,7 +4,7 @@
 %>
 <section class="unsortable-war-row">
   <header>
-    {{ war.created_at }}
+    {{ war.war_date }}
   </header>
   <ul>
     <li class="winner">
@@ -54,7 +54,7 @@
       </ul>
     </li>
   </ul>
-  <footer>
-    <a href="/wars/{{ war.id }}">details</a>
+  <footer ng-click="windowLocation(war.link())">
+    <a href="{{ war.link() }}">details</a>
   </footer>
 </section>

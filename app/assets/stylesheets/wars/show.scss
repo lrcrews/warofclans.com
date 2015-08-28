@@ -1,0 +1,55 @@
+@import "mixins";
+
+body {
+  
+  &.war-of-clans {
+
+    > section.page-container {
+      
+      &.wars.show {
+
+        > section {
+          margin: $height-of-site-header auto 16px;
+          padding-top: 16px;
+
+          > section {
+            padding: 40px 0;
+
+            > header {
+              color: $font-dark;
+              cursor: pointer;
+              font-size: $large;
+
+              @include font-uncial-antiqua;
+
+              > ul {
+
+                > li {
+                  border: 1px solid $border-primary;
+                  border-bottom: none;
+                  display: inline-block;
+                  height: 100%;
+                  margin-left: 4px;
+                  padding: 10px;
+                  text-align: center;
+                  width: 100px;
+
+                  &.active {
+                    background-color: $white;
+                    color: $font-other;
+                    cursor: default;
+                  }
+
+                  &:not(.active) {
+                    background-color: $background-dark;
+                    color: $font-light;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

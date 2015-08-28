@@ -4,7 +4,7 @@ warOfClansAppControllersModule = angular.module("warOfClansApp.controllers")
 
 warOfClansAppControllersModule.controller("ClanController",
   [ "$scope", "Clan", "Player", "War", 
-  ( $scope, Clan, Player, War ) ->
+  (  $scope,   Clan,   Player,   War ) ->
 
     $scope.clan = new Clan(gon.clan)
 

@@ -15,6 +15,7 @@ module Seed
         create_new_world_9_vs_heist
         create_new_world_9_vs_loscarecompleto
         create_new_world_9_vs_CLANprive
+        # ya.. I was in Vancouver, which is not noramlly where I am, we did win though
       end
 
 

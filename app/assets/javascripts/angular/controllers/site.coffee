@@ -3,9 +3,11 @@
 warOfClansAppControllersModule = angular.module("warOfClansApp.controllers")
 
 warOfClansAppControllersModule.controller("SiteController",
-  [ "$scope", "$window", 
-  ( $scope,   $window ) ->
+  [ "$scope", 
+  (  $scope ) ->
 
+    $scope.windowLocation = (url) ->
+      window.location = url
     
     $scope.initialize = ->
       console.log("hello site.")

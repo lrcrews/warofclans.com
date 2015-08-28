@@ -13,7 +13,8 @@ class WarsController < ApplicationController
 
 
   def show
-    war = War.find_by_id(params[:id])
+    war = War.includes([{battles: [:attacker, :defender]}, :clan_wars, :clans])
+             .find_by_id(params[:id])
     redirect_to wars_url and return if war.nil?
     gon.war = war.as_json(include_all: "yes")
     respond_to do |format|

@@ -205,6 +205,35 @@ RSpec.describe Battle do
     end
   end
 
+  describe "before_create" do
+    it "should set the coc ids of the attacker and defender" do
+      # make war
+      war = FactoryGirl.build(:war)
+      clan_war1 = FactoryGirl.build(:clan_war, war: @war)
+      clan_war2 = FactoryGirl.build(:clan_war, war: @war)
+      war.clan_wars = [ clan_war1, clan_war2 ]
+      war.save
+      # battle it out
+      battle = FactoryGirl.build(:battle)
+      attacker = FactoryGirl.create(:player)
+      clan_attacker = FactoryGirl.create(:clan_player, clan: clan_war1.clan, player: attacker, active: true)
+      battle.attacker = attacker
+      defender = FactoryGirl.create(:player)
+      clan_defender = FactoryGirl.create(:clan_player, clan: clan_war2.clan, player: defender, active: true)
+      battle.defender = defender
+      battle.war = war
+      
+      expect(battle.attacker_clan_coc_id.nil?).to be_truthy
+      expect(battle.defender_clan_coc_id.nil?).to be_truthy
+      
+      battle.save
+      expect(battle.attacker_clan_coc_id).to eq(clan_war1.clan.coc_id)
+      expect(battle.defender_clan_coc_id).to eq(clan_war2.clan.coc_id)
+
+      war.destroy
+    end
+  end
+
   describe "attacker" do
     it "should be present" do
       @battle.attacker = nil

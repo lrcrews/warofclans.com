@@ -3,8 +3,8 @@
 warOfClansAppControllersModule = angular.module("warOfClansApp.controllers")
 
 warOfClansAppControllersModule.controller("WarController",
-  [ "$scope", "Battle", "War", 
-  ( $scope, Battle, War ) ->
+  [ "$scope", "Battle", "Clan", "War", 
+  (  $scope,   Battle,   Clan,   War ) ->
 
     $scope.war = new War(gon.war)
     

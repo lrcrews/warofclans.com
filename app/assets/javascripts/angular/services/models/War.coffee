@@ -29,6 +29,10 @@ warOfClansAppServicesModule.factory("War",  ->
       (clan for clan in @clans when clan.coc_id isnt cocId)[0]
 
 
+    link: ->
+      "/wars/#{@id}"
+
+
     winner: ->
       if @clans[0]?.winner == true then @clans[0] else @clans[1]
 

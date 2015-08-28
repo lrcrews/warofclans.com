@@ -1,0 +1,44 @@
+<%# This partial assumes it is included within an
+  # angularjs scope where "battle" is present and
+  # "battle" is a mother efin Battle.coffee class
+%>
+<ul class="sortable-battle-row">
+  <li>
+    {{ battle.attacker_rank }}
+  </li>
+  <li>
+    <section>
+      <header>
+        <a href="/players/{{ battle.attacker.id }}">{{ battle.attacker.name }}</a>
+      </header>
+      <footer>
+        {{ war.clanOfCocId(battle.attacker_clan_coc_id).name }}
+      </footer>
+    </section>
+  </li>
+  <li>
+    {{ battle.destruction_percent }}%
+  </li>
+  <li>
+    {{ battle.stars_awarded }}
+  </li>
+  <li>
+    {{ battle.war_stars_awarded }}
+  </li>
+  <li>
+    {{ battle.defender_rank }}
+  </li>
+  <li>
+    <section>
+      <header>
+        <a href="/players/{{ battle.defender.id }}">{{ battle.defender.name }}</a>
+      </header>
+      <footer>
+        {{ war.clanOfCocId(battle.defender_clan_coc_id).name }}
+      </footer>
+    </section>
+  </li>
+  <li>
+    {{ battle.timeLeftInWar() }}
+  </li>
+</ul>

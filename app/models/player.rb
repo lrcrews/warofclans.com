@@ -25,6 +25,18 @@ class Player < ActiveRecord::Base
   validates :name, presence: true
 
 
+  # TODO: for mvp this assumes there can be only one
+  #        ... Highlander!
+  def active_clan
+    clan_player = self.clan_players.where("clan_players.active = ?", true).first
+    if clan_player.nil?
+      Clan.new
+    else
+      clan_player.clan
+    end
+  end
+
+
   def as_json(options={})
     options = {} if options.nil?
     # include all the normal stuff

@@ -1,6 +1,30 @@
 <% content_for(:class) { "wars show" } %>
 <section ng-controller="WarController" ng-init="initialize()">
 
-  hello war.
+  <header>
+    <%= render partial: "wars/partials/unsortable_war_row" %>
+  </header>
+
+  <section>
+    <%# tabs %>
+    <header>
+      <ul>
+        <li ng-click="setActiveTab('battles')" ng-class="{ active: activeTab == 'battles' }">
+          battles
+        </li>
+      </ul>
+    </header>
+    <%# header and N rows based on tab selection %>
+    <ul ng-switch="activeTab">
+      <li ng-switch-default>
+        <%= render partial: "battles/partials/sortable_battle_row_header" %>
+      </li>
+    </ul>
+    <ul ng-switch="activeTab">
+      <li ng-switch-default ng-repeat="battle in war.battles">
+        <%= render partial: "battles/partials/sortable_battle_row" %>
+      </li>
+    </ul>
+  </section>
 
 </section>

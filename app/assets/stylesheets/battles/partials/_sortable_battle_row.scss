@@ -1,0 +1,83 @@
+@import "mixins";
+
+body {
+  
+  &.war-of-clans {
+
+    ul.sortable-battle-row {
+      background-color: $white;
+    }
+
+    ul.sortable-battle-row,
+    ul.sortable-battle-row-header {
+      border: 1px solid $border-primary;
+      border-top: none;
+      width: 100%;
+      
+      > li {
+        border-right: 1px solid $border-primary;
+        color: $font-dark;
+        display: inline-block;
+        font-size: $normal;
+        margin-right: -4px;
+        overflow: hidden;
+        padding: 10px;
+        text-overflow: ellipsis;
+        vertical-align: top;
+
+        > section {
+          line-height: 75%;
+
+          > header {
+            font-size: $small;
+          }
+
+          > footer {
+            color: $black;
+            font-size: $smallest;
+          }
+        }
+
+        /* |     1    |     2    |   3   |        4      |         5         |    6     |    7     |     8     |
+        /* | atk rank | attacker | dmg % | stars awarded | war stars awarded | dfn rank | defender | time left | */
+
+        &:first-child {
+          border-right: none;
+          text-align: right;
+          width: calc(4% - 1px);
+        }
+
+        &:nth-child(2) {
+          width: calc(24% - 1px);
+        }
+
+        &:nth-child(3) {
+          width: calc(8% - 1px);
+        }
+
+        &:nth-child(4) {
+          width: calc(8% - 1px);
+        }
+
+        &:nth-child(5) {
+          width: calc(8% - 1px);
+        }
+
+        &:nth-child(6) {
+          border-right: none;
+          text-align: right;
+          width: calc(4% - 1px);
+        }
+
+        &:nth-child(7) {
+          width: calc(24% - 1px);
+        }
+
+        &:last-child {
+          border-right: none;
+          width: 20%;
+        }
+      }
+    }
+  }
+}

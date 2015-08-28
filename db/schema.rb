@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818060130) do
+ActiveRecord::Schema.define(version: 20150828224605) do
 
   create_table "battles", force: :cascade do |t|
     t.integer  "attacker_id"
@@ -22,9 +22,11 @@ ActiveRecord::Schema.define(version: 20150818060130) do
     t.integer  "minutes_left_in_war"
     t.integer  "stars_awarded"
     t.integer  "war_stars_awarded"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "war_id"
+    t.string   "attacker_clan_coc_id"
+    t.string   "defender_clan_coc_id"
   end
 
   add_index "battles", ["attacker_id"], name: "index_battles_on_attacker_id"

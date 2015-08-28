@@ -1,5 +1,7 @@
 class Battle < ActiveRecord::Base
 
+  before_create :set_clan_coc_ids
+
   after_create :fire_counter_update_jobs
 
 
@@ -130,6 +132,13 @@ class Battle < ActiveRecord::Base
 
 
   private
+
+    # TODO: for MVP we're just assuming only one clan is
+    #       marked 'active', but that's not enforced yet
+    def set_clan_coc_ids
+      self.attacker_clan_coc_id = self.attacker.active_clan.coc_id
+      self.defender_clan_coc_id = self.defender.active_clan.coc_id
+    end
 
     # TODO: these should be async jobs
 
