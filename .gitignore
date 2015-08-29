@@ -6,6 +6,6 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /lib/tasks/temp
-/log/*.log*
+/log/*
 /tmp
 /public/assets/
