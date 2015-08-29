@@ -20,22 +20,17 @@ warOfClansAppServicesModule.factory("War",  ->
     attacksByPlayers: (playerCocIds) ->
       (battle for battle in @battles when battle.attacker.coc_id in playerCocIds)
 
-
     clanOfCocId: (cocId) ->
       (clan for clan in @clans when clan.coc_id is cocId)[0]
-
 
     clanNotOfCocId: (cocId) ->
       (clan for clan in @clans when clan.coc_id isnt cocId)[0]
 
-
     link: ->
       "/wars/#{@id}"
 
-
     winner: ->
       if @clans[0]?.winner == true then @clans[0] else @clans[1]
-
 
     notWinner: ->
       if @clans[0]?.winner == true then @clans[1] else @clans[0]

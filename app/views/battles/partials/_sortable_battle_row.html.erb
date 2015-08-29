@@ -12,7 +12,7 @@
         <a href="/players/{{ battle.attacker.id }}">{{ battle.attacker.name }}</a>
       </header>
       <footer>
-        {{ war.clanOfCocId(battle.attacker_clan_coc_id).name }}
+        {{ battle.attacker.activeClan().name }}
       </footer>
     </section>
   </li>
@@ -34,7 +34,7 @@
         <a href="/players/{{ battle.defender.id }}">{{ battle.defender.name }}</a>
       </header>
       <footer>
-        {{ war.clanOfCocId(battle.defender_clan_coc_id).name }}
+        {{ battle.defender.activeClan().name }}
       </footer>
     </section>
   </li>

@@ -20,6 +20,7 @@ body {
         display: inline-block;
         font-size: $normal;
         margin-right: -4px;
+        min-height: 44px;
         overflow: hidden;
         padding: 10px;
         text-overflow: ellipsis;

@@ -24,10 +24,13 @@ warOfClansAppServicesModule.factory("Player",  ->
       @war_stars_lost                   = json.war_stars_lost ? 0
       @updated_at                       = json.updated_at ? ""
       
-      @attacks  = json.attacks ? [] # will become array of Battle.coffee objects
-      @defences = json.defences ? [] # will become array of Battle.coffee objects
-      @clans    = json.clans ? []   # will become array of Clan.coffee objects
+      @attacks  = json.attacks ? []   # will become array of Battle.coffee objects
+      @defences = json.defences ? []  # will become array of Battle.coffee objects
+      @clans    = json.clans ? []     # will become array of Clan.coffee objects
 
+
+    activeClan: ->
+      (clan for clan in @clans when clan.active == true)[0]
 
     defenceLossRatio: ->
       @defences_won_completely / @_denominatorFrom(@total_defences)

@@ -28,6 +28,9 @@ warOfClansAppServicesModule.factory("Clan",  ->
       @war_stars_awarded    = json.war_stars_awarded ? null
       @winner               = json.winner ? null
 
+      # sometimes this will exist too (from player)
+      @active               = json.active ? false
+
 
     totalNotWins: ->
       @wars.length - @totalWins()

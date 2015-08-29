@@ -1,0 +1,49 @@
+<% content_for(:class) { "players show" } %>
+<section ng-controller="PlayerController" ng-init="initialize()">
+
+  <header>
+    <%= render partial: "players/partials/sortable_player_row_header" %>
+    <%= render partial: "players/partials/sortable_player_row" %>
+  </header>
+
+  <section>
+    <%# tabs %>
+    <header>
+      <ul>
+        <li ng-click="setActiveTab('attacks')" ng-class="{ active: activeTab == 'attacks' }">
+          attacks
+        </li>
+        <li ng-click="setActiveTab('defences')" ng-class="{ active: activeTab == 'defences' }">
+          defences
+        </li>
+        <li ng-click="setActiveTab('clans')" ng-class="{ active: activeTab == 'clans' }">
+          clans
+        </li>
+      </ul>
+    </header>
+    <%# header and N rows based on tab selection %>
+    <ul ng-switch="activeTab">
+      <li ng-switch-default>
+        <%= render partial: "battles/partials/sortable_battle_row_header" %>
+      </li>
+      <li ng-switch-when="defences">
+        <%= render partial: "battles/partials/sortable_battle_row_header" %>
+      </li>
+      <li ng-switch-when="clans">
+        <%= render partial: "clans/partials/sortable_clan_row_header" %>
+      </li>
+    </ul>
+    <ul ng-switch="activeTab">
+      <li ng-switch-default ng-repeat="battle in player.attacks">
+        <%= render partial: "battles/partials/sortable_battle_row" %>
+      </li>
+      <li ng-switch-when="defences" ng-repeat="battle in player.defences">
+        <%= render partial: "battles/partials/sortable_battle_row" %>
+      </li>
+      <li ng-switch-when="clans" ng-repeat="clan in player.clans">
+        <%= render partial: "clans/partials/sortable_clan_row" %>
+      </li>
+    </ul>
+  </section>
+
+</section>
