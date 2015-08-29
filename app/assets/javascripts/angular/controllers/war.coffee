@@ -7,6 +7,10 @@ warOfClansAppControllersModule.controller("WarController",
   (  $scope,   Battle,   Clan,   War ) ->
 
     $scope.war = new War(gon.war)
+
+    $scope.activeTab = "battles"
+    $scope.setActiveTab = (value) ->
+      $scope.activeTab = value
     
     $scope.initialize = ->
       console.log("hello war.")

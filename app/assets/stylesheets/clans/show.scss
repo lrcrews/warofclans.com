@@ -17,7 +17,6 @@ body {
 
             > header {
               color: $font-dark;
-              cursor: pointer;
               font-size: $large;
 
               @include font-uncial-antiqua;
@@ -27,6 +26,7 @@ body {
                 > li {
                   border: 1px solid $border-primary;
                   border-bottom: none;
+                  cursor: pointer;
                   display: inline-block;
                   height: 100%;
                   margin-left: 4px;
