@@ -22,9 +22,11 @@ module Seed
             ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       92],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
             ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY,       26],
-            ['#P9UVQ0Y',  Clan::CLAN_TYPE_INVITE, 5,  'LosCareCompleto',  1800, Clan::WAR_FREQUENCY_TWICE_WEEKLY,       26],
+            ['#P9UVQ0Y',  Clan::CLAN_TYPE_INVITE, 5,  'LosCareCompleto',  1800, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 26],
             ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 4,  'New World 9',      1700, Clan::WAR_FREQUENCY_WEEKLY,       44],
             ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS,       99],
+            ['#PRP2LJP',  Clan::CLAN_TYPE_INVITE, 3,  'Powers That Be',   1500, Clan::WAR_FREQUENCY_NOT_SET,      13],
+            ['#PGG2R0JY', Clan::CLAN_TYPE_CLOSED, 4,  'The trooper',      800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 99],
             ['#8QG0G9P0', Clan::CLAN_TYPE_INVITE, 3,  '**HEIST**',        2100, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 19]
           ].each do |data|
             create_clan(data)
@@ -181,6 +183,30 @@ module Seed
             ['#2280C2UQV',  92,   'VitLoveLin',       @clans['#QLVJ092']],
             ['#2Y28LR9U',   88,   '_Daisa',           @clans['#QLVJ092']],
 
+            # Powers That Be
+            ['#CQUPV88Q',   91,   'BAY',              @clans['#PRP2LJP']],
+            ['#JUQUJQJR',   106,  'Brent21',          @clans['#PRP2LJP']],
+            ['#L8VVVCU',    124,  'bumblebeeeeeeee',  @clans['#PRP2LJP']],
+            ['#28GYQYL2P',  58,   'God Of War!!!!!',  @clans['#PRP2LJP']],
+            ['#9UQ8VUVY',   102,  'Jarrett',          @clans['#PRP2LJP']],
+            ['#8LPLRJR9',   112,  'JAYCEE',           @clans['#PRP2LJP']],
+            ['#PU0L8U09',   117,  'Super_Gamer 3',    @clans['#PRP2LJP']],
+            ['#2RQ9P2YJ',   74,   'tee*la',           @clans['#PRP2LJP']],
+            ['#L2JPV0GV',   94,   'TheRayC',          @clans['#PRP2LJP']],
+            ['#2G0V0URG',   107,  '- hizzle17 -',     @clans['#PRP2LJP']],
+
+            # The trooper
+            ['#PVCP0JYC',   108,  'Christophe',       @clans['#PGG2R0JY']],
+            ['#V0ULJ80',    109,  'Fleoz',            @clans['#PGG2R0JY']],
+            ['#LJ8899Y0',   89,   'mjiallau',         @clans['#PGG2R0JY']],
+            ['#LCCG9CJV',   106,  'poupy lol',        @clans['#PGG2R0JY']],
+            ['#2PVJJYRC',   91,   'Quentin 2014',     @clans['#PGG2R0JY']],
+            ['#8U2QVUPP',   89,   'Ragnor',           @clans['#PGG2R0JY']],
+            ['#28RGGYGJ8',  90,   'Roma71.',          @clans['#PGG2R0JY']],
+            ['#G0U20U2',    95,   'TrolleurGeek',     @clans['#PGG2R0JY']],
+            ['#92P0JQY2',   105,  'XxleoXx',          @clans['#PGG2R0JY']],
+            ['#9GGLJJ',     119,  'xXMoMo71Xx',       @clans['#PGG2R0JY']],
+
             # **HEIST**
             ['#8PV2J92G', 98,   'bigbadjon10',      @clans['#8QG0G9P0']],
             ['#YC0JRGJU', 95,   'CmundaPhukinWizz', @clans['#8QG0G9P0']],
@@ -211,7 +237,7 @@ module Seed
         # [     0   ,    1   ,    2   ,      3       ]
         def create_player(data)
           puts "---------------------"
-          puts "attempting player creation for coc_id '#{data[0]}', level '#{data[1]}', and name '#{data[3]}'"
+          puts "attempting player creation for coc_id '#{data[0]}', level '#{data[1]}', and name '#{data[2]}'"
           player = Player.find_by_coc_id(data[0])
           if player.nil?
             player = Player.new(

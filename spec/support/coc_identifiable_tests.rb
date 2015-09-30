@@ -19,7 +19,7 @@ shared_examples "coc identifiable" do |instance|
       persisted_instance.delete
     end
 
-    it "should be eight, nine, or ten characters long, begin with a '#', and continue with alpha/numeric" do
+    it "should be seven, eight, nine, or ten characters long, begin with a '#', and continue with alpha/numeric" do
       # in character range but doesn't start with '#'
       instance.coc_id = "PQVUJ2PR" # shout out to Count Dubula
       expect(instance).to be_invalid
@@ -29,12 +29,15 @@ shared_examples "coc identifiable" do |instance|
       expect(instance).to be_invalid
 
       # starts with '#' but total is under the min characters
-      instance.coc_id = "#ABCDEF"
+      instance.coc_id = "#ABCDE"
       expect(instance).to be_invalid
 
       # in character range but has special characters
       instance.coc_id = "#A}CDEFG"
       expect(instance).to be_invalid
+
+      # seven characters of proper formatting
+      instance.coc_id = "#9GGLJJ" # shout out to the first time I saw this few (xXMoMo71Xx of The trooper)
 
       # eight characters of proper formatting
       instance.coc_id = "#8JR8G8L"

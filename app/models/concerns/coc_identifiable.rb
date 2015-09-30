@@ -7,7 +7,7 @@ module CocIdentifiable
     validates :coc_id, 
               presence: true, 
               uniqueness: true, 
-              format: { with: /\A#\w{7,9}\z/ }, 
+              format: { with: /\A#\w{6,9}\z/ }, 
               if: "coc_id_present?"
   end
 
