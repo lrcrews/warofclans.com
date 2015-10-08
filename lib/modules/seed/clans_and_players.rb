@@ -19,14 +19,15 @@ module Seed
           puts "adding clans to the existing #{current_clan_count} clan(s)..."
           # This list is arranged alphabetically by the "name" column (data[3])
           [ ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
-            ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       92],
+            ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       87],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
+            ['#2VCLRR2U', Clan::CLAN_TYPE_INVITE, 6,  'Lien Minh COC',    2100, Clan::WAR_FREQUENCY_ALWAYS,       84],
             ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY,       26],
             ['#P9UVQ0Y',  Clan::CLAN_TYPE_INVITE, 5,  'LosCareCompleto',  1800, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 26],
-            ['#8JR8G8L9', Clan::CLAN_TYPE_ANYONE, 4,  'New World 9',      1700, Clan::WAR_FREQUENCY_WEEKLY,       44],
+            ['#8JR8G8L9', Clan::CLAN_TYPE_INVITE, 4,  'New World 9',      1000, Clan::WAR_FREQUENCY_WEEKLY,       52],
             ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS,       99],
             ['#PRP2LJP',  Clan::CLAN_TYPE_INVITE, 3,  'Powers That Be',   1500, Clan::WAR_FREQUENCY_NOT_SET,      13],
-            ['#PGG2R0JY', Clan::CLAN_TYPE_CLOSED, 4,  'The trooper',      800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 99],
+            ['#PGG2R0JY', Clan::CLAN_TYPE_CLOSED, 4,  'The trooper',      800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 42],
             ['#8QG0G9P0', Clan::CLAN_TYPE_INVITE, 3,  '**HEIST**',        2100, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 19]
           ].each do |data|
             create_clan(data)
@@ -114,6 +115,19 @@ module Seed
             ['#9QRVY2V8',   114,  'SkylineGP',        @clans['#Y0QVU2YC']],
             ['#YPPQCQYQ',   86,   'Vince IIIy',       @clans['#Y0QVU2YC']],
             ['#R2RL0LJ0',   77,   'woozzaa',          @clans['#Y0QVU2YC']],
+
+            # Lien Minh COC
+            ['#29GR0PLLJ',  84,   'games over',       @clans['#2VCLRR2U']],
+            ['#8UJJ2P20',   92,   'Haivl',            @clans['#2VCLRR2U']],
+            ['#2P9VQ9PYJ',  52,   'Hong Tien',        @clans['#2VCLRR2U']],
+            ['#CYLRJJVC',   93,   'khicon',           @clans['#2VCLRR2U']],
+            ['#JVPURRYC',   100,  'Luong',            @clans['#2VCLRR2U']],
+            ['#UYY8GCQ2',   131,  'LUONG NGHE AN',    @clans['#2VCLRR2U']],
+            ['#U2UR208L',   111,  'minh tuyet',       @clans['#2VCLRR2U']],
+            ['#PJ8PGY0',    119,  'Sand',             @clans['#2VCLRR2U']],
+            ['#JJ0UGLGQ',   100,  'Thanh Tung',       @clans['#2VCLRR2U']],
+            ['#CP889L0R',   98,   'Thu Hien',         @clans['#2VCLRR2U']],
+            
 
             # LOS PAY@S XXL
             ['#JG8RRP9Q',   87,   'A.J',            @clans['#CYQ0C8G']],
