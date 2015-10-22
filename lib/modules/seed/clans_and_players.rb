@@ -27,6 +27,7 @@ module Seed
             ['#8JR8G8L9', Clan::CLAN_TYPE_INVITE, 4,  'New World 9',      1000, Clan::WAR_FREQUENCY_WEEKLY,       52],
             ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS,       99],
             ['#PRP2LJP',  Clan::CLAN_TYPE_INVITE, 3,  'Powers That Be',   1500, Clan::WAR_FREQUENCY_NOT_SET,      13],
+            ['#2VRU2V0L', Clan::CLAN_TYPE_INVITE, 5,  'Swiss Keks',       0,    Clan::WAR_FREQUENCY_ALWAYS,       51],
             ['#PGG2R0JY', Clan::CLAN_TYPE_CLOSED, 4,  'The trooper',      800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 42],
             ['#8QG0G9P0', Clan::CLAN_TYPE_INVITE, 3,  '**HEIST**',        2100, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 19]
           ].each do |data|
@@ -209,6 +210,18 @@ module Seed
             ['#L2JPV0GV',   94,   'TheRayC',          @clans['#PRP2LJP']],
             ['#2G0V0URG',   107,  '- hizzle17 -',     @clans['#PRP2LJP']],
 
+            # Swiss Keks
+            ['#CCJY88VC',   96,   'c-man1',           @clans['#2VRU2V0L']],
+            ['#JL0L08VY',   124,  'figo(Dübendorf)',  @clans['#2VRU2V0L']],
+            ['#VY2CQJ02',   86,   'JAMS',             @clans['#2VRU2V0L']],
+            ['#2U20Q9YQ',   114,  'Luckynellen',      @clans['#2VRU2V0L']],
+            ['#QQCGR2QY',   89,   'Mazul94',          @clans['#2VRU2V0L']],
+            ['#989Q0GP',    94,   'shaji',            @clans['#2VRU2V0L']],
+            ['#209PYJJCP',  62,   'STEZDERKING',      @clans['#2VRU2V0L']],
+            ['#2CJC29YQ',   140,  'Stez07',           @clans['#2VRU2V0L']],
+            ['#UCR89YQ8',   95,   's/i/m/o/n/0011',   @clans['#2VRU2V0L']],
+            ['#UP8P2LVY',   67,   'x13lack',          @clans['#2VRU2V0L']],
+            
             # The trooper
             ['#PVCP0JYC',   108,  'Christophe',       @clans['#PGG2R0JY']],
             ['#V0ULJ80',    109,  'Fleoz',            @clans['#PGG2R0JY']],
