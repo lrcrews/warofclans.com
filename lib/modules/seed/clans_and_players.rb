@@ -21,6 +21,7 @@ module Seed
           [ ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
             ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       87],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
+            ['#8U28UGQV', Clan::CLAN_TYPE_INVITE, 3,  'GOLD n SHOWERS',   1000, Clan::WAR_FREQUENCY_WEEKLY,       9],
             ['#2VCLRR2U', Clan::CLAN_TYPE_INVITE, 6,  'Lien Minh COC',    2100, Clan::WAR_FREQUENCY_ALWAYS,       84],
             ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY,       26],
             ['#P9UVQ0Y',  Clan::CLAN_TYPE_INVITE, 5,  'LosCareCompleto',  1800, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 26],
@@ -117,6 +118,18 @@ module Seed
             ['#YPPQCQYQ',   86,   'Vince IIIy',       @clans['#Y0QVU2YC']],
             ['#R2RL0LJ0',   77,   'woozzaa',          @clans['#Y0QVU2YC']],
 
+            # GOLD n SHOWERS
+            ['#YG0L22CJ',   125,  'adunny20',         @clans['#8U28UGQV']],
+            ['#RV28RPVP',   111,  'bman83',           @clans['#8U28UGQV']],
+            ['#LVR8RQ8V',   63,   'das Bush Wacka',   @clans['#8U28UGQV']],
+            ['#8UQ9Y02V',   84,   'freShprince24',    @clans['#8U28UGQV']],
+            ['#U2PJ8LJV',   87,   'jtree',            @clans['#8U28UGQV']],
+            ['#P2809GVJ',   102,  'jvlinebager',      @clans['#8U28UGQV']],
+            ['#JPG9YRV',    90,   'King Curtis',      @clans['#8U28UGQV']],
+            ['#2YCPPUL8',   105,  'rudacris11',       @clans['#8U28UGQV']],
+            ['#JCL20Y8Y',   88,   'solekal82',        @clans['#8U28UGQV']],
+            ['#9CGCVCYQ',   114,  'Super Dave',       @clans['#8U28UGQV']],
+            
             # Lien Minh COC
             ['#29GR0PLLJ',  84,   'games over',       @clans['#2VCLRR2U']],
             ['#8UJJ2P20',   92,   'Haivl',            @clans['#2VCLRR2U']],
@@ -175,6 +188,7 @@ module Seed
             ['#8Y2V2Q09',   112,  'munchbar',         @clans['#8JR8G8L9']],
             ['#CPG2L0YV',   47,   'Nunu',             @clans['#8JR8G8L9']],
             ['#GY9YL809',   85,   'ponikz',           @clans['#8JR8G8L9']],
+            ['#2YUYU2GJG',  83,   'SAM',              @clans['#8JR8G8L9']],
             ['#9PQ2LV8L',   80,   'silence',          @clans['#8JR8G8L9']],
             ['#Y2U2Q20G',   99,   'staphnie',         @clans['#8JR8G8L9']],
             ['#QQUUCVVL',   67,   'TOOL55BOX',        @clans['#8JR8G8L9']],
