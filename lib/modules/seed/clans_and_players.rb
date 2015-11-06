@@ -18,7 +18,8 @@ module Seed
           puts "____________________"
           puts "adding clans to the existing #{current_clan_count} clan(s)..."
           # This list is arranged alphabetically by the "name" column (data[3])
-          [ ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
+          [ ['#28VL98JV', Clan::CLAN_TYPE_INVITE, 5,  'cep 2',            1400, Clan::WAR_FREQUENCY_ALWAYS,       48],
+            ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
             ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       87],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
             ['#8U28UGQV', Clan::CLAN_TYPE_INVITE, 3,  'GOLD n SHOWERS',   1000, Clan::WAR_FREQUENCY_WEEKLY,       9],
@@ -77,7 +78,19 @@ module Seed
           # This list is arranged alphabetically by the clan name (in comment), then 
           # by "name" column (data[2])
           #
-          [ # CLANprive
+          [ # cep 2
+            ['#2LY2GJVL8',  61,   'bellevue',       @clans['#28VL98JV']],
+            ['#220QV0VUY',  108,  'Blaininos',      @clans['#28VL98JV']],
+            ['#2YPLL90VY',  92,   'cleyman',        @clans['#28VL98JV']],
+            ['#828P2G08',   97,   'lap1',           @clans['#28VL98JV']],
+            ['#80JL8Q2J',   132,  'Nux29',          @clans['#28VL98JV']],
+            ['#J2V8YCPP',   111,  'P.casabianca',   @clans['#28VL98JV']],
+            ['#L80LRGCV',   82,   'pepito',         @clans['#28VL98JV']],
+            ['#PP0Y0CGC',   96,   'Rec Tom',        @clans['#28VL98JV']],
+            ['#PGYPLU0U',   100,  'vic780',         @clans['#28VL98JV']],
+            ['#82RGUJ8Y',   106,  'Wlad5683',       @clans['#28VL98JV']],
+
+            # CLANprive
             ['#P9CCCRLY',   83,   'bok',            @clans['#PYCCJJUC']],
             ['#22CUJCQ8',   100,  'FERRIS',         @clans['#PYCCJJUC']],
             ['#J8Q9QU8P',   102,  'frank',          @clans['#PYCCJJUC']],
