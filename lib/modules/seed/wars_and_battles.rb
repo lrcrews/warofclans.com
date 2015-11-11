@@ -27,6 +27,7 @@ module Seed
         create_new_world_9_vs_Swiss_Keks
         create_new_world_9_vs_GOLD_n_SHOWERS
         create_new_world_9_vs_cep_2
+        create_new_world_9_vs_les_chouquettes
       end
 
 
@@ -824,6 +825,70 @@ module Seed
             [war, @players["#RCQ0J0JR"],  5,    @players["#PP0Y0CGC"],    6,    75,   32,   2, 0],
             [war, @players["#PGYPLU0U"],  5,    @players["#L9QJ2JYQ"],    4,    82,   7,    1, 0],
             [war, @players["#LLVCLU2G"],  6,    @players["#828P2G08"],    8,    100,  4,    3, 1]
+          ].each do |data|
+            create_battle(data)
+          end
+        end
+
+
+        def create_new_world_9_vs_les_chouquettes
+          # the clans
+          new_world_9 = Clan.find_by_coc_id("#8JR8G8L9")
+          les_chouquettes = Clan.find_by_coc_id("#2QV8LYP2")
+          if new_world_9.nil? || les_chouquettes.nil?
+            puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and les_chouquettes ('#2QV8LYP2')"
+            return
+          end
+          # the war, date: d/m/yyyy
+          war = create_war("7/11/2015".to_date, 10, new_world_9, les_chouquettes, new_world_9)
+          if war.nil?
+            puts "WARNING:  not creating new world 9 vs les_chouquettes"
+            return
+          end
+          # the players
+          add_players_for_clan(new_world_9)
+          add_players_for_clan(les_chouquettes)
+          # the battles, ordered by time, first to last.
+          [ [war, @players["#LJL99JYV"],  4,    @players["#LLVCLU2G"],    6,    47,   1435, 0, 0],
+            [war, @players["#28JY9UUL"],  1,    @players["#RVJ08JR2"],    1,    67,   1435, 2, 2],
+            [war, @players["#UL089Q0Q"],  10,   @players["#CPG2L0YV"],    10,   100,  1427, 3, 3],
+            [war, @players["#CPG2L0YV"],  10,   @players["#UL089Q0Q"],    10,   100,  1413, 3, 3],
+            [war, @players["#28CYGQ20"],  6,    @players["#9PQ2LV8L"],    8,    78,   1411, 2, 2],
+            [war, @players["#QQGV09CJ"],  2,    @players["#R20YLVUP"],    2,    58,   1407, 1, 1],
+            [war, @players["#P0YLCC2J"],  5,    @players["#PV0LJJU0"],    7,    37,   1400, 0, 0],
+            [war, @players["#222UVGU0P"], 7,    @players["#9GRJQV82"],    9,    100,  1227, 3, 3],
+            [war, @players["#R20YLVUP"],  2,    @players["#QQGV09CJ"],    2,    41,   1101, 1, 1],
+            [war, @players["#PQVUJ2PR"],  3,    @players["#2PYRYG0P"],    3,    50,   1070, 1, 1],
+            [war, @players["#CPG2L0YV"],  10,   @players["#298RGCGU2"],   9,    79,   1031, 2, 2],
+            [war, @players["#9PQ2LV8L"],  8,    @players["#U8YPR0R9"],    8,    39,   1003, 0, 0],
+            [war, @players["#PV0LJJU0"],  7,    @players["#P0YLCC2J"],    5,    70,   1002, 2, 2],
+            [war, @players["#RCQ0J0JR"],  5,    @players["#28CYGQ20"],    6,    100,  950,  3, 3],
+            [war, @players["#2PYRYG0P"],  3,    @players["#RCQ0J0JR"],    5,    52,   824,  1, 1],
+            [war, @players["#L9QJ2JYQ"],  4,    @players["#222UVGU0P"],   7,    60,   817,  1, 1],
+            [war, @players["#298RGCGU2"], 9,    @players["#9PQ2LV8L"],    8,    42,   814,  0, 0],
+            [war, @players["#28CYGQ20"],  6,    @players["#PV0LJJU0"],    7,    77,   758,  2, 2],
+            [war, @players["#LJL99JYV"],  4,    @players["#RCQ0J0JR"],    5,    63,   751,  2, 1],
+            [war, @players["#QQGV09CJ"],  2,    @players["#L9QJ2JYQ"],    4,    78,   749,  2, 2],
+            [war, @players["#222UVGU0P"], 7,    @players["#9PQ2LV8L"],    8,    69,   744,  1, 0],
+            [war, @players["#298RGCGU2"], 9,    @players["#9GRJQV82"],    9,    85,   734,  1, 0],
+            [war, @players["#2PYRYG0P"],  3,    @players["#LLVCLU2G"],    6,    80,   718,  2, 2],
+            [war, @players["#RCQ0J0JR"],  5,    @players["#LJL99JYV"],    4,    84,   682,  2, 2],
+            [war, @players["#28JY9UUL"],  1,    @players["#PQVUJ2PR"],    3,    88,   633,  2, 2],
+            [war, @players["#UL089Q0Q"],  10,   @players["#9PQ2LV8L"],    8,    42,   486,  0, 0],
+            [war, @players["#U8YPR0R9"],  8,    @players["#9PQ2LV8L"],    8,    73,   385,  2, 0],
+            [war, @players["#PV0LJJU0"],  7,    @players["#U8YPR0R9"],    8,    100,  332,  3, 3],
+            [war, @players["#LLVCLU2G"],  6,    @players["#222UVGU0P"],   7,    83,   328,  2, 1],
+            [war, @players["#R20YLVUP"],  2,    @players["#28JY9UUL"],    1,    40,   295,  1, 1],
+            [war, @players["#9PQ2LV8L"],  8,    @players["#298RGCGU2"],   9,    100,  239,  3, 1],
+            [war, @players["#RVJ08JR2"],  1,    @players["#2PYRYG0P"],    3,    100,  175,  3, 2],
+            [war, @players["#L9QJ2JYQ"],  4,    @players["#P0YLCC2J"],    5,    42,   112,  0, 0],
+            [war, @players["#9GRJQV82"],  9,    @players["#298RGCGU2"],   9,    88,   105,  2, 0],
+            [war, @players["#9GRJQV82"],  9,    @players["#U8YPR0R9"],    8,    55,   99,   2, 0],
+            [war, @players["#RVJ08JR2"],  1,    @players["#LJL99JYV"],    4,    100,  87,   3, 1],
+            [war, @players["#U8YPR0R9"],  8,    @players["#PV0LJJU0"],    7,    66,   83,   2, 0],
+            [war, @players["#P0YLCC2J"],  5,    @players["#9PQ2LV8L"],    8,    100,  75,   3, 1],
+            [war, @players["#PQVUJ2PR"],  3,    @players["#P0YLCC2J"],    5,    76,   62,   2, 0],
+            [war, @players["#LLVCLU2G"],  6,    @players["#P0YLCC2J"],    5,    79,   11,   2, 0]
           ].each do |data|
             create_battle(data)
           end

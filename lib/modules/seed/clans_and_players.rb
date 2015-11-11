@@ -23,6 +23,7 @@ module Seed
             ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       87],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
             ['#8U28UGQV', Clan::CLAN_TYPE_INVITE, 3,  'GOLD n SHOWERS',   1000, Clan::WAR_FREQUENCY_WEEKLY,       9],
+            ['#2QV8LYP2', Clan::CLAN_TYPE_INVITE, 5,  'les chouquettes',  1600, Clan::WAR_FREQUENCY_ALWAYS,       82],
             ['#2VCLRR2U', Clan::CLAN_TYPE_INVITE, 6,  'Lien Minh COC',    2100, Clan::WAR_FREQUENCY_ALWAYS,       84],
             ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY,       26],
             ['#P9UVQ0Y',  Clan::CLAN_TYPE_INVITE, 5,  'LosCareCompleto',  1800, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 26],
@@ -142,6 +143,18 @@ module Seed
             ['#2YCPPUL8',   105,  'rudacris11',       @clans['#8U28UGQV']],
             ['#JCL20Y8Y',   88,   'solekal82',        @clans['#8U28UGQV']],
             ['#9CGCVCYQ',   114,  'Super Dave',       @clans['#8U28UGQV']],
+            
+            # les chouquettes
+            ['#28CYGQ20',   96,   'aba',              @clans['#2QV8LYP2']],
+            ['#LJL99JYV',   96,   'BEB-85',           @clans['#2QV8LYP2']],
+            ['#2PYRYG0P',   112,  'Franzux',          @clans['#2QV8LYP2']],
+            ['#222UVGU0P',  92,   'grrrrrr',          @clans['#2QV8LYP2']],
+            ['#298RGCGU2',  73,   'Héloïse',          @clans['#2QV8LYP2']],
+            ['#U8YPR0R9',   90,   'Jé',               @clans['#2QV8LYP2']],
+            ['#UL089Q0Q',   64,   'Laurie56',         @clans['#2QV8LYP2']],
+            ['#P0YLCC2J',   96,   'prince loic',      @clans['#2QV8LYP2']],
+            ['#28JY9UUL',   124,  'Stephen56',        @clans['#2QV8LYP2']],
+            ['#QQGV09CJ',   124,  'Vince',            @clans['#2QV8LYP2']],
             
             # Lien Minh COC
             ['#29GR0PLLJ',  84,   'games over',       @clans['#2VCLRR2U']],
