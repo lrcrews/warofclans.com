@@ -27,10 +27,11 @@ module Seed
             ['#2VCLRR2U', Clan::CLAN_TYPE_INVITE, 6,  'Lien Minh COC',    2100, Clan::WAR_FREQUENCY_ALWAYS,       84],
             ['#CYQ0C8G',  Clan::CLAN_TYPE_INVITE, 3,  'LOS PAY@S XXL',    1800, Clan::WAR_FREQUENCY_WEEKLY,       26],
             ['#P9UVQ0Y',  Clan::CLAN_TYPE_INVITE, 5,  'LosCareCompleto',  1800, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 26],
-            ['#8JR8G8L9', Clan::CLAN_TYPE_INVITE, 4,  'New World 9',      1000, Clan::WAR_FREQUENCY_WEEKLY,       52],
+            ['#8JR8G8L9', Clan::CLAN_TYPE_INVITE, 4,  'New World 9',      1000, Clan::WAR_FREQUENCY_WEEKLY,       55],
             ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS,       99],
             ['#PRP2LJP',  Clan::CLAN_TYPE_INVITE, 3,  'Powers That Be',   1500, Clan::WAR_FREQUENCY_NOT_SET,      13],
             ['#2VRU2V0L', Clan::CLAN_TYPE_INVITE, 5,  'Swiss Keks',       0,    Clan::WAR_FREQUENCY_ALWAYS,       51],
+            ['#2QY8GQQ0', Clan::CLAN_TYPE_INVITE, 5,  'Sons of hanover',  800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 35],
             ['#PGG2R0JY', Clan::CLAN_TYPE_CLOSED, 4,  'The trooper',      800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 42],
             ['#8QG0G9P0', Clan::CLAN_TYPE_INVITE, 3,  '**HEIST**',        2100, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 19]
           ].each do |data|
@@ -249,6 +250,19 @@ module Seed
             ['#2RQ9P2YJ',   74,   'tee*la',           @clans['#PRP2LJP']],
             ['#L2JPV0GV',   94,   'TheRayC',          @clans['#PRP2LJP']],
             ['#2G0V0URG',   107,  '- hizzle17 -',     @clans['#PRP2LJP']],
+
+            # Sons of hanover
+            ['#PQ82LP28',   124,  'camelito!',        @clans['#2QY8GQQ0']],
+            ['#QJPCV9PU',   90,   'FCB',              @clans['#2QY8GQQ0']],
+            ['#LPJRV2UL',   91,   'Gutscchein',       @clans['#2QY8GQQ0']],
+            ['#LVCCCGR8',   89,   'Jauels',           @clans['#2QY8GQQ0']],
+            ['#8RC802PJ',   103,  'KingLolek',        @clans['#2QY8GQQ0']],
+            ['#JQUJ2Q2L',   94,   'Krawallmeise',     @clans['#2QY8GQQ0']],
+            ['#PJ92Q9JV',   98,   'marzipankrieger',  @clans['#2QY8GQQ0']],
+            ['#QP9G0YJC',   123,  'mavericlZ',        @clans['#2QY8GQQ0']],
+            ['#LYY0GCGC',   90,   'nashe',            @clans['#2QY8GQQ0']],
+            ['#V8LL0C9V',   76,   'taugenichts',      @clans['#2QY8GQQ0']],
+            
 
             # Swiss Keks
             ['#CCJY88VC',   96,   'c-man1',           @clans['#2VRU2V0L']],
