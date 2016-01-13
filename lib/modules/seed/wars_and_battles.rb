@@ -29,6 +29,8 @@ module Seed
         create_new_world_9_vs_cep_2
         create_new_world_9_vs_les_chouquettes
         create_new_world_9_vs_Sons_of_hanover
+        #create_new_world_9_vs_les_subprimes # well damn.
+        create_new_world_9_vs_Meute_Des_Loups
       end
 
 
@@ -905,7 +907,7 @@ module Seed
             return
           end
           # the war, date: d/m/yyyy
-          war = create_war("7/11/2015".to_date, 10, new_world_9, sons_of_hanover, sons_of_hanover)
+          war = create_war("14/11/2015".to_date, 10, new_world_9, sons_of_hanover, sons_of_hanover)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs sons_of_hanover"
             return
@@ -950,6 +952,94 @@ module Seed
             [war, @players["#QP9G0YJC"],  2,    @players["#RVJ08JR2"],    1,    67,   25,   2, 2],
             [war, @players["#PQ82LP28"],  1,    @players["#LLVCLU2G"],    6,    100,  20,   3, 1],
             [war, @players["#G28VPUR"],   8,    @players["#JQUJ2Q2L"],    8,    56,   12,   1, 0]
+          ].each do |data|
+            create_battle(data)
+          end
+        end
+
+
+        def create_new_world_9_vs_les_subprimes
+          # # the clans
+          # new_world_9 = Clan.find_by_coc_id("#8JR8G8L9")
+          # les_subprimes = Clan.find_by_coc_id("#80R0RUUL")
+          # if new_world_9.nil? || les_subprimes.nil?
+          #   puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and les_subprimes ('#80R0RUUL')"
+          #   return
+          # end
+          # # the war, date: d/m/yyyy
+          # war = create_war("7/11/2015".to_date, 10, new_world_9, les_subprimes, les_subprimes)
+          # if war.nil?
+          #   puts "WARNING:  not creating new world 9 vs les_subprimes"
+          #   return
+          # end
+          # # the players
+          # add_players_for_clan(new_world_9)
+          # add_players_for_clan(les_subprimes)
+          # # the battles, ordered by time, first to last.
+          # [ [war, @players["#9P2CRRVY"],  4,    @players["#RCQ0J0JR"],    4,    67,   1355, 2, 2],
+          #   [war, @players["#R20YLVUP"],  2,    @players["#20VJYCR2"],    2,    49,   1290, 0, 0],
+          #   [war, @players["#CPG2L0YV"],  10,   @players["#GYVQVGCP"],    10,   100,  1253, 3, 3],
+          #   [war, @players["#9GRJQV82"],  9,    @players["#9UGGR0CQ"],    9,    82,   1228, 2, 2],
+          #   [war, @players["#RCQ0J0JR"],  4,    @players["#PPLR9R9R"],    6,    100,  1176, 3, 3]
+          #   # that's me vs vaako at 19h 36m left
+          # ].each do |data|
+          #   create_battle(data)
+          # end
+        end
+
+
+        def create_new_world_9_vs_Meute_Des_Loups
+          # the clans
+          new_world_9 = Clan.find_by_coc_id("#8JR8G8L9")
+          meute_des_loups = Clan.find_by_coc_id("#PRPYPQR")
+          if new_world_9.nil? || meute_des_loups.nil?
+            puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and meute_des_loups ('#PRPYPQR')"
+            return
+          end
+          # the war, date: d/m/yyyy
+          war = create_war("9/1/2016".to_date, 10, new_world_9, meute_des_loups, meute_des_loups)
+          if war.nil?
+            puts "WARNING:  not creating new world 9 vs meute_des_loups"
+            return
+          end
+          # the players
+          add_players_for_clan(new_world_9)
+          add_players_for_clan(meute_des_loups)
+          # the battles, ordered by time, first to last.
+          [ [war, @players["#CPG2L0YV"],  9,    @players["#RJ9VQC8Q"],    9,    85,   1412, 1, 1],
+            [war, @players["#R20YLVUP"],  1,    @players["#9QJY9GQJ"],    1,    50,   1384, 1, 1],
+            [war, @players["#8QJ2JVRL"],  6,    @players["#CPG2L0YV"],    9,    91,   1300, 1, 1],
+            [war, @players["#RJ9VQC8Q"],  9,    @players["#CPG2L0YV"],    9,    100,  1222, 3, 2],
+            [war, @players["#RVJJJ8PC"],  4,    @players["#RCQ0J0JR"],    3,    50,   1167, 1, 1],
+            [war, @players["#RJ9VQC8Q"],  9,    @players["#LP2YRGG0"],    10,   97,   1122, 1, 1],
+            [war, @players["#PQVUJ2PR"],  2,    @players["#2GL8P0QL"],    3,    55,   1112, 2, 2],
+            [war, @players["#R20YLVUP"],  1,    @players["#G8GJJUJG"],    2,    85,   1058, 2, 2],
+            [war, @players["#R0U289PJ"],  7,    @players["#LRL02J"],      7,    44,   995,  1, 1],
+            [war, @players["#CRCY2QY0"],  8,    @players["#JV09PPV0"],    8,    60,   983,  1, 1],
+            [war, @players["#9PQ2LV8L"],  6,    @players["#8QJ2JVRL"],    6,    66,   980,  1, 1],
+            [war, @players["#9QJY9GQJ"],  1,    @players["#PQVUJ2PR"],    2,    68,   909,  2, 2],
+            [war, @players["#RCQ0J0JR"],  3,    @players["#JYVP20RY"],    5,    70,   850,  2, 2],
+            [war, @players["#CPG2L0YV"],  9,    @players["#892YG29CL"],   10,   100,  799,  3, 3],
+            [war, @players["#PV0LJJU0"],  5,    @players["#RVJJJ8PC"],    4,    56,   695,  2, 2],
+            [war, @players["#RCQ0J0JR"],  3,    @players["#8QJ2JVRL"],    6,    92,   681,  2, 1],
+            [war, @players["#PV0LJJU0"],  5,    @players["#LRL02J"],      7,    100,  677,  3, 2],
+            [war, @players["#2GL8P0QL"],  3,    @players["#L9QJ2JYQ"],    4,    91,   672,  2, 2],
+            [war, @players["#LRL02J"],    7,    @players["#R0U289PJ"],    7,    87,   355,  2, 2],
+            [war, @players["#G8GJJUJG"],  2,    @players["#RCQ0J0JR"],    3,    64,   269,  2, 1],
+            [war, @players["#JYVP20RY"],  5,    @players["#9PQ2LV8L"],    6,    46,   263,  0, 0],
+            [war, @players["#JV09PPV0"],  8,    @players["#CRCY2QY0"],    8,    84,   260,  2, 2],
+            [war, @players["#LRL02J"],    7,    @players["#LP2YRGG0"],    10,   100,  254,  3, 2],
+            [war, @players["#9QJY9GQJ"],  1,    @players["#R20YLVUP"],    1,    56,   225,  2, 2],
+            [war, @players["#PQVUJ2PR"],  2,    @players["#JV09PPV0"],    8,    96,   202,  2, 1],
+            [war, @players["#R0U289PJ"],  7,    @players["#RJ9VQC8Q"],    9,    100,  153,  3, 2],
+            [war, @players["#LP2YRGG0"],  10,   @players["#JV09PPV0"],    8,    44,   138,  0, 0],
+            [war, @players["#2GL8P0QL"],  3,    @players["#9PQ2LV8L"],    6,    100,  115,  3, 3],
+            [war, @players["#CRCY2QY0"],  8,    @players["#8QJ2JVRL"],    6,    38,   107,  1, 0],
+            [war, @players["#9PQ2LV8L"],  6,    @players["#JV09PPV0"],    8,    100,  97,   3, 1],
+            [war, @players["#JV09PPV0"],  8,    @players["#R0U289PJ"],    7,    100,  42,   3, 1],
+            [war, @players["#JYVP20RY"],  5,    @players["#CRCY2QY0"],    8,    100,  11,   3, 1],
+            [war, @players["#RVJJJ8PC"],  4,    @players["#PV0LJJU0"],    5,    56,   0,    2, 2],
+            [war, @players["#G8GJJUJG"],  2,    @players["#L9QJ2JYQ"],    4,    57,   0,    1, 0]
           ].each do |data|
             create_battle(data)
           end
