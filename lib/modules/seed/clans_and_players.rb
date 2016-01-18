@@ -20,6 +20,7 @@ module Seed
           # This list is arranged alphabetically by the "name" column (data[3])
           [ ['#28VL98JV', Clan::CLAN_TYPE_INVITE, 5,  'cep 2',            1400, Clan::WAR_FREQUENCY_ALWAYS,       48],
             ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
+            ['#P9LQJQ9C', Clan::CLAN_TYPE_INVITE, 6,  'Devils Rejects',   0,    Clan::WAR_FREQUENCY_TWICE_WEEKLY, 57],
             ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       87],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
             ['#8U28UGQV', Clan::CLAN_TYPE_INVITE, 3,  'GOLD n SHOWERS',   1000, Clan::WAR_FREQUENCY_WEEKLY,       9],
@@ -106,6 +107,18 @@ module Seed
             ['#80JJY2Q0',   102,  'Raiva',          @clans['#PYCCJJUC']],
             ['#Y0VYVYCV',   100,  'wei',            @clans['#PYCCJJUC']],
 
+            # Devils Rejects
+            ['#208VRY09L',  82,   'andy',             @clans['#P9LQJQ9C']],
+            ['#P8QV0GGC',   114,  'Gaerith',          @clans['#P9LQJQ9C']],
+            ['#2QR2VP8Q2',  70,   'lonewolf',         @clans['#P9LQJQ9C']],
+            ['#J2LRYRCR',   86,   'Lord Satoryn',     @clans['#P9LQJQ9C']],
+            ['#2L0QL2JY9',  91,   'marn',             @clans['#P9LQJQ9C']],
+            ['#Q0VYUPL9',   88,   'McFletchface',     @clans['#P9LQJQ9C']],
+            ['#200CPRQR9',  78,   'nikola',           @clans['#P9LQJQ9C']],
+            ['#V2LC02VV',   56,   'PoppyAndCocoa',    @clans['#P9LQJQ9C']],
+            ['#QPJL9PPQ',   111,  'scocon',           @clans['#P9LQJQ9C']],
+            ['#LJ88JJ22',   73,   'seductiveslayer',  @clans['#P9LQJQ9C']],
+            
             # Doguimie<heart>
             ['#C0JJ2RJP',   103,  '57heaven',         @clans['#8YGC2RRV']],
             ['#9LG8YYCQ',   103,  '62-mefi-te',       @clans['#8YGC2RRV']],
