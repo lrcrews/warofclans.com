@@ -16,7 +16,7 @@ body {
             padding: 40px 0;
 
             > header {
-              color: $font-dark;
+              color: $font-for-main-bg;
               font-size: $large;
 
               @include font-uncial-antiqua;
@@ -41,8 +41,8 @@ body {
                   }
 
                   &:not(.active) {
-                    background-color: $background-dark;
-                    color: $font-light;
+                    background-color: rgba(42, 42, 42, 0.75);
+                    color: $white;
                   }
                 }
               }

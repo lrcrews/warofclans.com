@@ -3,16 +3,16 @@
   <section>
     
     <header>
-      <%= link_to "WarOfClans", root_url %>
+      <%= link_to "WarOfClans", root_url, class: "white" %>
     </header>
 
     <footer>
-      <% if user_signed_in? %>
-        <%= link_to "sign out", destroy_user_session_url, method: :delete, "class" => "button" %>
-      <% else %>
-        <%= link_to "sign in", new_user_session_url, "class" => "button" %>
-        <%= link_to "sign up", new_user_registration_url, "class" => "button" %>
-      <% end %>
+      <%# if user_signed_in? %>
+        <%# link_to "sign out", destroy_user_session_url, method: :delete, "class" => "button" %>
+      <%# else %>
+        <%# link_to "sign in", new_user_session_url, "class" => "button" %>
+        <%# link_to "sign up", new_user_registration_url, "class" => "button" %>
+      <%# end %>
     </footer>
 
   </section>

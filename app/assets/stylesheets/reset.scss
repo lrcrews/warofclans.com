@@ -12,6 +12,15 @@ textarea {
   line-height: 150%;
 }
 
+input {
+  background-color: $white;
+  border: 1px solid $border-button;
+  border-radius: 4px;
+  color: $black;
+  height: 50px;
+  padding-left: 8px;
+}
+
 ol,
 ul {
   clear: both;
@@ -33,10 +42,27 @@ a {
   }
 }
 
+a.white {
+  color: $white;
+
+  &:active,
+  &:hover {
+    color: $white;
+  }
+  
+  &:visited {
+    color: $white;
+  }
+}
+
+h1 {
+  font-size: $big-ass-title;
+  @include font-uncial-antiqua;
+}
+
 body.war-of-clans {
-  background-color: $background-light;
-  background-image: linear-gradient($white, $background-light);
-  color: $font-dark;
+  background-color: $background-page;
+  color: $font-for-main-bg;
 
   > section.page-container {
     margin: 0 auto;

@@ -5,7 +5,8 @@ body {
   &.war-of-clans {
 
     > div.site-header {
-      background-color: rgba(255, 255, 255, 0.9);
+      background: linear-gradient(90deg, rgb(244, 106, 12) 0%, rgb(243, 180, 9) 100%);
+      border-bottom: 1px solid $border-primary;
       height: $height-of-site-header;
       position: fixed;
       top: 0;

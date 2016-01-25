@@ -5,9 +5,10 @@ body {
   &.war-of-clans {
 
     section.unsortable-war-row {
-      background-color: $white;
+      background-color: rgba(42, 42, 42, 0.75);
       border: 1px solid $border-primary;
       border-radius: 8px;
+      color: $white;
       min-height: 60px;
       margin: 10px auto;
       position: relative;
@@ -29,7 +30,6 @@ body {
       }
 
       > footer {
-        background-color: $white;
         border-bottom-right-radius: 8px;
         border-left: 1px solid $border-primary;
         border-top-right-radius: 8px;

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   root 'dashboard#index'
 
+  post 'register_interest' => 'dashboard#register_interest'
+
   resources :clans
   resources :players
   resources :wars

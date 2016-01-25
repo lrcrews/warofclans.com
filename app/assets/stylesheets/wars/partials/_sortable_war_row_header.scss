@@ -8,10 +8,11 @@ body {
       
       /* The shared styles are in the _sortable_war_row.scss file */
 
-      background-color: $background-light;
+      background-color: rgba(42, 42, 42, 0.75);
       border-top: 1px solid $border-primary;
 
       > li {
+        color: $white;
         font-size: $small;
         font-weight: bold;
         line-height: 110%;

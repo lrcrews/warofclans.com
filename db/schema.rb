@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828224605) do
+ActiveRecord::Schema.define(version: 20160122064816) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "battles", force: :cascade do |t|
     t.integer  "attacker_id"
@@ -29,9 +32,9 @@ ActiveRecord::Schema.define(version: 20150828224605) do
     t.string   "defender_clan_coc_id"
   end
 
-  add_index "battles", ["attacker_id"], name: "index_battles_on_attacker_id"
-  add_index "battles", ["defender_id"], name: "index_battles_on_defender_id"
-  add_index "battles", ["war_id"], name: "index_battles_on_war_id"
+  add_index "battles", ["attacker_id"], name: "index_battles_on_attacker_id", using: :btree
+  add_index "battles", ["defender_id"], name: "index_battles_on_defender_id", using: :btree
+  add_index "battles", ["war_id"], name: "index_battles_on_war_id", using: :btree
 
   create_table "clan_players", force: :cascade do |t|
     t.integer  "clan_id"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150828224605) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "clan_players", ["clan_id", "player_id"], name: "index_clan_players_on_clan_id_and_player_id", unique: true
+  add_index "clan_players", ["clan_id", "player_id"], name: "index_clan_players_on_clan_id_and_player_id", unique: true, using: :btree
 
   create_table "clan_wars", force: :cascade do |t|
     t.integer  "clan_id"
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150828224605) do
     t.integer  "war_stars_awarded", default: 0
   end
 
-  add_index "clan_wars", ["clan_id", "war_id"], name: "index_clan_wars_on_clan_id_and_war_id", unique: true
+  add_index "clan_wars", ["clan_id", "war_id"], name: "index_clan_wars_on_clan_id_and_war_id", unique: true, using: :btree
 
   create_table "clans", force: :cascade do |t|
     t.string   "coc_id"
@@ -85,6 +88,12 @@ ActiveRecord::Schema.define(version: 20150828224605) do
     t.integer  "total_defences",                  default: 0
   end
 
+  create_table "potential_users", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -100,8 +109,8 @@ ActiveRecord::Schema.define(version: 20150828224605) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "wars", force: :cascade do |t|
     t.date     "war_date"

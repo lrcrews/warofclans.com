@@ -2,7 +2,15 @@
 <section ng-controller="DashboardController" ng-init="initialize()">
 
   <header>
-    A place to track your war stats for Clash of Clans
+    <h1>A history of war (in Clash of Clans)</h1>
+    Welcome to the alpha! Soon you'll be able to easily enter your own clan's data here, giving you a historical (and interesting) look at your clan... but for now you'll just have to judge our clan. Enter your email below to be one of the first users of the beta version!
+    <section ng-show="!betaEmailSubmitted">
+      <input type="text" ng-model="betaEmail" placeholder="awesome.beta.person@email.com" />
+      <button ng-click="signUpBetaInterest()">Join Beta</i></button>
+    </section>
+    <section ng-show="betaEmailSubmitted" class="thanks">
+      thanks awesome internet person!
+    </section>
   </header>
 
   <section>

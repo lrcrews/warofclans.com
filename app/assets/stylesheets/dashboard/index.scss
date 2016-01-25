@@ -10,17 +10,39 @@ body {
 
         > section {
           margin: $height-of-site-header auto 16px;
-          padding-top: 16px;
+          padding-top: 20px;
 
           > header {
-            font-size: $big-ass-title;
+            background-color: $background-text-box;
+            border: 1px solid $border-primary;
+            color: $font-for-text-box-bg;
+            font-size: $larger;
+            padding: 20px;
+
+            > h1 {
+              padding-bottom: 8px;
+            }
+
+            > section {
+              height: 70px;
+              padding-top: 20px;
+
+              &.thanks {
+                color: $button-primary;
+                font-size: $larger;
+                font-style: oblique;
+              }
+
+              > input {
+                width: 420px;
+              }
+            }
           }
 
           > section {
             padding: 40px 0;
 
             > header {
-              color: $font-other;
               font-size: $large;
 
               @include font-uncial-antiqua;

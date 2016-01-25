@@ -1056,7 +1056,7 @@ module Seed
             return
           end
           # the war, date: d/m/yyyy
-          war = create_war("9/1/2016".to_date, 10, new_world_9, devils_rejects, new_world_9)
+          war = create_war("16/1/2016".to_date, 10, new_world_9, devils_rejects, new_world_9)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs devils_rejects"
             return

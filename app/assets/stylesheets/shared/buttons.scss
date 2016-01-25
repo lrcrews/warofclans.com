@@ -2,15 +2,16 @@
 
 button,
 a.button {
-  background-color: $white;
-  border: 1px solid $border-primary;
+  background-color: $button-primary;
+  border: 1px solid $border-button;
   border-radius: 4px;
-  color: $font-dark;
+  color: $black;
+  height: 50px;
+  min-width: 50px;
   padding: 8px 16px;
 
   &:hover {
+    background-color: $button-primary-hover;
     text-decoration: none;
-
-    @include button-box-shadow;
   }
 }
