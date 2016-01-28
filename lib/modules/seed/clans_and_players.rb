@@ -35,6 +35,7 @@ module Seed
             ['#PRP2LJP',  Clan::CLAN_TYPE_INVITE, 3,  'Powers That Be',   1500, Clan::WAR_FREQUENCY_NOT_SET,      13],
             ['#2VRU2V0L', Clan::CLAN_TYPE_INVITE, 5,  'Swiss Keks',       0,    Clan::WAR_FREQUENCY_ALWAYS,       51],
             ['#2QY8GQQ0', Clan::CLAN_TYPE_INVITE, 5,  'Sons of hanover',  800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 35],
+            ['#8V9GGJPY', Clan::CLAN_TYPE_INVITE, 6,  'The Roughnecks',   2400, Clan::WAR_FREQUENCY_ALWAYS,       82],
             ['#PGG2R0JY', Clan::CLAN_TYPE_CLOSED, 4,  'The trooper',      800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 42],
             ['#8QG0G9P0', Clan::CLAN_TYPE_INVITE, 3,  '**HEIST**',        2100, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 19]
           ].each do |data|
@@ -317,6 +318,19 @@ module Seed
             ['#UCR89YQ8',   95,   's/i/m/o/n/0011',   @clans['#2VRU2V0L']],
             ['#UP8P2LVY',   67,   'x13lack',          @clans['#2VRU2V0L']],
             
+            # The Roughnecks
+            ['#QR2R8RRU',   125,  'ace',              @clans['#8V9GGJPY']],
+            ['#8R99LQL8',   84,   'armybaptist',      @clans['#8V9GGJPY']],
+            ['#90UQPJ2L',   99,   'BigEarnMcCraken',  @clans['#8V9GGJPY']],
+            ['#9U0YRPU',    102,  'bowhunter',        @clans['#8V9GGJPY']],
+            ['#9CCR29J8',   96,   'Casso',            @clans['#8V9GGJPY']],
+            ['#PY0Q2QLQ',   104,  'chocothunda',      @clans['#8V9GGJPY']],
+            ['#VPPLYG9C',   59,   'Ford Killer',      @clans['#8V9GGJPY']],
+            ['#20LP98PLU',  83,   'Lexiiii19',        @clans['#8V9GGJPY']],
+            ['#2YYUUC9R',   121,  'puddin597',        @clans['#8V9GGJPY']],
+            ['#P8UPGLGC',   84,   'Sir Ronald',       @clans['#8V9GGJPY']],
+            
+
             # The trooper
             ['#PVCP0JYC',   108,  'Christophe',       @clans['#PGG2R0JY']],
             ['#V0ULJ80',    109,  'Fleoz',            @clans['#PGG2R0JY']],
