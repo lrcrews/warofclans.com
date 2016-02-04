@@ -35,6 +35,7 @@ module Seed
             ['#PRP2LJP',  Clan::CLAN_TYPE_INVITE, 3,  'Powers That Be',   1500, Clan::WAR_FREQUENCY_NOT_SET,      13],
             ['#2VRU2V0L', Clan::CLAN_TYPE_INVITE, 5,  'Swiss Keks',       0,    Clan::WAR_FREQUENCY_ALWAYS,       51],
             ['#2QY8GQQ0', Clan::CLAN_TYPE_INVITE, 5,  'Sons of hanover',  800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 35],
+            ['#2LQCLR8V', Clan::CLAN_TYPE_INVITE, 6,  'The Mustards',     1500, Clan::WAR_FREQUENCY_ALWAYS,       73],
             ['#8V9GGJPY', Clan::CLAN_TYPE_INVITE, 6,  'The Roughnecks',   2400, Clan::WAR_FREQUENCY_ALWAYS,       82],
             ['#PGG2R0JY', Clan::CLAN_TYPE_CLOSED, 4,  'The trooper',      800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 42],
             ['#8QG0G9P0', Clan::CLAN_TYPE_INVITE, 3,  '**HEIST**',        2100, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 19]
@@ -318,6 +319,18 @@ module Seed
             ['#UCR89YQ8',   95,   's/i/m/o/n/0011',   @clans['#2VRU2V0L']],
             ['#UP8P2LVY',   67,   'x13lack',          @clans['#2VRU2V0L']],
             
+            # The Mustards
+            ['#YU0J0QU9',   93,   'AbbysDad',         @clans['#2LQCLR8V']],
+            ['#Y9R28C2C',   125,  'BiggDaddy',        @clans['#2LQCLR8V']],
+            ['#G9JJVQY2',   80,   'Bighags32',        @clans['#2LQCLR8V']],
+            ['#9PVQVC28',   122,  'christian',        @clans['#2LQCLR8V']],
+            ['#U9J9G9YR',   81,   'hags32',           @clans['#2LQCLR8V']],
+            ['#28R00LC8Q',  69,   'magnificent ASH',  @clans['#2LQCLR8V']],
+            ['#CJJ2YQU',    101,  'MStone12',         @clans['#2LQCLR8V']],
+            ['#8QV9UG99',   52,   'NoahTheGamer326',  @clans['#2LQCLR8V']],
+            ['#2898LVQJQ',  98,   'WhoSharted84',     @clans['#2LQCLR8V']],
+            ['#2RQY9V9',    107,  'YAB',              @clans['#2LQCLR8V']],
+
             # The Roughnecks
             ['#QR2R8RRU',   125,  'ace',              @clans['#8V9GGJPY']],
             ['#8R99LQL8',   84,   'armybaptist',      @clans['#8V9GGJPY']],
