@@ -23,6 +23,7 @@ module Seed
             ['#P9LQJQ9C', Clan::CLAN_TYPE_INVITE, 6,  'Devils Rejects',   0,    Clan::WAR_FREQUENCY_TWICE_WEEKLY, 57],
             ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       87],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
+            ['#U0U0YCP',  Clan::CLAN_TYPE_INVITE, 7,  'game of rhones',   1100, Clan::WAR_FREQUENCY_ALWAYS,       116],
             ['#8U28UGQV', Clan::CLAN_TYPE_INVITE, 3,  'GOLD n SHOWERS',   1000, Clan::WAR_FREQUENCY_WEEKLY,       9],
             ['#2QV8LYP2', Clan::CLAN_TYPE_INVITE, 5,  'les chouquettes',  1600, Clan::WAR_FREQUENCY_ALWAYS,       82],
             ['#80R0RUUL', Clan::CLAN_TYPE_INVITE, 6,  'les subprimes',    1400, Clan::WAR_FREQUENCY_ALWAYS,       97],
@@ -149,6 +150,18 @@ module Seed
             ['#9QRVY2V8',   114,  'SkylineGP',        @clans['#Y0QVU2YC']],
             ['#YPPQCQYQ',   86,   'Vince IIIy',       @clans['#Y0QVU2YC']],
             ['#R2RL0LJ0',   77,   'woozzaa',          @clans['#Y0QVU2YC']],
+
+            # game of rhones
+            ['#LRYPLGUG',   80,   'Blivanos',         @clans['#U0U0YCP']],
+            ['#98YQP98G',   120,  'djagwer',          @clans['#U0U0YCP']],
+            ['#2QLQYYU0',   129,  'hodor',            @clans['#U0U0YCP']],
+            ['#VLU92QR0',   76,   'Jon-Snow',         @clans['#U0U0YCP']],
+            ['#22QCUJVYV',  100,  'Kenpachi',         @clans['#U0U0YCP']],
+            ['#GL2CJV09',   95,   'Mabric',           @clans['#U0U0YCP']],
+            ['#289RGGJGU',  84,   'Pierro 8',         @clans['#U0U0YCP']],
+            ['#20UPPCPL9',  117,  'thomas',           @clans['#U0U0YCP']],
+            ['#C8CQ8GJP',   102,  'tiguidou',         @clans['#U0U0YCP']],
+            ['#2GP9Y9LJ0',  73,   '...mat...',        @clans['#U0U0YCP']],
 
             # GOLD n SHOWERS
             ['#YG0L22CJ',   125,  'adunny20',         @clans['#8U28UGQV']],
