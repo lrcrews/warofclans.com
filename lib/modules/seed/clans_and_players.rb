@@ -22,6 +22,7 @@ module Seed
             ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
             ['#P9LQJQ9C', Clan::CLAN_TYPE_INVITE, 6,  'Devils Rejects',   0,    Clan::WAR_FREQUENCY_TWICE_WEEKLY, 57],
             ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       87],
+            ['#JPYUJRC',  Clan::CLAN_TYPE_ANYONE, 5,  'Elite Hamburg',    1600, Clan::WAR_FREQUENCY_ALWAYS,       72],
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
             ['#U0U0YCP',  Clan::CLAN_TYPE_INVITE, 7,  'game of rhones',   1100, Clan::WAR_FREQUENCY_ALWAYS,       116],
             ['#8U28UGQV', Clan::CLAN_TYPE_INVITE, 3,  'GOLD n SHOWERS',   1000, Clan::WAR_FREQUENCY_WEEKLY,       9],
@@ -139,6 +140,18 @@ module Seed
             ['#VRPJPRJU',   52,   'TonJeJe',          @clans['#8YGC2RRV']],
             ['#Y080JGCG',   84,   'wiskard legrand',  @clans['#8YGC2RRV']],
 
+            # Elite Hamburg
+            ['#82RVY0QLV',  64,   'cano',             @clans['#JPYUJRC']],
+            ['#22VLVCC2L',  82,   'Drax',             @clans['#JPYUJRC']],
+            ['#2V2Q2Q09V',  54,   'EliteEnno 21147',  @clans['#JPYUJRC']],
+            ['#JJY8P8U8',   103,  'Elite-HH-Luis',    @clans['#JPYUJRC']],
+            ['#8GJ9QVPG',   88,   'fis',              @clans['#JPYUJRC']],
+            ['#CGGULVQ',    103,  'OG $ Gerle47',     @clans['#JPYUJRC']],
+            ['#28VY9G80Q',  100,  'OG_Igor47',        @clans['#JPYUJRC']],
+            ['#YJ9RLURU',   78,   'lolo',             @clans['#JPYUJRC']],
+            ['#8L89R8C0',   131,  'Mummdolf',         @clans['#JPYUJRC']],
+            ['#820QVVRC2',  71,   'skunk',            @clans['#JPYUJRC']],
+            
             # Galaxyguardians
             ['#R2GL8VCQ',   92,   'Ello<3',           @clans['#Y0QVU2YC']],
             ['#L80J8UPG',   104,  'Energizer#',       @clans['#Y0QVU2YC']],
