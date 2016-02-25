@@ -35,6 +35,7 @@ module Seed
             ['#8JR8G8L9', Clan::CLAN_TYPE_INVITE, 4,  'New World 9',      1000, Clan::WAR_FREQUENCY_WEEKLY,       55],
             ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS,       99],
             ['#PRP2LJP',  Clan::CLAN_TYPE_INVITE, 3,  'Powers That Be',   1500, Clan::WAR_FREQUENCY_NOT_SET,      13],
+            ['#L8RRJPQ',  Clan::CLAN_TYPE_INVITE, 6,  'Rasht Tick',       800,  Clan::WAR_FREQUENCY_ALWAYS,       88],
             ['#2VRU2V0L', Clan::CLAN_TYPE_INVITE, 5,  'Swiss Keks',       0,    Clan::WAR_FREQUENCY_ALWAYS,       51],
             ['#2QY8GQQ0', Clan::CLAN_TYPE_INVITE, 5,  'Sons of hanover',  800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 35],
             ['#2LQCLR8V', Clan::CLAN_TYPE_INVITE, 6,  'The Mustards',     1500, Clan::WAR_FREQUENCY_ALWAYS,       73],
@@ -222,7 +223,6 @@ module Seed
             ['#PJ8PGY0',    119,  'Sand',             @clans['#2VCLRR2U']],
             ['#JJ0UGLGQ',   100,  'Thanh Tung',       @clans['#2VCLRR2U']],
             ['#CP889L0R',   98,   'Thu Hien',         @clans['#2VCLRR2U']],
-            
 
             # LOS PAY@S XXL
             ['#JG8RRP9Q',   87,   'A.J',            @clans['#CYQ0C8G']],
@@ -320,6 +320,18 @@ module Seed
             ['#L2JPV0GV',   94,   'TheRayC',          @clans['#PRP2LJP']],
             ['#2G0V0URG',   107,  '- hizzle17 -',     @clans['#PRP2LJP']],
 
+            # Rasht Tick
+            ['#UUUVYJGG',   108,  'Ali_viper',        @clans['#L8RRJPQ']],
+            ['#CLQGQVG2',   122,  'farzan',           @clans['#L8RRJPQ']],
+            ['#92G8QG8Y',   83,   'fooriii',          @clans['#L8RRJPQ']],
+            ['#V9Q2V2J2',   79,   'Ladis_94',         @clans['#L8RRJPQ']],
+            ['#GJ9LUQC8',   122,  'makan',            @clans['#L8RRJPQ']],
+            ['#202VGUP9L',  101,  'Meisam',           @clans['#L8RRJPQ']],
+            ['#LV8QYQVP',   87,   'Melika',           @clans['#L8RRJPQ']],
+            ['#YYPC0P8Y',   85,   'Niloofar',         @clans['#L8RRJPQ']],
+            ['#8Q8JYQ8',    109,  'peyman',           @clans['#L8RRJPQ']],
+            ['#G8UCCC88',   89,   'TOJJAR',           @clans['#L8RRJPQ']],
+            
             # Sons of hanover
             ['#PQ82LP28',   124,  'camelito!',        @clans['#2QY8GQQ0']],
             ['#QJPCV9PU',   90,   'FCB',              @clans['#2QY8GQQ0']],

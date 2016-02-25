@@ -36,6 +36,7 @@ module Seed
         create_new_world_9_vs_The_Mustards
         create_new_werld_9_vs_game_of_rhones
         create_new_werld_9_vs_Elite_Hamburg
+        create_new_world_9_vs_Rasht_Tick
       end
 
 
@@ -1287,7 +1288,7 @@ module Seed
             return
           end
           # the war, date: d/m/yyyy
-          war = create_war("6/2/2016".to_date, 10, new_world_9, elite_hamburg, new_world_9)
+          war = create_war("13/2/2016".to_date, 10, new_world_9, elite_hamburg, new_world_9)
           if war.nil?
             puts "WARNING:  not creating new world 9 vs elite_hamburg"
             return
@@ -1322,6 +1323,54 @@ module Seed
             [war, @players["#CRCY2QY0"],  8,  @players["#82RVY0QLV"], 9,  82,   128,  2, 0],
             [war, @players["#R0U289PJ"],  7,  @players["#82RVY0QLV"], 9,  100,  124,  3, 1],
             [war, @players["#RCQ0J0JR"],  3,  @players["#CGGULVQ"],   3,  72,   50,   2, 0]
+          ].each do |data|
+            create_battle(data)
+          end
+        end
+
+
+        def create_new_world_9_vs_Rasht_Tick
+          # the clans
+          new_world_9 = Clan.find_by_coc_id("#8JR8G8L9")
+          rasht_tick = Clan.find_by_coc_id("#L8RRJPQ")
+          if new_world_9.nil? || rasht_tick.nil?
+            puts "WARNING:  unable to create the war/battles for new world 9 ('#8JR8G8L9') and rasht_tick ('#L8RRJPQ')"
+            return
+          end
+          # the war, date: d/m/yyyy
+          war = create_war("20/2/2016".to_date, 10, new_world_9, rasht_tick, new_world_9)
+          if war.nil?
+            puts "WARNING:  not creating new world 9 vs rasht_tick"
+            return
+          end
+          # the players
+          add_players_for_clan(new_world_9)
+          add_players_for_clan(rasht_tick)
+          # the battles, ordered by time, first to last.
+          [ [war, @players["#9PQ2LV8L"],  6,  @players["#YYPC0P8Y"],  8,  65,   1349, 1, 1],
+            [war, @players["#CPG2L0YV"],  10, @players["#V9Q2V2J2"],  10, 100,  1281, 3, 3],
+            [war, @players["#R20YLVUP"],  2,  @players["#G8UCCC88"],  4,  100,  1233, 3, 3],
+            [war, @players["#YYPC0P8Y"],  8,  @players["#9GRJQV82"],  9,  100,  1132, 3, 3],
+            [war, @players["#PV0LJJU0"],  5,  @players["#202VGUP9L"], 5,  75,   979,  2, 2],
+            [war, @players["#PV0LJJU0"],  5,  @players["#UUUVYJGG"],  6,  100,  937,  3, 3],
+            [war, @players["#G8UCCC88"],  4,  @players["#9PQ2LV8L"],  6,  68,   832,  2, 2],
+            [war, @players["#L9QJ2JYQ"],  4,  @players["#LV8QYQVP"],  7,  76,   717,  2, 2],
+            [war, @players["#CLQGQVG2"],  2,  @players["#PQVUJ2PR"],  3,  70,   643,  1, 1],
+            [war, @players["#YYPC0P8Y"],  8,  @players["#CPG2L0YV"],  10, 100,  636,  3, 3],
+            [war, @players["#202VGUP9L"], 5,  @players["#R0U289PJ"],  8,  71,   626,  2, 2],
+            [war, @players["#GY9YL809"],  7,  @players["#92G8QG8Y"],  9,  100,  621,  3, 3],
+            [war, @players["#GJ9LUQC8"],  1,  @players["#RVJ08JR2"],  1,  39,   569,  0, 0],
+            [war, @players["#G8UCCC88"],  4,  @players["#GY9YL809"],  7,  51,   421,  1, 1],
+            [war, @players["#CLQGQVG2"],  2,  @players["#PV0LJJU0"],  5,  83,   408,  1, 1],
+            [war, @players["#R20YLVUP"],  2,  @players["#CLQGQVG2"],  2,  63,   353,  2, 2],
+            [war, @players["#RVJ08JR2"],  1,  @players["#GJ9LUQC8"],  1,  54,   244,  1, 1],
+            [war, @players["#PQVUJ2PR"],  3,  @players["#8Q8JYQ8"],   3,  35,   205,  1, 1],
+            [war, @players["#R0U289PJ"],  8,  @players["#YYPC0P8Y"],  8,  48,   173,  1, 0],
+            [war, @players["#PQVUJ2PR"],  3,  @players["#YYPC0P8Y"],  8,  49,   94,   1, 0],
+            [war, @players["#R0U289PJ"],  8,  @players["#LV8QYQVP"],  7,  56,   66,   2, 0],
+            [war, @players["#RVJ08JR2"],  1,  @players["#8Q8JYQ8"],   3,  99,   49,   2, 1],
+            [war, @players["#GY9YL809"],  7,  @players["#YYPC0P8Y"],  8,  19,   44,   0, 0],
+            [war, @players["#L9QJ2JYQ"],  4,  @players["#YYPC0P8Y"],  8,  48,   18,   0, 0]
           ].each do |data|
             create_battle(data)
           end
