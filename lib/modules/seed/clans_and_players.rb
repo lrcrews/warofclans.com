@@ -35,6 +35,7 @@ module Seed
             ['#8JR8G8L9', Clan::CLAN_TYPE_INVITE, 4,  'New World 9',      1000, Clan::WAR_FREQUENCY_WEEKLY,       55],
             ['#QLVJ092',  Clan::CLAN_TYPE_INVITE, 5,  'pinklove',         1600, Clan::WAR_FREQUENCY_ALWAYS,       99],
             ['#PRP2LJP',  Clan::CLAN_TYPE_INVITE, 3,  'Powers That Be',   1500, Clan::WAR_FREQUENCY_NOT_SET,      13],
+            ['#9UJ8Q82P', Clan::CLAN_TYPE_INVITE, 8,  'Purple Savages',   1100, Clan::WAR_FREQUENCY_ALWAYS,       121],
             ['#L8RRJPQ',  Clan::CLAN_TYPE_INVITE, 6,  'Rasht Tick',       800,  Clan::WAR_FREQUENCY_ALWAYS,       88],
             ['#2VRU2V0L', Clan::CLAN_TYPE_INVITE, 5,  'Swiss Keks',       0,    Clan::WAR_FREQUENCY_ALWAYS,       51],
             ['#2QY8GQQ0', Clan::CLAN_TYPE_INVITE, 5,  'Sons of hanover',  800,  Clan::WAR_FREQUENCY_TWICE_WEEKLY, 35],
@@ -274,6 +275,7 @@ module Seed
             ['#R0U289PJ',   93,   'Chief bigdik',     @clans['#8JR8G8L9']],
             ['#L9QJ2JYQ',   100,  'Chromatomic',      @clans['#8JR8G8L9']],
             ['#PQVUJ2PR',   97,   'Count Dubula',     @clans['#8JR8G8L9']],
+            ['#228Q28RUG',  86,   'Craig',            @clans['#8JR8G8L9']],
             ['#PV0LJJU0',   99,   'Dan',              @clans['#8JR8G8L9']],
             ['#LP2YRGG0',   65,   'Destiny_Void',     @clans['#8JR8G8L9']],
             ['#CRCY2QY0',   87,   'DraggQu33n',       @clans['#8JR8G8L9']],
@@ -319,6 +321,18 @@ module Seed
             ['#2RQ9P2YJ',   74,   'tee*la',           @clans['#PRP2LJP']],
             ['#L2JPV0GV',   94,   'TheRayC',          @clans['#PRP2LJP']],
             ['#2G0V0URG',   107,  '- hizzle17 -',     @clans['#PRP2LJP']],
+
+            # Purple Savages
+            ['#202LR8G2',   87,   'Hercules',         @clans['#9UJ8Q82P']],
+            ['#PUUJU92G',   109,  'Lady Caitlin',     @clans['#9UJ8Q82P']],
+            ['#RLUCLUGP',   127,  'Marty McFly',      @clans['#9UJ8Q82P']],
+            ['#QGYQJRUV',   116,  'Purple Savage',    @clans['#9UJ8Q82P']],
+            ['#28CL8V9R2',  70,   'ramz',             @clans['#9UJ8Q82P']],
+            ['#LU8RP8Q2',   106,  'Raulito',          @clans['#9UJ8Q82P']],
+            ['#2PPCLV28J',  70,   'remy86',           @clans['#9UJ8Q82P']],
+            ['#99CLQ8YC',   110,  'RENE(956)',        @clans['#9UJ8Q82P']],
+            ['#PQ8GJ9CG',   101,  'Sir Kevin',        @clans['#9UJ8Q82P']],
+            ['#22VGGUCG',   112,  '-Paradise-',       @clans['#9UJ8Q82P']],
 
             # Rasht Tick
             ['#UUUVYJGG',   108,  'Ali_viper',        @clans['#L8RRJPQ']],
