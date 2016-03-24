@@ -18,7 +18,8 @@ module Seed
           puts "____________________"
           puts "adding clans to the existing #{current_clan_count} clan(s)..."
           # This list is arranged alphabetically by the "name" column (data[3])
-          [ ['#28VL98JV', Clan::CLAN_TYPE_INVITE, 5,  'cep 2',            1400, Clan::WAR_FREQUENCY_ALWAYS,       48],
+          [ ['#2CQ900RU', Clan::CLAN_TYPE_INVITE, 7,  'Belgium at war',   1200, Clan::WAR_FREQUENCY_ALWAYS,       105],
+            ['#28VL98JV', Clan::CLAN_TYPE_INVITE, 5,  'cep 2',            1400, Clan::WAR_FREQUENCY_ALWAYS,       48],
             ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
             ['#P9LQJQ9C', Clan::CLAN_TYPE_INVITE, 6,  'Devils Rejects',   0,    Clan::WAR_FREQUENCY_TWICE_WEEKLY, 57],
             ['#8YGC2RRV', Clan::CLAN_TYPE_INVITE, 5,  'Doguimie',         1800, Clan::WAR_FREQUENCY_ALWAYS,       87],
@@ -89,7 +90,24 @@ module Seed
           # This list is arranged alphabetically by the clan name (in comment), then 
           # by "name" column (data[2])
           #
-          [ # cep 2
+          [ # Belgium at war
+            ['#PCPQQLVJ',   104,  'Brittora',       @clans['#2CQ900RU']],
+            ['#LJQQ8VC',    135,  'Gijs',           @clans['#2CQ900RU']],
+            ['#2QRYUG2L',   74,   'kabouterlui',    @clans['#2CQ900RU']],
+            ['#YG88R2JY',   98,   'killer',         @clans['#2CQ900RU']],
+            ['#Y8VLPQ0J',   100,  'KurdyMalloy232', @clans['#2CQ900RU']],
+            ['#22YCPRQJU',  77,   'kwasibelg',      @clans['#2CQ900RU']],
+            ['#80L9G28Y',   119,  'Pêchon',         @clans['#2CQ900RU']],
+            ['#828JPJ9Y',   43,   'lil\'glad',      @clans['#2CQ900RU']],
+            ['#R22YV9QU',   88,   'rupss',          @clans['#2CQ900RU']],
+            ['#8CQJR0YL',   73,   'sander',         @clans['#2CQ900RU']],
+            ['#VQ9QVGC',    93,   'Seb Vb',         @clans['#2CQ900RU']],
+            ['#PJYQYP0R',   92,   'Shadow',         @clans['#2CQ900RU']],
+            ['#LLQ9QVYV',   99,   'slappe hap',     @clans['#2CQ900RU']],
+            ['#YUY0PLVY',   116,  'SNeakyFreak36',  @clans['#2CQ900RU']],
+            ['#299QU0UUC',  92,   'utopia',         @clans['#2CQ900RU']],
+            
+            # cep 2
             ['#2LY2GJVL8',  61,   'bellevue',       @clans['#28VL98JV']],
             ['#220QV0VUY',  108,  'Blaininos',      @clans['#28VL98JV']],
             ['#2YPLL90VY',  92,   'cleyman',        @clans['#28VL98JV']],
@@ -281,10 +299,13 @@ module Seed
             ['#CRCY2QY0',   87,   'DraggQu33n',       @clans['#8JR8G8L9']],
             ['#QQ29RU8L',   86,   'HermanTheGerman',  @clans['#8JR8G8L9']],
             ['#22Q2L92V2',  63,   'hershbar',         @clans['#8JR8G8L9']],
+            ['#RY9LYY0P',   85,   'king',             @clans['#8JR8G8L9']],
             ['#R20YLVUP',   132,  'LeviUnderwood5',   @clans['#8JR8G8L9']],
             ['#RVJ08JR2',   103,  'Marian 2.0',       @clans['#8JR8G8L9']],
             ['#8Y2V2Q09',   112,  'munchbar',         @clans['#8JR8G8L9']],
+            ['#8CLR8V2G',   65,   'NEFF',             @clans['#8JR8G8L9']],
             ['#CPG2L0YV',   62,   'Nunu',             @clans['#8JR8G8L9']],
+            ['#2228PY9QC',  95,   'O.P. Slim',        @clans['#8JR8G8L9']],
             ['#GY9YL809',   85,   'ponikz',           @clans['#8JR8G8L9']],
             ['#2YUYU2GJG',  83,   'SAM',              @clans['#8JR8G8L9']],
             ['#9PQ2LV8L',   90,   'silence',          @clans['#8JR8G8L9']],
