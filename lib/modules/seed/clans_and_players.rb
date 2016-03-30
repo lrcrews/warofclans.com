@@ -19,6 +19,7 @@ module Seed
           puts "adding clans to the existing #{current_clan_count} clan(s)..."
           # This list is arranged alphabetically by the "name" column (data[3])
           [ ['#2CQ900RU', Clan::CLAN_TYPE_INVITE, 7,  'Belgium at war',   1200, Clan::WAR_FREQUENCY_ALWAYS,       105],
+            ['#R9R2GVL',  Clan::CLAN_TYPE_INVITE, 6,  'Canadian Swag',    1400, Clan::WAR_FREQUENCY_TWICE_WEEKLY, 87],
             ['#28VL98JV', Clan::CLAN_TYPE_INVITE, 5,  'cep 2',            1400, Clan::WAR_FREQUENCY_ALWAYS,       48],
             ['#PYCCJJUC', Clan::CLAN_TYPE_INVITE, 5,  'CLANprive',        1400, Clan::WAR_FREQUENCY_ALWAYS,       92],
             ['#P9LQJQ9C', Clan::CLAN_TYPE_INVITE, 6,  'Devils Rejects',   0,    Clan::WAR_FREQUENCY_TWICE_WEEKLY, 57],
@@ -106,6 +107,18 @@ module Seed
             ['#LLQ9QVYV',   99,   'slappe hap',     @clans['#2CQ900RU']],
             ['#YUY0PLVY',   116,  'SNeakyFreak36',  @clans['#2CQ900RU']],
             ['#299QU0UUC',  92,   'utopia',         @clans['#2CQ900RU']],
+            
+            # Canadian Swag
+            ['#VU2QQG0V',   102,  'Buck',           @clans['#R9R2GVL']],
+            ['#2V2YLL9R',   108,  'Fin Bel',        @clans['#R9R2GVL']],
+            ['#UQVQP0UP',   94,   'JOE MOMMA',      @clans['#R9R2GVL']],
+            ['#92RVQPCV',   5,    'JoMoHo',         @clans['#R9R2GVL']],
+            ['#8VQVPLRV',   95,   'kyle',           @clans['#R9R2GVL']],
+            ['#L0YUGYYR',   134,  'PEX',            @clans['#R9R2GVL']],
+            ['#P8QYRGGU',   105,  'Nico_yolus',     @clans['#R9R2GVL']],
+            ['#92QC0GL9',   135,  'Ryguy',          @clans['#R9R2GVL']],
+            ['#RPQJ2V2Q',   113,  'Vesicantjeans0', @clans['#R9R2GVL']],
+            ['#CP80PJQ',    109,  'You',            @clans['#R9R2GVL']],
             
             # cep 2
             ['#2LY2GJVL8',  61,   'bellevue',       @clans['#28VL98JV']],
