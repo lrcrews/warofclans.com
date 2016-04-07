@@ -223,16 +223,16 @@ module Seed
             ['#9CGCVCYQ',   114,  'Super Dave',       @clans['#8U28UGQV']],
 
             # iraqi knights
-            ['#28Y2JYPC2',  97,   '28Y2JYPC2'         @clans['#98QLUQCV']],
-            ['#2UJ9RV9L',   133,  'albahash'          @clans['#98QLUQCV']],
-            ['#2PU0GJGQJ',  70,   'AlBassaM'          @clans['#98QLUQCV']],
-            ['#LJYC2GCQ',   80,   'ALIMOSAB'          @clans['#98QLUQCV']],
-            ['#8VUUQRCU',   97,   'che nawar wick'    @clans['#98QLUQCV']],
-            ['#GJRG9V8Q',   135,  'GJRG9V8Q'          @clans['#98QLUQCV']],
-            ['#Y0VCL0P0',   112,  'HAIDAR-MANUTD'     @clans['#98QLUQCV']],
+            ['#28Y2JYPC2',  97,   '28Y2JYPC2',        @clans['#98QLUQCV']],
+            ['#2UJ9RV9L',   133,  'albahash',         @clans['#98QLUQCV']],
+            ['#2PU0GJGQJ',  70,   'AlBassaM',         @clans['#98QLUQCV']],
+            ['#LJYC2GCQ',   80,   'ALIMOSAB',         @clans['#98QLUQCV']],
+            ['#8VUUQRCU',   97,   'che nawar wick',   @clans['#98QLUQCV']],
+            ['#GJRG9V8Q',   135,  'GJRG9V8Q',         @clans['#98QLUQCV']],
+            ['#Y0VCL0P0',   112,  'HAIDAR-MANUTD',    @clans['#98QLUQCV']],
             ['#2Y28QV28J',  89,   'iraqi knights',    @clans['#98QLUQCV']],
             ['#29VRCQ0VY',  91,   'sezar',            @clans['#98QLUQCV']],
-            ['#YP9QJG9',    135,  'YP9QJG9'           @clans['#98QLUQCV']],
+            ['#YP9QJG9',    135,  'YP9QJG9',          @clans['#98QLUQCV']],
             
             # les chouquettes
             ['#28CYGQ20',   96,   'aba',              @clans['#2QV8LYP2']],
