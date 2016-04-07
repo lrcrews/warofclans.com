@@ -28,6 +28,7 @@ module Seed
             ['#Y0QVU2YC', Clan::CLAN_TYPE_INVITE, 2,  'Galaxyguardians',  800,  Clan::WAR_FREQUENCY_ALWAYS,       10],
             ['#U0U0YCP',  Clan::CLAN_TYPE_INVITE, 7,  'game of rhones',   1100, Clan::WAR_FREQUENCY_ALWAYS,       116],
             ['#8U28UGQV', Clan::CLAN_TYPE_INVITE, 3,  'GOLD n SHOWERS',   1000, Clan::WAR_FREQUENCY_WEEKLY,       9],
+            ['#98QLUQCV', Clan::CLAN_TYPE_CLOSED, 7,  'iraqi knights',    1000, Clan::WAR_FREQUENCY_ALWAYS,       116],
             ['#2QV8LYP2', Clan::CLAN_TYPE_INVITE, 5,  'les chouquettes',  1600, Clan::WAR_FREQUENCY_ALWAYS,       82],
             ['#80R0RUUL', Clan::CLAN_TYPE_INVITE, 6,  'les subprimes',    1400, Clan::WAR_FREQUENCY_ALWAYS,       97],
             ['#2VCLRR2U', Clan::CLAN_TYPE_INVITE, 6,  'Lien Minh COC',    2100, Clan::WAR_FREQUENCY_ALWAYS,       84],
@@ -220,6 +221,18 @@ module Seed
             ['#2YCPPUL8',   105,  'rudacris11',       @clans['#8U28UGQV']],
             ['#JCL20Y8Y',   88,   'solekal82',        @clans['#8U28UGQV']],
             ['#9CGCVCYQ',   114,  'Super Dave',       @clans['#8U28UGQV']],
+
+            # iraqi knights
+            ['#28Y2JYPC2',  97,   '28Y2JYPC2'         @clans['#98QLUQCV']],
+            ['#2UJ9RV9L',   133,  'albahash'          @clans['#98QLUQCV']],
+            ['#2PU0GJGQJ',  70,   'AlBassaM'          @clans['#98QLUQCV']],
+            ['#LJYC2GCQ',   80,   'ALIMOSAB'          @clans['#98QLUQCV']],
+            ['#8VUUQRCU',   97,   'che nawar wick'    @clans['#98QLUQCV']],
+            ['#GJRG9V8Q',   135,  'GJRG9V8Q'          @clans['#98QLUQCV']],
+            ['#Y0VCL0P0',   112,  'HAIDAR-MANUTD'     @clans['#98QLUQCV']],
+            ['#2Y28QV28J',  89,   'iraqi knights',    @clans['#98QLUQCV']],
+            ['#29VRCQ0VY',  91,   'sezar',            @clans['#98QLUQCV']],
+            ['#YP9QJG9',    135,  'YP9QJG9'           @clans['#98QLUQCV']],
             
             # les chouquettes
             ['#28CYGQ20',   96,   'aba',              @clans['#2QV8LYP2']],
